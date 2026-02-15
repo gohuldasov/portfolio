@@ -1,10 +1,10 @@
-import React from 'react';
+
 
 const Projects = () => {
     return (
-        <section id="projects" className="min-h-screen bg-black text-white py-20 px-6">
-            <div className="max-w-6xl mx-auto">
-                {/* Header */}
+        <section id="projects" className="min-h-screen px-12  text-white py-20 ">
+            <div className="">
+
                 <div className="mb-16">
                     <div className="flex items-center gap-2 mb-4">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
@@ -12,43 +12,43 @@ const Projects = () => {
                         </svg>
                         <span className="text-[#a3e635] text-sm font-bold tracking-widest uppercase">My Work</span>
                     </div>
-                    <h2 className="text-5xl md:text-6xl font-bold mb-6">Selected Projects</h2>
-                    <p className="text-gray-400 text-lg max-w-xl">
+                    <h2 className="text-2xl md:text-4xl font-bold mb-3">Selected Projects</h2>
+                    <p className="text-gray-400 text-md ">
                         Here's a curated selection showcasing my expertise and the achieved results.
                     </p>
                 </div>
 
-                {/* Projects Grid */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                    {/* Project 1 - Cream Card (Mobile App) */}
+
                     <div className="bg-[#fdfba4] rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group min-h-[600px] flex flex-col justify-end">
-                        {/* Mockup - Positioned absolute to clip nicely */}
+
                         <div className="absolute top-12 inset-x-0 flex justify-center items-start transition-transform duration-500 group-hover:scale-105">
-                            {/* Phone Frame */}
+
                             <div className="relative border-gray-900 bg-gray-900 border-[12px] rounded-[3rem] h-[550px] w-[300px] shadow-2xl flex flex-col overflow-hidden">
-                                {/* Notch/Camera Area */}
+
                                 <div className="h-8 bg-gray-900 w-full absolute top-0 left-0 z-20 flex justify-center">
                                     <div className="h-4 w-32 bg-black rounded-b-xl"></div>
                                 </div>
 
-                                {/* Screen Content */}
+
                                 <div className="flex-1 bg-gray-800 relative w-full overflow-hidden">
-                                    {/* Fake UI: App Header */}
+
                                     <div className="bg-gray-900 p-6 pt-12 flex justify-between items-center text-white">
                                         <div className="font-bold flex items-center gap-1">
                                             <span className="text-purple-400">⚡</span> Aora
                                         </div>
                                     </div>
 
-                                    {/* Fake UI: Hero */}
+
                                     <div className="p-4 space-y-4">
                                         <div className="bg-gray-700 h-32 rounded-xl w-full animate-pulse"></div>
                                         <div className="space-y-2">
                                             <div className="h-6 bg-gray-700 rounded w-3/4"></div>
                                             <div className="h-4 bg-gray-700 rounded w-1/2"></div>
                                         </div>
-                                        {/* Fake Cards grid */}
+
                                         <div className="grid grid-cols-2 gap-2 mt-4">
                                             <div className="bg-gray-700 h-24 rounded-lg"></div>
                                             <div className="bg-gray-700 h-24 rounded-lg"></div>

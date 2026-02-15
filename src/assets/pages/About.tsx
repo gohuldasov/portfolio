@@ -30,7 +30,7 @@ const About = () => {
                     start: "top 80%",
                     end: "bottom 50%",
                     scrub: true,
-                    // markers: true, // Uncomment for debugging
+                    
                 }
             }
         );
@@ -41,17 +41,16 @@ const About = () => {
     }, []);
 
     return (
-        <section id="about" ref={containerRef} className="min-h-screen bg-black text-white py-20 px-6 flex items-center justify-center">
-            <div className="max-w-4xl mx-auto">
+        <section id="about" ref={containerRef} className=" pt-12 pb-32 px-12 text-white  flex items-center ">
+            <div className=" ">
                 <div className="flex items-center gap-2 mb-8">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                        <path d="M12 6V18M6 12H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
+                            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                     <span className="text-[#a3e635] text-sm font-bold tracking-widest uppercase">About Me</span>
                 </div>
 
-                <p ref={textRef} className="text-4xl md:text-6xl font-bold leading-tight flex flex-wrap gap-x-3 gap-y-2">
+                <p ref={textRef} className="text-2xl md:text-4xl font-bold leading-tight flex flex-wrap gap-x-3 gap-y-2">
                     {words.map((word, index) => (
                         <span key={index} className="word transition-colors duration-200">
                             {word}

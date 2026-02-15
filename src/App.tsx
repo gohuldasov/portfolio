@@ -9,28 +9,14 @@ import Footer from "./assets/pages/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#a3e635] selection:text-black">
+    <div className="min-h-screen bg-gray-900/20 px-24 text-white font-sans selection:bg-[#a3e635] selection:text-black">
       <Navbar />
-
-      {/* Hero Section */}
       <Hero />
-
-      {/* About Section */}
       <About />
-
-      {/* Projects Section */}
       <Projects />
-
-      {/* Expertise Section */}
       <Expertise />
-
-      {/* Testimonials Section */}
       <Testimonials />
-
-      {/* Contact Section */}
       <Contact />
-
-      {/* Footer Section */}
       <Footer />
 
     </div>
