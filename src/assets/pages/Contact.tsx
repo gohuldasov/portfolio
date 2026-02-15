@@ -78,7 +78,7 @@ const Contact = () => {
         >
             <section id="contact" ref={sectionRef} className="min-h-screen  text-white py-20 px-12 flex items-center overflow-hidden">
                 <div className=" mx-auto w-full">
-                    {/* Header */}
+                  
                     <div ref={headerRef} className="mb-12">
                         <div className="flex items-center gap-2 mb-6">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
@@ -93,7 +93,7 @@ const Contact = () => {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                        {/* Left Column: Form using Ant Design */}
+                        
                         <div ref={formRef}>
                             <Form
                                 form={form}
