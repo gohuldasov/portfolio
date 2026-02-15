@@ -33,9 +33,9 @@ const Expertise = () => {
     ];
 
     return (
-        <section id="expertise" className="min-h-screen bg-black text-white py-20 px-6">
-            <div className="max-w-6xl mx-auto">
-                {/* Header */}
+        <section id="expertise" className="min-h-screen  text-white py-20 px-12">
+            <div className=" mx-auto">
+
                 <div className="mb-16">
                     <div className="flex items-center gap-2 mb-4">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
@@ -43,11 +43,11 @@ const Expertise = () => {
                         </svg>
                         <span className="text-[#a3e635] text-sm font-bold tracking-widest uppercase">Speciality</span>
                     </div>
-                    <h2 className="text-5xl md:text-6xl font-bold mb-6">Areas of Expertise</h2>
+                    <h2 className="ttext-2xl md:text-4xl font-bold mb-6">Areas of Expertise</h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    {/* Left: Accordion */}
+
                     <div className="space-y-4">
                         {expertiseItems.map((item, index) => (
                             <div
@@ -75,27 +75,46 @@ const Expertise = () => {
                         ))}
                     </div>
 
-                    {/* Right: Image */}
+
                     <div className="relative rounded-[2.5rem] overflow-hidden h-[500px] border border-zinc-800 hidden lg:block">
                         <img
                             src={workspaceImg}
                             alt="Developer Workspace"
                             className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
                         />
-                        {/* Scanline/Grid overlay effect for tech vibe */}
+
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 pointer-events-none bg-[length:100%_4px,6px_100%]"></div>
                     </div>
                 </div>
 
-                {/* Tech Stack Footer */}
-                <div className="mt-20 pt-10 border-t border-zinc-900">
-                    <div className="flex flex-wrap justify-center md:justify-between gap-6 opacity-70">
-                        {techStack.map((tech) => (
-                            <div key={tech.name} className="flex items-center gap-2 px-4 py-2 bg-zinc-900/50 rounded-full border border-zinc-800 hover:border-[#a3e635]/30 hover:bg-zinc-900 transition-colors">
-                                <span className="text-lg">{tech.icon}</span>
-                                <span className="text-sm font-medium text-gray-400">{tech.name}</span>
-                            </div>
-                        ))}
+
+
+
+
+
+                <div className="mt-20 pt-10 ">
+
+                    <div className="relative flex overflow-x-hidden group">
+
+                        <div className="absolute top-0 bottom-0 left-0 w-24 z-10 bg-gradient-to-r from-[#09090b] to-transparent pointer-events-none"></div>
+                        <div className="absolute top-0 bottom-0 right-0 w-24 z-10 bg-gradient-to-l from-[#09090b] to-transparent pointer-events-none"></div>
+
+                        <div className="flex animate-infinite-scroll whitespace-nowrap hover:[animation-play-state:paused] ">
+
+                            {techStack.map((tech, index) => (
+                                <div key={`tech-${index}`} className="mx-4 flex items-center gap-2 px-2 py-1 bg-zinc-900/50 rounded-full border border-zinc-800 hover:border-[#a3e635]/30 hover:bg-zinc-900 transition-colors cursor-pointer select-none">
+                                    <span className="text-2xl">{tech.icon}</span>
+                                    <span className="text-sm font-medium text-gray-400">{tech.name}</span>
+                                </div>
+                            ))}
+
+                            {techStack.map((tech, index) => (
+                                <div key={`tech-duplicate-${index}`} className="mx-4 flex items-center gap-2 px-2 py-1 bg-zinc-900/50 rounded-full border border-zinc-800 hover:border-[#a3e635]/30 hover:bg-zinc-900 transition-colors cursor-pointer select-none">
+                                    <span className="text-2xl">{tech.icon}</span>
+                                    <span className="text-sm font-medium text-gray-400">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

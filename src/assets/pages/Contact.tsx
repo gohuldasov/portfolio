@@ -76,8 +76,8 @@ const Contact = () => {
                 }
             }}
         >
-            <section id="contact" ref={sectionRef} className="min-h-screen bg-black text-white py-20 px-6 flex items-center overflow-hidden">
-                <div className="max-w-6xl mx-auto w-full">
+            <section id="contact" ref={sectionRef} className="min-h-screen  text-white py-20 px-12 flex items-center overflow-hidden">
+                <div className=" mx-auto w-full">
                     {/* Header */}
                     <div ref={headerRef} className="mb-12">
                         <div className="flex items-center gap-2 mb-6">
@@ -86,7 +86,7 @@ const Contact = () => {
                             </svg>
                             <span className="text-[#a3e635] text-sm font-bold tracking-widest uppercase">Connect with me</span>
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-bold leading-tight">
+                        <h2 className="text-2xl md:text-4xl font-bold leading-tight">
                             Let's start a project <br />
                             together
                         </h2>

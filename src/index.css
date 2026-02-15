@@ -1,6 +1,20 @@
 @import "tailwindcss";
 
 body {
-    background-color: black;
+    background-color: #09090b;
     color: white;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-infinite-scroll {
+    animation: scroll 20s linear infinite;
 }

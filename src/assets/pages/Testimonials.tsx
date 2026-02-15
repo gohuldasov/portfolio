@@ -33,12 +33,12 @@ const Testimonials = () => {
     };
 
     return (
-        <section id="testimonials" className="min-h-screen bg-black text-white py-20 px-6 flex items-center">
-            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section id="testimonials" className="min-h-screen  text-white py-20 px-12 flex items-center">
+            <div className="max-w-7xl  mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
 
-                {/* Left Column: Info */}
-                <div className="space-y-8">
-                    {/* Label */}
+                
+                <div className="space-y-8 ">
+                  
                     <div className="flex items-center gap-2 mb-4">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
                             <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -46,7 +46,7 @@ const Testimonials = () => {
                         <span className="text-[#a3e635] text-sm font-bold tracking-widest uppercase">Testimonials</span>
                     </div>
 
-                    <h2 className="text-5xl md:text-7xl font-bold leading-tight">
+                    <h2 className="text-2xl md:text-4xl font-bold leading-tight">
                         What others <br /> say
                     </h2>
 
@@ -64,11 +64,10 @@ const Testimonials = () => {
                     </div>
                 </div>
 
-                {/* Right Column: Carousel */}
-                <div className="relative">
-                    {/* Card */}
-                    <div className="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 rounded-[2.5rem] relative min-h-[400px] flex flex-col justify-center transition-all duration-500">
-                        {/* Avatar & Info */}
+                <div className="relative ">
+                
+                    <div className=" border border-white/5 p-8 md:p-8 rounded-[2.5rem] relative flex flex-col justify-center transition-all duration-500">
+                       
                         <div className="flex items-center gap-4 mb-8">
                             <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/10">
                                 <img
@@ -83,15 +82,14 @@ const Testimonials = () => {
                             </div>
                         </div>
 
-                        {/* Quote */}
+               
                         <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
                             "{testimonials[currentIndex].text}"
                         </p>
                     </div>
 
-                    {/* Navigation */}
                     <div className="flex items-center justify-end gap-6 mt-8">
-                        {/* Prev Button */}
+                       
                         <button
                             onClick={prevTestimonial}
                             className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
@@ -101,12 +99,11 @@ const Testimonials = () => {
                             </svg>
                         </button>
 
-                        {/* Counter */}
+                     
                         <span className="text-gray-500 font-mono">
                             {currentIndex + 1} / {testimonials.length}
                         </span>
 
-                        {/* Next Button */}
                         <button
                             onClick={nextTestimonial}
                             className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
