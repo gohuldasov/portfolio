@@ -5,16 +5,15 @@ const Hero = () => {
         <section id="home" className="min-h-screen flex flex-col justify-center px-12 relative pt-16">
 
 
-            <div className="flex items-center gap-3 mb-8 mt-12 animate-fade-in-up">
+            {/* <div className="flex items-center gap-3 mb-8 mt-12 animate-fade-in-up">
                 <span className="text-md">👋</span>
                 <span className="text-gray-300 text-md font-medium">Hey! It's me Gohul,</span>
-            </div>
+            </div> */}
 
             <div className="">
-                <h1 className="text-3xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-12">
-                    Crafting <span className="text-[#a3e635]">purpose driven</span> <br />
-                    experiences that inspire <br />
-                    & engage.
+                <h1 className="text-8xl md:text-9xl font-bold tracking-tight  mb-12">
+                    Design that  <br /> <span className="text-gray-500/60">React</span>
+                   
                 </h1>
             </div>
             <div className="flex items-center gap-2  w-full ">
