@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const container = useRef<HTMLElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     const testimonials = [
         {
             name: "Samiksha Pawar",
-            role: "Software Engineer @Conexao Technology Solutions",
+            role: "Software Engineer @Conexao",
             image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
-            text: "Devraj is a very artistic person. We have worked as graphic designers for a regional event. He is amazing at designing as well as web designing. I surely recommend him to everyone who needs these services."
+            text: "Devraj is a very artistic person. His ability to blend aesthetics with engineering is truly rare. An amazing collaborator for any digital product."
         },
         {
             name: "John Doe",
@@ -24,97 +28,98 @@ const Testimonials = () => {
         }
     ];
 
-    const nextTestimonial = () => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    };
+    const { contextSafe } = useGSAP({ scope: container });
 
-    const prevTestimonial = () => {
-        setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    };
+    const handleTransition = contextSafe((nextIndex: number) => {
+        const tl = gsap.timeline();
+        
+        tl.to(contentRef.current, {
+            y: 20,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.in",
+            onComplete: () => {
+                setCurrentIndex(nextIndex);
+            }
+        })
+        .fromTo(contentRef.current, {
+            y: -20,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+    });
+
+    const next = () => handleTransition((currentIndex + 1) % testimonials.length);
+    const prev = () => handleTransition((currentIndex - 1 + testimonials.length) % testimonials.length);
 
     return (
-        <section id="testimonials" className="min-h-screen  text-white py-20 px-12 flex items-center">
-            <div className="max-w-7xl  mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
+        <section id="testimonials" ref={container} className="py-32 px-6 md:px-24 bg-[#09090b] text-white">
+            <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
+                <div className="flex items-center gap-4 mb-12">
+                    <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
+                    <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Kind Words</span>
+                    <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
+                </div>
 
-                
-                <div className="space-y-8 ">
-                  
-                    <div className="flex items-center gap-2 mb-4">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a3e635]">
-                            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span className="text-[#a3e635] text-sm font-bold tracking-widest uppercase">Testimonials</span>
+                <div 
+                    ref={contentRef}
+                    className="relative flex flex-col items-center gap-12"
+                >
+                    <div className="text-7xl md:text-9xl text-[var(--primary)] opacity-10 absolute -top-10 left-1/2 -translate-x-1/2 select-none font-serif">
+                        &ldquo;
                     </div>
 
-                    <h2 className="text-2xl md:text-4xl font-bold leading-tight">
-                        What others <br /> say
-                    </h2>
-
-                    <p className="text-gray-400 text-lg max-w-md leading-relaxed">
-                        I've worked with some amazing people over the years, here is what they have to say about me.
+                    <p className="text-3xl md:text-5xl font-medium tracking-tight leading-tight max-w-4xl lowercase italic text-gray-200">
+                        {testimonials[currentIndex].text}
                     </p>
 
-                    <div className="pt-8">
-                        <a href="#" className="inline-flex items-center gap-2 text-white border-b border-white pb-1 hover:text-[#a3e635] hover:border-[#a3e635] transition-colors group">
-                            Check it out on Linkedin
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div className="relative ">
-                
-                    <div className=" border border-white/5 p-8 md:p-8 rounded-[2.5rem] relative flex flex-col justify-center transition-all duration-500">
-                       
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/10">
-                                <img
-                                    src={testimonials[currentIndex].image}
-                                    alt={testimonials[currentIndex].name}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold text-white">{testimonials[currentIndex].name}</h4>
-                                <p className="text-gray-500 text-sm">{testimonials[currentIndex].role}</p>
-                            </div>
+                    <div className="flex flex-col items-center gap-6 mt-12">
+                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-zinc-900 p-2 glass">
+                            <img
+                                src={testimonials[currentIndex].image}
+                                alt={testimonials[currentIndex].name}
+                                className="w-full h-full object-cover rounded-full grayscale"
+                            />
                         </div>
-
-               
-                        <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
-                            "{testimonials[currentIndex].text}"
-                        </p>
-                    </div>
-
-                    <div className="flex items-center justify-end gap-6 mt-8">
-                       
-                        <button
-                            onClick={prevTestimonial}
-                            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                            </svg>
-                        </button>
-
-                     
-                        <span className="text-gray-500 font-mono">
-                            {currentIndex + 1} / {testimonials.length}
-                        </span>
-
-                        <button
-                            onClick={nextTestimonial}
-                            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </button>
+                        <div className="text-center">
+                            <h4 className="text-2xl font-bold tracking-tight text-white mb-1 uppercase tracking-widest">{testimonials[currentIndex].name}</h4>
+                            <p className="text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em]">{testimonials[currentIndex].role}</p>
+                        </div>
                     </div>
                 </div>
 
+                <div className="mt-24 flex items-center gap-12">
+                    <button
+                        onClick={prev}
+                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black hover:border-[var(--primary)] transition-all duration-500 group"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                    </button>
+
+                    <div className="flex gap-2">
+                        {testimonials.map((_, i) => (
+                            <div 
+                                key={i} 
+                                className={`w-2 h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-[var(--primary)]' : 'bg-zinc-800'}`}
+                            ></div>
+                        ))}
+                    </div>
+
+                    <button
+                        onClick={next}
+                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black hover:border-[var(--primary)] transition-all duration-500 group"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </section>
     );

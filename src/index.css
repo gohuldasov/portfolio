@@ -1,20 +1,55 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap');
+
+:root {
+    --primary: #a3e635;
+    --background: #09090b;
+    --text: #ffffff;
+    --text-muted: #a1a1aa;
+}
 
 body {
-    background-color: #09090b;
-    color: white;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.magnetic-button {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .animate-infinite-scroll {
     animation: scroll 20s linear infinite;
+}
+
+.glow-mesh {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(163, 230, 53, 0.15) 0%, rgba(163, 230, 53, 0) 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
 }
