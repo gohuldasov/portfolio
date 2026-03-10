@@ -50,14 +50,14 @@ const About = () => {
     }, { scope: sectionRef });
 
     return (
-        <section id="about" ref={sectionRef} className="py-32 px-6 md:px-24 text-white flex flex-col items-start relative overflow-hidden bg-[#09090b]">
+        <section id="about" ref={sectionRef} className=" py-32 px-12 md:px-52 text-white flex flex-col items-start relative overflow-hidden ">
             {/* Background Accent */}
-            <div className="absolute top-1/2 right-[-10%] w-[500px] h-[500px] bg-[var(--primary)] opacity-[0.03] blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-1/2 right-[-10%] w-125 h-125 bg-(--primary) opacity-[0.03] blur-[120px] rounded-full pointer-events-none"></div>
 
             <div ref={containerRef} className="relative z-10 w-full max-w-6xl">
                 <div className="about-title flex items-center gap-4 mb-16">
-                    <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
-                    <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Who I Am</span>
+                    <div className="w-12 h-px` bg-(--primary)"></div>
+                    <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Who I Am</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start">

@@ -57,19 +57,19 @@ const Testimonials = () => {
     const prev = () => handleTransition((currentIndex - 1 + testimonials.length) % testimonials.length);
 
     return (
-        <section id="testimonials" ref={container} className="py-32 px-6 md:px-24 bg-[#09090b] text-white">
+        <section id="testimonials" ref={container} className="py-32 px-6 md:px-52  text-white">
             <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
                 <div className="flex items-center gap-4 mb-12">
-                    <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
-                    <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Kind Words</span>
-                    <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
+                    <div className="w-12 h-px bg-(--primary)"></div>
+                    <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Kind Words</span>
+                    <div className="w-12 h-px bg-(--primary)"></div>
                 </div>
 
                 <div 
                     ref={contentRef}
                     className="relative flex flex-col items-center gap-12"
                 >
-                    <div className="text-7xl md:text-9xl text-[var(--primary)] opacity-10 absolute -top-10 left-1/2 -translate-x-1/2 select-none font-serif">
+                    <div className="text-7xl md:text-9xl text-(--primary) opacity-10 absolute -top-10 left-1/2 -translate-x-1/2 select-none font-serif">
                         &ldquo;
                     </div>
 
@@ -95,7 +95,7 @@ const Testimonials = () => {
                 <div className="mt-24 flex items-center gap-12">
                     <button
                         onClick={prev}
-                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black hover:border-[var(--primary)] transition-all duration-500 group"
+                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-(--primary) hover:text-black hover:border-(--primary) transition-all duration-500 group"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -106,14 +106,14 @@ const Testimonials = () => {
                         {testimonials.map((_, i) => (
                             <div 
                                 key={i} 
-                                className={`w-2 h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-[var(--primary)]' : 'bg-zinc-800'}`}
+                                className={`w-2 h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-(--primary)' : 'bg-zinc-800'}`}
                             ></div>
                         ))}
                     </div>
 
                     <button
                         onClick={next}
-                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black hover:border-[var(--primary)] transition-all duration-500 group"
+                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-(--primary) hover:text-black hover:border-(--primary) transition-all duration-500 group"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

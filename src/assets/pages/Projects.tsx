@@ -66,7 +66,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             className="project-card group relative flex flex-col gap-6 cursor-pointer shrink-0 w-[85vw] md:w-[60vw]"
         >
             <div   
-                className="relative aspect-[4/5] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-[#161618] border border-white/5"
+                className="relative aspect-4/5 md:aspect-video rounded-4xl overflow-hidden bg-[#161618] border border-white/5"
                 style={{ backgroundColor: project.color + '10' }} // Subtle tint
             >
                 <div   
@@ -90,11 +90,11 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 px-4 overflow-hidden">
                 <div className="overflow-hidden">
-                    <h3 className="project-title text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-none group-hover:text-[var(--primary)] transition-colors duration-300">
+                    <h3 className="project-title text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-none group-hover:text-(--primary) transition-colors duration-300">
                         {project.title}
                     </h3>
                 </div>
-                <p className="text-gray-500 font-light text-sm max-w-[250px] lowercase tracking-wide">
+                <p className="text-gray-500 font-light text-sm max-w-62.5 lowercase tracking-wide">
                     {project.description}
                 </p>
             </div>
@@ -175,12 +175,12 @@ const Projects = () => {
     }, { scope: container });
 
     return (
-        <section id="projects" ref={container} className="relative bg-[#09090b] text-white overflow-hidden min-h-screen">
+        <section id="projects" ref={container} className="relative text-white overflow-hidden min-h-screen">
             <div className="h-screen flex flex-col justify-start pt-32 pb-20">
-                <div className="projects-header mb-12 px-6 md:px-24 shrink-0">
+                <div className="projects-header mb-12 px-6 md:px-52 shrink-0">
                     <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
-                        <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Selected Works</span>
+                        <div className="w-12 h-px bg-(--primary)"></div>
+                        <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Selected Works</span>
                     </div>
                     <h2 className="text-6xl md:text-[8rem] font-bold tracking-tighter uppercase leading-[0.8]">
                         Featured <br /> <span className="text-gray-800 italic">Projects</span>
@@ -188,15 +188,15 @@ const Projects = () => {
                 </div>
 
                 <div className="projects-carousel-wrapper flex-1 flex items-center">
-                    <div ref={scrollContainer} className="flex gap-20 px-6 md:px-24 items-center">
+                    <div ref={scrollContainer} className="flex gap-20 px-6 md:px-52 items-center">
                         {projects.map((project, index) => (
                             <ProjectCard key={index} project={project} />
                         ))}
                                                                 
                         <div className="shrink-0 pl-24 pr-48">
-                            <button className="group px-12 py-6 rounded-full border border-white/10 hover:border-[var(--primary)] transition-all flex items-center gap-4">
-                                <span className="text-xs font-bold uppercase tracking-widest group-hover:text-[var(--primary)]">View All Projects</span>
-                                <div className="w-10 h-10 rounded-full glass flex items-center justify-center group-hover:bg-[var(--primary)] group-hover:text-black transition-all">
+                            <button className="group px-12 py-6 rounded-full border border-white/10 hover:border-(--primary) transition-all flex items-center gap-4">
+                                <span className="text-xs font-bold uppercase tracking-widest group-hover:text-(--primary)">View All Projects</span>
+                                <div className="w-10 h-10 rounded-full glass flex items-center justify-center group-hover:bg-(--primary) group-hover:text-black transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                                     </svg>

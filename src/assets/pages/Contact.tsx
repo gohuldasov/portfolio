@@ -54,9 +54,9 @@ const Contact = () => {
                 <div ref={containerRef} className="max-w-6xl mx-auto">
                     <div className="contact-element mb-24">
                         <div className="flex items-center gap-4 mb-8 text-center justify-center">
-                            <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
-                            <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Get In Touch</span>
-                            <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
+                            <div className="w-12 h-px bg-(--primary)"></div>
+                            <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Get In Touch</span>
+                            <div className="w-12 h-1px bg-(--primary)"></div>
                         </div>
                         <h2 className="text-7xl md:text-[10rem] font-bold tracking-tighter uppercase leading-[0.8] text-center">
                             Let&apos;s build <br /> <span className="text-gray-800 italic">Together</span>
@@ -71,15 +71,15 @@ const Contact = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12">
                                 <div>
-                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--primary)] mb-4">Email Me</h4>
-                                    <a href="mailto:hello@devraj.com" className="text-2xl font-bold hover:text-[var(--primary)] transition-colors inline-block pb-1 border-b border-gray-900 group">
+                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--primary) mb-4">Email Me</h4>
+                                    <a href="mailto:hello@devraj.com" className="text-2xl font-bold hover:text-(--primary) transition-colors inline-block pb-1 border-b border-gray-900 group">
                                         hello@devraj.com
                                     </a>
                                 </div>
                                 <div>
-                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--primary)] mb-4">Availability</h4>
+                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--primary) mb-4">Availability</h4>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse shadow-[0_0_10px_#a3e635]"></div>
+                                        <div className="w-2 h-2 rounded-full bg-(--primary) animate-pulse shadow-[0_0_10px_#a3e635]"></div>
                                         <span className="text-2xl font-bold">Open for Work</span>
                                     </div>
                                 </div>
@@ -108,21 +108,21 @@ const Contact = () => {
                                     size="large"
                                 >
                                     <Form.Item name="name" className="m-0">
-                                        <Input placeholder="Full Name" className="glass !border-white/5 hover:!border-[var(--primary)]/50 focus:!border-[var(--primary)] transition-all px-8 bg-transparent" />
+                                        <Input placeholder="Full Name" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-8 bg-transparent" />
                                     </Form.Item>
 
                                     <Form.Item name="email" className="m-0">
-                                        <Input placeholder="Email Address" className="glass !border-white/5 hover:!border-[var(--primary)]/50 focus:!border-[var(--primary)] transition-all px-8 bg-transparent" />
+                                        <Input placeholder="Email Address" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-8 bg-transparent" />
                                     </Form.Item>
 
                                     <Form.Item name="message" className="m-0">
-                                        <Input.TextArea rows={5} placeholder="Your Message" className="glass !border-white/5 hover:!border-[var(--primary)]/50 focus:!border-[var(--primary)] transition-all px-8 py-6 bg-transparent" />
+                                        <Input.TextArea rows={5} placeholder="Your Message" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-8 py-6 bg-transparent" />
                                     </Form.Item>
 
                                     <Form.Item className="mt-8">
                                         <button
                                             type="submit"
-                                            className="w-full h-20 rounded-[2rem] bg-[var(--primary)] text-black font-bold text-sm uppercase tracking-[0.3em] hover:scale-[1.02] transition-all duration-300"
+                                            className="w-full h-20 rounded-4xl bg-(--primary) text-black font-bold text-sm uppercase tracking-[0.3em] hover:scale-[1.02] transition-all duration-300"
                                         >
                                             Send Message
                                         </button>

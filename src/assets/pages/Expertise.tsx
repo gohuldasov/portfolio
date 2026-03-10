@@ -66,12 +66,12 @@ const Expertise = () => {
     }, { scope: container });
 
     return (
-        <section id="expertise" ref={container} className="py-32 px-6 md:px-24 bg-[#09090b] text-white">
+        <section id="expertise" ref={container} className="py-32 px-6 md:px-52  text-white">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
                 <div>
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
-                        <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">My Speciality</span>
+                        <div className="w-12 h-1px bg-(--primary)"></div>
+                        <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">My Speciality</span>
                     </div>
                     <h2 className="text-7xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.8] mb-16">
                         Technical <br /> <span className="text-gray-800 italic">Prowess</span>
@@ -81,21 +81,21 @@ const Expertise = () => {
                         {expertiseItems.map((item, index) => (
                             <div
                                 key={index}
-                                className={`expertise-item group p-8 rounded-[2rem] cursor-pointer transition-all duration-500 border
+                                className={`expertise-item group p-8 rounded-4xl cursor-pointer transition-all duration-500 border
                                     ${activeTab === index ? 'bg-zinc-900 border-zinc-800 shadow-2xl scale-[1.02]' : 'bg-transparent border-transparent hover:border-zinc-800/50 hover:bg-zinc-900/30'}
                                 `}
                                 onClick={() => setActiveTab(index)}
                             >
                                 <div className="flex justify-between items-center">
                                     <div className="flex flex-col gap-2">
-                                        <span className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${activeTab === index ? 'text-[var(--primary)]' : 'text-gray-600'}`}>
+                                        <span className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${activeTab === index ? 'text-(--primary)' : 'text-gray-600'}`}>
                                             {item.tag}
                                         </span>
                                         <h3 className={`text-3xl md:text-4xl font-bold tracking-tight transition-colors ${activeTab === index ? 'text-white' : 'text-gray-500'}`}>
                                             {item.title}
                                         </h3>
                                     </div>
-                                    <div className={`w-12 h-12 rounded-full glass flex items-center justify-center transition-all duration-500 ${activeTab === index ? 'rotate-180 bg-[var(--primary)] text-black' : 'text-gray-500'}`}>
+                                    <div className={`w-12 h-12 rounded-full glass flex items-center justify-center transition-all duration-500 ${activeTab === index ? 'rotate-180 bg-(--primary) text-black' : 'text-gray-500'}`}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                     </div>
                                 </div>
@@ -109,20 +109,20 @@ const Expertise = () => {
                     </div>
                 </div>
 
-                <div className="relative h-[800px] hidden lg:block rounded-[4rem] overflow-hidden border border-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+                <div className="relative h-200 hidden lg:block rounded-[4rem] overflow-hidden border border-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
                     <img
                         ref={imageRef}
                         src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
                         alt="Workspace"
                         className="w-full h-[120%] object-cover grayscale opacity-40 scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-[#09090b] via-transparent to-transparent"></div>
                     
                     {/* Tech Stack Overlay */}
                     <div className="absolute bottom-12 inset-x-0 px-12">
                         <div className="flex flex-wrap gap-4">
                             {techStack.map((tech, i) => (
-                                <div key={i} className="px-6 py-3 glass rounded-full text-xs font-bold uppercase tracking-widest text-white/50 hover:text-[var(--primary)] transition-colors">
+                                <div key={i} className="px-6 py-3 glass rounded-full text-xs font-bold uppercase tracking-widest text-white/50 hover:text-(--primary) transition-colors">
                                     <span className="mr-2 text-sm">{tech.icon}</span>
                                     {tech.name}
                                 </div>

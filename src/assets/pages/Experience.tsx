@@ -72,12 +72,12 @@ const Experience = () => {
     }, { scope: container, dependencies: [displayedExperiences] });
 
     return (
-        <section id="experience" ref={container} className="relative py-32 px-6 md:px-24 bg-[#09090b] text-white">
+        <section id="experience" ref={container} className="relative py-32 px-6 md:px-52 bg-[#09090b] text-white">
             <div className="flex flex-col lg:flex-row gap-24">
                 <div className="lg:w-1/3">
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-[1px] bg-[var(--primary)]"></div>
-                        <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Career Path</span>
+                        <div className="w-12 h-1px bg-(--primary)"></div>
+                        <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Career Path</span>
                     </div>
                     <h2 className="text-7xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.8] mb-8">
                         Experience <br /> <span className="text-gray-800 italic">History</span>
@@ -93,13 +93,13 @@ const Experience = () => {
                             key={index}
                             className="exp-row group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-zinc-900 hover:px-8 cursor-default"
                         >
-                            <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10"></div>
+                            <div className="absolute inset-0 bg-white/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10"></div>
                             
                             <div className="flex flex-col gap-2">
-                                <span className="text-[10px] font-bold text-gray-700 uppercase tracking-widest uppercase">
+                                <span className="text-[10px] font-bold text-gray-700 tracking-widest uppercase">
                                     {exp.period}
                                 </span>
-                                <h3 className="text-3xl md:text-4xl font-bold tracking-tight group-hover:text-[var(--primary)] transition-colors duration-300">
+                                <h3 className="text-3xl md:text-4xl font-bold tracking-tight group-hover:text-(--primary) transition-colors duration-300">
                                     {exp.role}
                                 </h3>
                                 <p className="text-gray-500 font-medium text-lg italic">
@@ -118,9 +118,9 @@ const Experience = () => {
                     <div className="mt-20 flex justify-end">
                         <button
                             onClick={() => setShowAll(!showAll)}
-                            className="group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase hover:text-[var(--primary)] transition-all"
+                            className="group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase hover:text-(--primary) transition-all"
                         >
-                            <span className="border-b border-gray-800 pb-1 group-hover:border-[var(--primary)] transition-colors">
+                            <span className="border-b border-gray-800 pb-1 group-hover:border-(--primary) transition-colors">
                                 {showAll ? "Show Less" : "Explore All History"}
                             </span>
                             <div className={`w-10 h-10 rounded-full glass flex items-center justify-center transition-transform duration-500 ${showAll ? 'rotate-180' : ''}`}>
