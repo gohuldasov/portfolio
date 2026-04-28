@@ -52,17 +52,17 @@ const About = () => {
     return (
         <section id="about" ref={sectionRef} className=" py-32 px-12 md:px-52 text-white flex flex-col items-start relative overflow-hidden ">
             {/* Background Accent */}
-            <div className="absolute top-1/2 right-[-10%] w-125 h-125 bg-(--primary) opacity-[0.03] blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-1/2 right-[-10%] w-125 h-125 bg-(--secondary) opacity-[0.05] blur-[120px] rounded-full pointer-events-none"></div>
 
             <div ref={containerRef} className="relative z-10 w-full max-w-6xl">
                 <div className="about-title flex items-center gap-4 mb-16">
-                    <div className="w-12 h-px` bg-(--primary)"></div>
+                    <div className="w-12 h-px bg-(--primary)"></div>
                     <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Who I Am</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start">
                     <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9]">
-                        Crafting <br /> Digital <br /> <span className="text-gray-600 italic">Essence</span>
+                        Crafting <br /> Digital <br /> <span className="text-primary-gradient italic">Essence</span>
                     </h2>
 
                     <p ref={textRef} className="text-3xl md:text-5xl font-medium leading-[1.1] tracking-tight flex flex-wrap gap-x-4 gap-y-2 opacity-100">

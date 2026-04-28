@@ -34,23 +34,23 @@ const Contact = () => {
             theme={{
                 algorithm: theme.darkAlgorithm,
                 token: {
-                    colorPrimary: '#a3e635',
+                    colorPrimary: '#8b5cf6',
                     colorBgContainer: 'transparent',
-                    colorBorder: 'rgba(255, 255, 255, 0.05)',
-                    colorText: '#ffffff',
-                    colorTextPlaceholder: 'rgba(255, 255, 255, 0.2)',
+                    colorBorder: 'rgba(255, 255, 255, 0.08)',
+                    colorText: '#f8fafc',
+                    colorTextPlaceholder: 'rgba(248, 250, 252, 0.2)',
                     controlHeight: 60,
                     borderRadius: 24,
                 },
                 components: {
                     Input: {
-                        activeBorderColor: '#a3e635',
-                        hoverBorderColor: '#a3e635',
+                        activeBorderColor: '#8b5cf6',
+                        hoverBorderColor: '#8b5cf6',
                     }
                 }
             }}
         >
-            <section id="contact" ref={sectionRef} className="py-32 px-6 md:px-24 bg-[#09090b] text-white overflow-hidden">
+            <section id="contact" ref={sectionRef} className="py-32 px-6 md:px-24 bg-(--background) text-white overflow-hidden">
                 <div ref={containerRef} className="max-w-6xl mx-auto">
                     <div className="contact-element mb-24">
                         <div className="flex items-center gap-4 mb-8 text-center justify-center">
@@ -59,7 +59,7 @@ const Contact = () => {
                             <div className="w-12 h-1px bg-(--primary)"></div>
                         </div>
                         <h2 className="text-7xl md:text-[10rem] font-bold tracking-tighter uppercase leading-[0.8] text-center">
-                            Let&apos;s build <br /> <span className="text-gray-800 italic">Together</span>
+                            Let&apos;s build <br /> <span className="text-primary-gradient italic">Together</span>
                         </h2>
                     </div>
 
@@ -79,7 +79,7 @@ const Contact = () => {
                                 <div>
                                     <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--primary) mb-4">Availability</h4>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-(--primary) animate-pulse shadow-[0_0_10px_#a3e635]"></div>
+                                        <div className="w-2 h-2 rounded-full bg-(--primary) animate-pulse shadow-[0_0_15px_#8b5cf6]"></div>
                                         <span className="text-2xl font-bold">Open for Work</span>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@ const Contact = () => {
                                     <Form.Item className="mt-8">
                                         <button
                                             type="submit"
-                                            className="w-full h-20 rounded-4xl bg-(--primary) text-black font-bold text-sm uppercase tracking-[0.3em] hover:scale-[1.02] transition-all duration-300"
+                                            className="w-full h-20 rounded-4xl bg-(--primary) text-white font-bold text-sm uppercase tracking-[0.3em] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-300"
                                         >
                                             Send Message
                                         </button>

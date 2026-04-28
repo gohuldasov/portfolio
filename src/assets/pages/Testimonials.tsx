@@ -78,7 +78,7 @@ const Testimonials = () => {
                     </p>
 
                     <div className="flex flex-col items-center gap-6 mt-12">
-                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-zinc-900 p-2 glass">
+                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white/5 p-2 glass">
                             <img
                                 src={testimonials[currentIndex].image}
                                 alt={testimonials[currentIndex].name}
@@ -95,7 +95,7 @@ const Testimonials = () => {
                 <div className="mt-24 flex items-center gap-12">
                     <button
                         onClick={prev}
-                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-(--primary) hover:text-black hover:border-(--primary) transition-all duration-500 group"
+                        className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-(--primary) hover:text-white hover:border-(--primary) transition-all duration-500 group"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -106,14 +106,14 @@ const Testimonials = () => {
                         {testimonials.map((_, i) => (
                             <div 
                                 key={i} 
-                                className={`w-2 h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-(--primary)' : 'bg-zinc-800'}`}
+                                className={`w-2 h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-(--primary)' : 'bg-white/10'}`}
                             ></div>
                         ))}
                     </div>
 
                     <button
                         onClick={next}
-                        className="w-16 h-16 rounded-full border border-zinc-900 flex items-center justify-center hover:bg-(--primary) hover:text-black hover:border-(--primary) transition-all duration-500 group"
+                        className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-(--primary) hover:text-white hover:border-(--primary) transition-all duration-500 group"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

@@ -72,7 +72,7 @@ const Experience = () => {
     }, { scope: container, dependencies: [displayedExperiences] });
 
     return (
-        <section id="experience" ref={container} className="relative py-32 px-6 md:px-52 bg-[#09090b] text-white">
+        <section id="experience" ref={container} className="relative py-32 px-6 md:px-52 bg-(--background) text-white">
             <div className="flex flex-col lg:flex-row gap-24">
                 <div className="lg:w-1/3">
                     <div className="flex items-center gap-4 mb-8">
@@ -91,9 +91,9 @@ const Experience = () => {
                     {displayedExperiences.map((exp, index) => (
                         <div
                             key={index}
-                            className="exp-row group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-zinc-900 hover:px-8 cursor-default"
+                            className="exp-row group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-white/5 hover:px-8 cursor-default transition-all duration-500"
                         >
-                            <div className="absolute inset-0 bg-white/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10"></div>
+                            <div className="absolute inset-0 bg-white/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10"></div>
                             
                             <div className="flex flex-col gap-2">
                                 <span className="text-[10px] font-bold text-gray-700 tracking-widest uppercase">
@@ -120,7 +120,7 @@ const Experience = () => {
                             onClick={() => setShowAll(!showAll)}
                             className="group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase hover:text-(--primary) transition-all"
                         >
-                            <span className="border-b border-gray-800 pb-1 group-hover:border-(--primary) transition-colors">
+                            <span className="border-b border-white/10 pb-1 group-hover:border-(--primary) transition-colors">
                                 {showAll ? "Show Less" : "Explore All History"}
                             </span>
                             <div className={`w-10 h-10 rounded-full glass flex items-center justify-center transition-transform duration-500 ${showAll ? 'rotate-180' : ''}`}>

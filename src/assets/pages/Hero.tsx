@@ -84,7 +84,7 @@ const Hero = () => {
         <section id="home" ref={container} className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative overflow-hidden pt-20">
             {/* Background elements */}
             <div className="glow-mesh top-[-10%] left-[-10%] opacity-40"></div>
-            <div className="glow-mesh bottom-[-10%] right-[-10%] opacity-30" style={{ background: 'radial-gradient(circle, rgba(163, 230, 53, 0.1) 0%, rgba(163, 230, 53, 0) 70%)' }}></div>
+            <div className="glow-mesh bottom-[-10%] right-[-10%] opacity-30" style={{ background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0) 70%)' }}></div>
 
             <div className="relative z-10">
                 <div className="overflow-hidden mb-8">
@@ -109,7 +109,7 @@ const Hero = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end md:items-center gap-12 mt-24">
                     <div ref={socialsRef} className="flex items-center gap-8 text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">
                         {['LinkedIn', 'Github', 'Instagram', 'Gmail'].map((social) => (
-                            <a key={social} href="#" className="social-link flex items-center gap-2 hover:text-[#a3e635] transition-colors group">
+                            <a key={social} href="#" className="social-link flex items-center gap-2 hover:text-(--primary) transition-colors group">
                                 <span>{social}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3 h-3 transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
@@ -121,7 +121,7 @@ const Hero = () => {
                     <div className="relative group">
                         <button 
                             ref={buttonRef} 
-                            className="magnetic-button px-10 py-5 rounded-full bg-[#a3e635] text-black font-bold text-sm uppercase tracking-widest hover:scale-105 transition-all duration-300"
+                            className="magnetic-button px-10 py-5 rounded-full bg-(--primary) text-white font-bold text-sm uppercase tracking-widest hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-300"
                         >
                             Explore My Work
                         </button>
@@ -132,7 +132,7 @@ const Hero = () => {
             {/* Scroll Indicator */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50">
                 <span className="text-[10px] uppercase tracking-[0.3em] rotate-90 origin-left mb-8">Scroll</span>
-                <div className="w-px h-20 bg-linear-to-b from-[#a3e635] to-transparent"></div>
+                <div className="w-px h-20 bg-linear-to-b from-(--primary) to-transparent"></div>
             </div>
         </section>
     );

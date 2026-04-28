@@ -82,7 +82,7 @@ const Expertise = () => {
                             <div
                                 key={index}
                                 className={`expertise-item group p-8 rounded-4xl cursor-pointer transition-all duration-500 border
-                                    ${activeTab === index ? 'bg-zinc-900 border-zinc-800 shadow-2xl scale-[1.02]' : 'bg-transparent border-transparent hover:border-zinc-800/50 hover:bg-zinc-900/30'}
+                                    ${activeTab === index ? 'bg-(--surface) border-white/10 shadow-2xl scale-[1.02]' : 'bg-transparent border-transparent hover:border-white/5 hover:bg-(--surface)/50'}
                                 `}
                                 onClick={() => setActiveTab(index)}
                             >
@@ -116,7 +116,7 @@ const Expertise = () => {
                         alt="Workspace"
                         className="w-full h-[120%] object-cover grayscale opacity-40 scale-110"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-[#09090b] via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-(--background) via-transparent to-transparent"></div>
                     
                     {/* Tech Stack Overlay */}
                     <div className="absolute bottom-12 inset-x-0 px-12">

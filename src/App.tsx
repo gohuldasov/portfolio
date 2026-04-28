@@ -11,7 +11,7 @@ import Footer from "./assets/pages/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-[#a3e635] selection:text-black">
+    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-[#8b5cf6] selection:text-white">
       <Navbar />
       <Hero />
       <About />
