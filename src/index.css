@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap');
+@import "tailwindcss";
 
 :root {
     --primary: #8b5cf6;
@@ -67,4 +67,106 @@ h1, h2, h3, h4, h5, h6 {
     filter: blur(100px);
     pointer-events: none;
     z-index: -1;
+}
+
+/* Custom Cursor styles */
+.custom-cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.custom-cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                background-color 0.3s ease, 
+                border-color 0.3s ease;
+}
+
+.custom-cursor-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: black;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Custom Cursor States */
+.custom-cursor-ring.hovered {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.custom-cursor-ring.hovered-project {
+    width: 90px;
+    height: 90px;
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.custom-cursor-ring.hovered-project .custom-cursor-text {
+    opacity: 1;
+}
+
+/* Hide default cursor on desktop devices with pointing devices */
+@media (pointer: fine) {
+    body, a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .project-card, .exp-row {
+        cursor: none !important;
+    }
+}
+
+/* Tech Grid Background Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* ── Scroll Progress Bar ── */
+.scroll-progress-bar-container {
+    backdrop-filter: blur(8px);
+}
+
+/* Hide left-side indicator on small screens */
+@media (max-width: 768px) {
+    .fixed.left-6 {
+        display: none;
+    }
 }

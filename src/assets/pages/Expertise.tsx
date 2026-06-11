@@ -66,7 +66,7 @@ const Expertise = () => {
     }, { scope: container });
 
     return (
-        <section id="expertise" ref={container} className="py-32 px-6 md:px-52  text-white">
+        <section id="expertise" ref={container} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 text-white">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
                 <div>
                     <div className="flex items-center gap-4 mb-8">

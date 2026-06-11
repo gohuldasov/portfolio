@@ -176,7 +176,7 @@ const Projects = () => {
 
     return (
         <section id="projects" ref={container} className="relative text-white overflow-hidden min-h-screen">
-            <div className="h-screen flex flex-col justify-start pt-32 pb-20">
+            <div className="h-screen flex flex-col justify-start pt-12 pb-32">
                 <div className="projects-header mb-12 px-6 md:px-52 shrink-0">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-px bg-(--primary)"></div>

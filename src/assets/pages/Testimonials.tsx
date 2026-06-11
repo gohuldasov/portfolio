@@ -57,7 +57,7 @@ const Testimonials = () => {
     const prev = () => handleTransition((currentIndex - 1 + testimonials.length) % testimonials.length);
 
     return (
-        <section id="testimonials" ref={container} className="py-32 px-6 md:px-52  text-white">
+        <section id="testimonials" ref={container} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 text-white">
             <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
                 <div className="flex items-center gap-4 mb-12">
                     <div className="w-12 h-px bg-(--primary)"></div>

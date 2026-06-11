@@ -50,7 +50,7 @@ const Contact = () => {
                 }
             }}
         >
-            <section id="contact" ref={sectionRef} className="py-32 px-6 md:px-24 bg-(--background) text-white overflow-hidden">
+            <section id="contact" ref={sectionRef} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 bg-(--background) text-white overflow-hidden">
                 <div ref={containerRef} className="max-w-6xl mx-auto">
                     <div className="contact-element mb-24">
                         <div className="flex items-center gap-4 mb-8 text-center justify-center">

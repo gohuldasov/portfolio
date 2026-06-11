@@ -50,7 +50,7 @@ const About = () => {
     }, { scope: sectionRef });
 
     return (
-        <section id="about" ref={sectionRef} className=" py-32 px-12 md:px-52 text-white flex flex-col items-start relative overflow-hidden ">
+        <section id="about" ref={sectionRef} className=" py-32 px-6 md:px-16 lg:px-24 xl:px-40 text-white flex flex-col items-start relative overflow-hidden ">
             {/* Background Accent */}
             <div className="absolute top-1/2 right-[-10%] w-125 h-125 bg-(--secondary) opacity-[0.05] blur-[120px] rounded-full pointer-events-none"></div>
 
