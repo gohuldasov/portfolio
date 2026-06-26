@@ -7,14 +7,14 @@ const Footer = () => {
                         <span className="text-(--primary)">G</span>D
                     </div>
                     <p className="text-gray-600 text-[10px] font-bold uppercase tracking-[0.4em] text-center md:text-left">
-                        © 2026 Devraj Chatribin <br /> 
+                        © 2026 GOHUL DAS <br /> 
                         <span className="font-light lowercase opacity-50 tracking-widest mt-1 inline-block italic">design & engineering excellence</span>
                     </p>
                 </div>
 
                 <div className="flex flex-col items-center md:items-end gap-6">
                     <div className="flex items-center gap-8">
-                        {['LinkedIn', 'Github', 'Instagram', 'Dribbble'].map((social) => (
+                        {['LinkedIn', 'Github', 'Instagram'].map((social) => (
                             <a 
                                 key={social} 
                                 href="#" 
@@ -26,7 +26,7 @@ const Footer = () => {
                     </div>
                     
                     <div className="flex items-center gap-4 text-white/20 text-[8px] uppercase tracking-[0.3em] font-bold">
-                        <span>EST. 2021 India</span>
+                        
                         <div className="w-1.5 h-1.5 rounded-full bg-(--primary) animate-pulse shadow-[0_0_8px_#8b5cf6]"></div>
                         <span>Status: Online</span>
                     </div>

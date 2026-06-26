@@ -115,6 +115,7 @@ const Projects = () => {
 
         const tl = gsap.timeline({
             scrollTrigger: {
+                id: "projects-trigger",
                 trigger: container.current,
                 pin: true,
                 start: "top top",

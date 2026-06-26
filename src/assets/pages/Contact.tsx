@@ -72,8 +72,8 @@ const Contact = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12">
                                 <div>
                                     <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--primary) mb-4">Email Me</h4>
-                                    <a href="mailto:hello@devraj.com" className="text-2xl font-bold hover:text-(--primary) transition-colors inline-block pb-1 border-b border-gray-900 group">
-                                        hello@devraj.com
+                                    <a href="mailto:gohuldasov@gmail.com" className="text-2xl font-bold hover:text-(--primary) transition-colors inline-block pb-1 border-b border-gray-900 group">
+                                        gohuldasov@gmail.com
                                     </a>
                                 </div>
                                 <div>
@@ -86,7 +86,7 @@ const Contact = () => {
                             </div>
 
                             <div className="flex items-center gap-8 pt-12">
-                                {['LinkedIn', 'Github', 'Instagram', 'Twitter'].map((social) => (
+                                {['LinkedIn', 'Github', 'Instagram'].map((social) => (
                                     <a 
                                         key={social} 
                                         href="#" 

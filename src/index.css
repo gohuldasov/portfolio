@@ -1,150 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 @import "tailwindcss";
 
 :root {
-    --primary: #8b5cf6;
-    --primary-light: #a78bfa;
-    --secondary: #06b6d4;
-    --accent: #ec4899;
-    --background: #020617;
-    --surface: #0a0a1f;
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
+    --primary: #55ff55; /* Lime Green / XP Green */
+    --primary-light: #aaffaa;
+    --secondary: #ffff55; /* Yellow / Gold */
+    --accent: #55ffff; /* Diamond Aqua */
+    --background: #0f100f; /* Dark cave black */
+    --surface: #2c2c2c; /* Minecraft inventory gray */
+    --text: #ffffff;
+    --text-muted: #aaaaaa; /* Classic light gray chat text */
 }
 
 body {
     background-color: var(--background);
     color: var(--text);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'VT323', monospace !important;
+    font-size: 24px;
+    line-height: 1.1;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: none; /* Keep it pixelated/sharp */
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne', sans-serif;
+h1, h2, h3, h4, h5, h6, .section-title, .project-title {
+    font-family: 'Press Start 2P', monospace !important;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: -0.02em;
 }
 
+/* Responsive heading sizes to avoid overflowing wide pixel font */
+h1, .text-7xl, .text-8xl, .text-\[10rem\], .text-\[8rem\] {
+    font-size: clamp(2rem, 5.5vw, 3.8rem) !important;
+    line-height: 1.1 !important;
+}
+h2, .text-5xl, .text-6xl {
+    font-size: clamp(1.6rem, 4.5vw, 2.6rem) !important;
+    line-height: 1.2 !important;
+}
+h3, .text-3xl, .text-4xl {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
+}
+
+/* Minecraft GUI Inventory Panels */
 .glass {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background: #2c2c2c !important;
+    border: 4px solid !important;
+    border-color: #434343 #151515 #151515 #434343 !important; /* light top/left, dark bottom/right */
+    outline: 2px solid #000000 !important;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.6) !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
+    /* Gold/Yellow gradient works nicely */
+    background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .text-primary-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(180deg, #ffff55 0%, #ffaa00 100%); /* Gold gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-.magnetic-button {
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+/* Minecraft Buttons */
+.magnetic-button, button.glass, .projects-carousel-wrapper button, .contact-submit-btn, button:not(.custom-cursor-ring button) {
+    background: #7a7a7a !important;
+    border: 4px solid !important;
+    border-color: #b3b3b3 #3e3e3e #3e3e3e #b3b3b3 !important;
+    outline: 2px solid #000000 !important;
+    color: #e0e0e0 !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 11px !important;
+    text-shadow: 2px 2px 0 #282828 !important;
+    border-radius: 0 !important;
+    padding: 12px 24px !important;
+    text-transform: uppercase !important;
+    box-shadow: none !important;
+    transition: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: none !important;
 }
 
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.magnetic-button:hover, button.glass:hover, .projects-carousel-wrapper button:hover, button:not(.custom-cursor-ring button):hover {
+    background: #8c8c8c !important;
+    border-color: #d1d1d1 #4e4e4e #4e4e4e #d1d1d1 !important;
+    color: #ffff55 !important; /* Classic yellow hover text */
+    text-shadow: 2px 2px 0 #282828 !important;
 }
 
-.animate-infinite-scroll {
-    animation: scroll 20s linear infinite;
+.magnetic-button:active, button.glass:active, .projects-carousel-wrapper button:active, button:not(.custom-cursor-ring button):active {
+    background: #4a4a4a !important;
+    border-color: #2e2e2e #8a8a8a #8a8a8a #2e2e2e !important;
+    color: #ffff55 !important;
+    text-shadow: 2px 2px 0 #282828 !important;
 }
 
 .glow-mesh {
     position: absolute;
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0) 70%);
-    filter: blur(100px);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(85, 255, 85, 0.08) 0%, rgba(255, 255, 85, 0.03) 50%, transparent 70%);
+    filter: blur(80px);
     pointer-events: none;
     z-index: -1;
 }
 
-/* Custom Cursor styles */
+/* Custom Cursor - Pixel Crosshair */
 .custom-cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--primary);
+    width: 16px !important;
+    height: 16px !important;
+    background-color: transparent !important;
     position: fixed;
     top: 0;
     left: 0;
-    border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-.custom-cursor-ring {
-    width: 40px;
-    height: 40px;
-    border: 1.5px solid rgba(255, 255, 255, 0.65);
-    background-color: transparent;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                background-color 0.3s ease, 
-                border-color 0.3s ease;
-}
-
-.custom-cursor-text {
+.custom-cursor-dot::before, .custom-cursor-dot::after {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 8px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    color: black;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none;
-    white-space: nowrap;
+    background: #ffffff;
+    mix-blend-mode: difference;
 }
 
-/* Custom Cursor States */
-.custom-cursor-ring.hovered {
-    width: 70px;
-    height: 70px;
-    background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, 1);
+.custom-cursor-dot::before {
+    top: 7px;
+    left: 0;
+    width: 16px;
+    height: 2px;
 }
 
-.custom-cursor-ring.hovered-project {
-    width: 90px;
-    height: 90px;
-    background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, 1);
+.custom-cursor-dot::after {
+    top: 0;
+    left: 7px;
+    width: 2px;
+    height: 16px;
 }
 
-.custom-cursor-ring.hovered-project .custom-cursor-text {
-    opacity: 1;
+/* Hide ring completely */
+.custom-cursor-ring {
+    display: none !important;
 }
 
-/* Hide default cursor on desktop devices with pointing devices */
+/* Hide default cursor on desktop */
 @media (pointer: fine) {
     body, a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .project-card, .exp-row {
         cursor: none !important;
     }
 }
 
-/* Tech Grid Background Overlay */
+/* Pixel matrix background overlay */
 body::before {
     content: '';
     position: fixed;
@@ -153,18 +172,78 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 32px 32px;
+        linear-gradient(to right, rgba(0,0,0,0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.18) 1px, transparent 1px);
+    background-size: 8px 8px; /* Pixel grid overlay */
     pointer-events: none;
     z-index: -2;
+    background-color: #0f100f;
 }
 
-/* ── Scroll Progress Bar ── */
+/* ── XP Progress Bar ── */
 .scroll-progress-bar-container {
-    backdrop-filter: blur(8px);
+    background: #121212 !important;
+    border-bottom: 4px solid #000000 !important;
+    height: 12px !important;
+    z-index: 100;
 }
 
-/* Hide left-side indicator on small screens */
+.scroll-progress-bar {
+    background: #55ff55 !important; /* XP Green */
+    box-shadow: 0 0 6px #55ff55 !important;
+}
+
+/* Left-side section indicator tweaks */
+.fixed.left-6 span {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 8px !important;
+    letter-spacing: 0.1em !important;
+}
+
+.fixed.left-6 .scroll-progress-section-fill {
+    background: #55ff55 !important; /* XP Green */
+}
+
+/* Square dots for scroll progress */
+.fixed.left-6 .flex.flex-col.gap-2 div {
+    border-radius: 0 !important;
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.fixed.left-6 .flex.flex-col.gap-2 div.bg-\(--primary\) {
+    background-color: #55ff55 !important;
+    box-shadow: 0 0 6px #55ff55 !important;
+}
+
+/* Minecraft Slots for Tech Tags, Expertise Items, Experience Rows */
+.expertise-item, .exp-row, .project-card, input, textarea {
+    border-radius: 0 !important;
+}
+
+/* Inset Slot style for Inputs and Textareas */
+input, textarea {
+    background: #141414 !important;
+    border: 4px solid !important;
+    border-color: #0b0b0b #2d2d2d #2d2d2d #0b0b0b !important; /* dark top/left, light bottom/right */
+    color: #ffffff !important;
+    font-family: 'VT323', monospace !important;
+    font-size: 22px !important;
+    outline: none !important;
+    padding: 10px 14px !important;
+}
+
+input:focus, textarea:focus {
+    border-color: #55ff55 !important;
+}
+
+/* Navbar Links styled as small Press Start text */
+nav a {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 8px !important;
+    letter-spacing: 0.05em !important;
+}
+
 @media (max-width: 768px) {
     .fixed.left-6 {
         display: none;

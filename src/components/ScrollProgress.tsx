@@ -72,6 +72,7 @@ const ScrollProgress = () => {
     useEffect(() => {
         const handleScroll = () => {
             const viewportHeight = window.innerHeight;
+            const scrollY = window.scrollY;
 
             // Show/hide the whole indicator based on whether we're past the hero
             const aboutEl = document.getElementById('about');
@@ -85,17 +86,41 @@ const ScrollProgress = () => {
                 setIsVisible(true);
             }
 
-            // Find the last section whose top has crossed 60% of the viewport.
-            // Iterating in reverse and breaking at first match gives us the
-            // bottom-most section that is "in view".
+            const projectsTrigger = ScrollTrigger.getById('projects-trigger');
             let currentSectionId: string | null = null;
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const el = document.getElementById(sections[i].id);
-                if (!el) continue;
-                const rect = el.getBoundingClientRect();
-                if (rect.top <= viewportHeight * 0.6) {
-                    currentSectionId = sections[i].id;
-                    break;
+            let projectsProgress: number | null = null;
+
+            if (projectsTrigger && scrollY >= projectsTrigger.start && scrollY < projectsTrigger.end) {
+                currentSectionId = 'projects';
+                projectsProgress = projectsTrigger.progress;
+            } else {
+                // Find the last section whose top has crossed 60% of the viewport.
+                // Iterating in reverse and breaking at first match gives us the
+                // bottom-most section that is "in view".
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const sectionId = sections[i].id;
+                    const el = document.getElementById(sectionId);
+                    if (!el) continue;
+
+                    // Special checks:
+                    // 1. If we are BEFORE the projects section begins, don't match projects or any section after projects
+                    if (projectsTrigger && scrollY < projectsTrigger.start) {
+                        const projectsIdx = sections.findIndex(s => s.id === 'projects');
+                        const currentIdx = sections.findIndex(s => s.id === sectionId);
+                        if (currentIdx >= projectsIdx) {
+                            continue;
+                        }
+                    }
+                    // 2. If we are AFTER the projects section ends, don't match projects
+                    if (projectsTrigger && scrollY >= projectsTrigger.end && sectionId === 'projects') {
+                        continue;
+                    }
+
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= viewportHeight * 0.6) {
+                        currentSectionId = sectionId;
+                        break;
+                    }
                 }
             }
 
@@ -103,21 +128,25 @@ const ScrollProgress = () => {
 
             // Update the per-section vertical progress bar
             if (currentSectionId) {
-                const el = document.getElementById(currentSectionId);
-                if (el) {
-                    const rect = el.getBoundingClientRect();
-                    const progress = Math.min(
-                        1,
-                        Math.max(
-                            0,
-                            (viewportHeight - rect.top) / (rect.height + viewportHeight)
-                        )
-                    );
-                    const sectionBar = document.querySelector(
-                        '.scroll-progress-section-fill'
-                    ) as HTMLElement;
-                    if (sectionBar) {
-                        sectionBar.style.transform = `scaleY(${progress})`;
+                const sectionBar = document.querySelector(
+                    '.scroll-progress-section-fill'
+                ) as HTMLElement;
+                if (sectionBar) {
+                    if (currentSectionId === 'projects' && projectsProgress !== null) {
+                        sectionBar.style.transform = `scaleY(${projectsProgress})`;
+                    } else {
+                        const el = document.getElementById(currentSectionId);
+                        if (el) {
+                            const rect = el.getBoundingClientRect();
+                            const progress = Math.min(
+                                1,
+                                Math.max(
+                                    0,
+                                    (viewportHeight - rect.top) / (rect.height + viewportHeight)
+                                )
+                            );
+                            sectionBar.style.transform = `scaleY(${progress})`;
+                        }
                     }
                 }
             }

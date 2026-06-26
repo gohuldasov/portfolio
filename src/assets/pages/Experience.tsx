@@ -7,41 +7,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 const allExperiences = [
     {
-        role: "Software Engineer",
-        company: "OneShield Software",
-        period: "2022 — Present",
+        role: "Fullstack Developer",
+        company: "Cloudhouse Technology",
+        period: "2025 — 2026",
         description: "Leading frontend initiatives and building enterprise-grade insurance software solutions with React and TypeScript."
     },
     {
-        role: "Founder & Lead",
-        company: "Design and Code",
-        period: "2021 — Present",
+        role: "Fullstack Developer Intern",
+        company: "Luminar TechnoHub",
+        period: "2024 — 2025",
         description: "Empowering developers through high-quality educational content, design systems, and open-source contributions."
-    },
-    {
-        role: "Design Engineer",
-        company: "BlackboxAI",
-        period: "Feb — Mar 2025",
-        description: "Bridging the gap between engineering and aesthetics for next-gen AI interfaces with cutting-edge animations."
-    },
-    {
-        role: "UI/UX Designer",
-        company: "Social3",
-        period: "2022 — 2023",
-        description: "Designed core components for a Web3 social ecosystem focusing on usability and accessibility."
-    },
-    {
-        role: "Frontend Developer",
-        company: "TechNova",
-        period: "2020 — 2021",
-        description: "Developed responsive web applications using React, Redux, and modern CSS frameworks."
-    },
-    {
-        role: "Product Designer",
-        company: "InnoLabs",
-        period: "2019 — 2020",
-        description: "Created modular design systems and interactive prototypes for startup clients across various industries."
     }
+
 ];
 
 const Experience = () => {
