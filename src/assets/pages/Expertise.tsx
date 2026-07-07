@@ -8,125 +8,200 @@ gsap.registerPlugin(ScrollTrigger);
 const Expertise = () => {
     const [activeTab, setActiveTab] = useState(0);
     const container = useRef<HTMLElement>(null);
-    const imageRef = useRef<HTMLImageElement>(null);
 
     const expertiseItems = [
         {
             title: "Development",
             tag: "Engineering",
-            description: "I build scalable, high-performance web applications using modern technologies like React, TypeScript, and Node.js. I focus on clean code and efficient architecture."
+            icon: "⚔",
+            description: "I build scalable, high-performance web applications using modern technologies like React, TypeScript, and Node.js — architected for maintainability and speed."
         },
         {
             title: "UI/UX Design",
             tag: "Bespoke Design",
-            description: "I design intuitive and visually appealing user interfaces. My approach combines aesthetics with usability to create seamless digital experiences."
+            icon: "🛡",
+            description: "I design intuitive and visually stunning user interfaces. My approach fuses aesthetic precision with deep usability principles to create seamless digital experiences."
         },
         {
-            title: "Interactive Branding",
+            title: "Branding",
             tag: "Visual Identity",
-            description: "I help brands establish a strong identity through logo design, color typography, and visual storytelling that resonates with their target audience."
+            icon: "👁",
+            description: "I help brands establish powerful identities through logo design, color systems, and visual storytelling that resonates with their audience and stands apart."
         }
     ];
 
     const techStack = [
-        { name: "Node.js", icon: "🌐" },
-        { name: "React", icon: "⚛️" },
+        { name: "React", icon: "⚛" },
         { name: "TypeScript", icon: "TS" },
         { name: "Next.js", icon: "▲" },
-        { name: "Tailwind", icon: "🎨" },
+        { name: "Node.js", icon: "🌐" },
         { name: "MongoDB", icon: "🍃" },
         { name: "PostgreSQL", icon: "🐘" },
         { name: "Docker", icon: "🐳" },
         { name: "GSAP", icon: "🎭" },
+        { name: "Tailwind", icon: "🎨" },
     ];
 
     useGSAP(() => {
-        gsap.from(".expertise-item", {
-            x: -50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".expertise-list",
-                start: "top 70%",
+        gsap.fromTo(".expertise-item",
+            { x: -40, opacity: 0 },
+            {
+                x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out",
+                scrollTrigger: { trigger: ".expertise-list", start: "top 72%" }
             }
-        });
-
-        // Parallax for the images
-        gsap.to(imageRef.current, {
-            y: -100,
-            scrollTrigger: {
-                trigger: container.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 2
+        );
+        gsap.fromTo(".tech-tag",
+            { y: 20, opacity: 0 },
+            {
+                y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out",
+                scrollTrigger: { trigger: ".tech-stack-area", start: "top 80%" }
             }
-        });
+        );
     }, { scope: container });
 
     return (
-        <section id="expertise" ref={container} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 text-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-                <div>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-1px bg-(--primary)"></div>
-                        <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">My Speciality</span>
-                    </div>
-                    <h2 className="text-7xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.8] mb-16">
-                        Technical <br /> <span className="text-gray-800 italic">Prowess</span>
-                    </h2>
+        <section id="expertise" ref={container} className="relative py-36 overflow-hidden"
+            style={{ padding: "144px 48px" }}
+        >
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
 
-                    <div className="expertise-list space-y-6">
-                        {expertiseItems.map((item, index) => (
-                            <div
-                                key={index}
-                                className={`expertise-item group p-8 rounded-4xl cursor-pointer transition-all duration-500 border
-                                    ${activeTab === index ? 'bg-(--surface) border-white/10 shadow-2xl scale-[1.02]' : 'bg-transparent border-transparent hover:border-white/5 hover:bg-(--surface)/50'}
-                                `}
-                                onClick={() => setActiveTab(index)}
-                            >
-                                <div className="flex justify-between items-center">
-                                    <div className="flex flex-col gap-2">
-                                        <span className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-colors ${activeTab === index ? 'text-(--primary)' : 'text-gray-600'}`}>
-                                            {item.tag}
-                                        </span>
-                                        <h3 className={`text-3xl md:text-4xl font-bold tracking-tight transition-colors ${activeTab === index ? 'text-white' : 'text-gray-500'}`}>
-                                            {item.title}
-                                        </h3>
-                                    </div>
-                                    <div className={`w-12 h-12 rounded-full glass flex items-center justify-center transition-all duration-500 ${activeTab === index ? 'rotate-180 bg-(--primary) text-black' : 'text-gray-500'}`}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                    </div>
-                                </div>
-                                <div className={`grid transition-all duration-500 ease-in-out ${activeTab === index ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0'}`}>
-                                    <p className="text-gray-400 text-lg leading-relaxed overflow-hidden font-light">
-                                        {item.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                    {/* Left — Accordion */}
+                    <div>
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
+                            <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "Cinzel, serif" }}>
+                                My Mastery
+                            </span>
+                        </div>
+                        <h2 className="text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.88] tracking-tight mb-14"
+                            style={{ fontFamily: "Cinzel, serif" }}
+                        >
+                            Technical<br />
+                            <span style={{
+                                fontStyle: "italic",
+                                background: "linear-gradient(135deg, var(--primary) 0%, var(--shimmer) 100%)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                backgroundClip: "text",
+                            }}>Prowess</span>
+                        </h2>
 
-                <div className="relative h-200 hidden lg:block rounded-[4rem] overflow-hidden border border-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
-                    <img
-                        ref={imageRef}
-                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
-                        alt="Workspace"
-                        className="w-full h-[120%] object-cover grayscale opacity-40 scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-(--background) via-transparent to-transparent"></div>
-                    
-                    {/* Tech Stack Overlay */}
-                    <div className="absolute bottom-12 inset-x-0 px-12">
-                        <div className="flex flex-wrap gap-4">
-                            {techStack.map((tech, i) => (
-                                <div key={i} className="px-6 py-3 glass rounded-full text-xs font-bold uppercase tracking-widest text-white/50 hover:text-(--primary) transition-colors">
-                                    <span className="mr-2 text-sm">{tech.icon}</span>
-                                    {tech.name}
+                        <div className="expertise-list space-y-4">
+                            {expertiseItems.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="expertise-item group p-7 rounded-2xl cursor-none transition-all duration-500"
+                                    style={{
+                                        background: activeTab === index ? "var(--glass-bg)" : "transparent",
+                                        backdropFilter: activeTab === index ? "blur(20px) saturate(180%)" : "none",
+                                        WebkitBackdropFilter: activeTab === index ? "blur(20px) saturate(180%)" : "none",
+                                        border: activeTab === index ? "1px solid var(--glass-border)" : "1px solid transparent",
+                                        boxShadow: activeTab === index ? `0 8px 32px rgba(0,0,0,0.3), 0 0 24px var(--primary-glow)` : "none",
+                                    }}
+                                    onClick={() => setActiveTab(index)}
+                                >
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex items-center gap-4">
+                                            <span className="text-2xl">{item.icon}</span>
+                                            <div>
+                                                <span className="text-[9px] font-bold uppercase tracking-[0.25em] block"
+                                                    style={{ color: activeTab === index ? "var(--primary)" : "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                                                >
+                                                    {item.tag}
+                                                </span>
+                                                <h3 className="text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300"
+                                                    style={{ fontFamily: "Cinzel, serif", color: activeTab === index ? "var(--text)" : "var(--text-muted)" }}
+                                                >
+                                                    {item.title}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shrink-0"
+                                            style={{
+                                                background: activeTab === index ? "var(--primary)" : "var(--glass-bg)",
+                                                border: "1px solid var(--glass-border)",
+                                                backdropFilter: "blur(10px)",
+                                                transform: activeTab === index ? "rotate(180deg)" : "rotate(0deg)",
+                                                color: activeTab === index ? "var(--background)" : "var(--text-muted)",
+                                            }}
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                                        </div>
+                                    </div>
+
+                                    <div className={`grid transition-all duration-500 ease-in-out ${activeTab === index ? 'grid-rows-[1fr] opacity-100 mt-5' : 'grid-rows-[0fr] opacity-0'}`}>
+                                        <p className="text-base font-light leading-relaxed overflow-hidden"
+                                            style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", fontSize: "18px" }}
+                                        >
+                                            {item.description}
+                                        </p>
+                                    </div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+
+                    {/* Right — Tech Stack + Image */}
+                    <div className="relative">
+                        {/* Image panel */}
+                        <div className="relative rounded-[32px] overflow-hidden h-80 lg:h-auto lg:aspect-[3/4]"
+                            style={{
+                                background: "var(--glass-bg)",
+                                backdropFilter: "blur(16px)",
+                                border: "1px solid var(--glass-border)",
+                                boxShadow: "0 24px 80px rgba(0,0,0,0.5)",
+                            }}
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=800&q=80"
+                                alt="Development workspace"
+                                className="w-full h-full object-cover opacity-30"
+                                style={{ filter: "grayscale(60%) saturate(80%)" }}
+                            />
+                            {/* Gradient overlay */}
+                            <div className="absolute inset-0"
+                                style={{ background: "linear-gradient(to top, var(--background) 0%, transparent 50%)" }}
+                            />
+                            {/* Glass shimmer */}
+                            <div className="absolute inset-0"
+                                style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)" }}
+                            />
+                        </div>
+
+                        {/* Tech stack overlay */}
+                        <div className="tech-stack-area absolute bottom-8 inset-x-6">
+                            <div className="flex flex-wrap gap-3">
+                                {techStack.map((tech, i) => (
+                                    <div
+                                        key={i}
+                                        className="tech-tag px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 cursor-default"
+                                        style={{
+                                            background: "var(--glass-bg)",
+                                            backdropFilter: "blur(16px)",
+                                            border: "1px solid var(--glass-border)",
+                                            color: "var(--text-muted)",
+                                            fontFamily: "Cinzel, serif",
+                                        }}
+                                        onMouseEnter={e => {
+                                            const el = e.currentTarget;
+                                            el.style.borderColor = "var(--primary)";
+                                            el.style.color = "var(--primary)";
+                                            el.style.boxShadow = "0 0 16px var(--primary-glow)";
+                                        }}
+                                        onMouseLeave={e => {
+                                            const el = e.currentTarget;
+                                            el.style.borderColor = "var(--glass-border)";
+                                            el.style.color = "var(--text-muted)";
+                                            el.style.boxShadow = "none";
+                                        }}
+                                    >
+                                        <span className="mr-1.5 text-xs">{tech.icon}</span>
+                                        {tech.name}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

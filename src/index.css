@@ -1,251 +1,458 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════
+   ICE — DESIGN SYSTEM  (House Stark)
+═══════════════════════════════════════════════ */
+
 :root {
-    --primary: #55ff55; /* Lime Green / XP Green */
-    --primary-light: #aaffaa;
-    --secondary: #ffff55; /* Yellow / Gold */
-    --accent: #55ffff; /* Diamond Aqua */
-    --background: #0f100f; /* Dark cave black */
-    --surface: #2c2c2c; /* Minecraft inventory gray */
-    --text: #ffffff;
-    --text-muted: #aaaaaa; /* Classic light gray chat text */
+    --primary: #7dd3fc;
+    --primary-glow: rgba(125, 211, 252, 0.35);
+    --secondary: #38bdf8;
+    --accent: #e0f2fe;
+    --background: #040a12;
+    --surface: rgba(14, 28, 45, 0.6);
+    --text: #e8f4fd;
+    --text-muted: #7ba3c0;
+    --border: rgba(125, 211, 252, 0.12);
+    --glass-bg: rgba(10, 25, 47, 0.45);
+    --glass-border: rgba(125, 211, 252, 0.18);
+    --orb1: rgba(56, 189, 248, 0.12);
+    --orb2: rgba(14, 165, 233, 0.08);
+    --orb3: rgba(186, 230, 253, 0.05);
+    --shimmer: #bae6fd;
+}
+
+/* ── Base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--background);
     color: var(--text);
-    font-family: 'VT323', monospace !important;
-    font-size: 24px;
-    line-height: 1.1;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
     overflow-x: hidden;
-    -webkit-font-smoothing: none; /* Keep it pixelated/sharp */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.8s ease, color 0.8s ease;
 }
 
-h1, h2, h3, h4, h5, h6, .section-title, .project-title {
-    font-family: 'Press Start 2P', monospace !important;
-    text-transform: uppercase;
-    color: #ffffff;
-    letter-spacing: -0.02em;
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6,
+.section-title, .project-title,
+.cinzel {
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 0.04em;
+    color: var(--text);
 }
 
-/* Responsive heading sizes to avoid overflowing wide pixel font */
-h1, .text-7xl, .text-8xl, .text-\[10rem\], .text-\[8rem\] {
-    font-size: clamp(2rem, 5.5vw, 3.8rem) !important;
-    line-height: 1.1 !important;
-}
-h2, .text-5xl, .text-6xl {
-    font-size: clamp(1.6rem, 4.5vw, 2.6rem) !important;
-    line-height: 1.2 !important;
-}
-h3, .text-3xl, .text-4xl {
-    font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
+.cinzel-decorative {
+    font-family: 'Cinzel Decorative', serif !important;
 }
 
-/* Minecraft GUI Inventory Panels */
+.cormorant {
+    font-family: 'Cormorant Garamond', serif !important;
+}
+
+/* ── Animated Background ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% 20%, var(--orb1), transparent),
+        radial-gradient(ellipse 60% 60% at 80% 80%, var(--orb2), transparent),
+        radial-gradient(ellipse 40% 40% at 50% 50%, var(--orb3), transparent);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 1s ease;
+    animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.04); }
+}
+
+/* Subtle grain texture overlay */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* ── Glassmorphism Core ── */
 .glass {
-    background: #2c2c2c !important;
-    border: 4px solid !important;
-    border-color: #434343 #151515 #151515 #434343 !important; /* light top/left, dark bottom/right */
-    outline: 2px solid #000000 !important;
-    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.6) !important;
-    border-radius: 0 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
+/* Inner shimmer pseudo-layer */
+.glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.glass > * {
+    position: relative;
+    z-index: 1;
+}
+
+.glass:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: var(--primary-glow) !important;
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.5),
+        0 0 30px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ── Glass Panel Variants ── */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.glass-card:hover {
+    transform: translateY(-6px) rotateX(2deg);
+    border-color: var(--glass-border);
+    box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.6),
+        0 0 40px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ── Text Effects ── */
 .text-gradient {
-    /* Gold/Yellow gradient works nicely */
-    background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 100%);
+    background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .text-primary-gradient {
-    background: linear-gradient(180deg, #ffff55 0%, #ffaa00 100%); /* Gold gradient */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--shimmer) 50%, var(--secondary) 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: shimmer-flow 4s linear infinite;
 }
 
-/* Minecraft Buttons */
-.magnetic-button, button.glass, .projects-carousel-wrapper button, .contact-submit-btn, button:not(.custom-cursor-ring button) {
-    background: #7a7a7a !important;
-    border: 4px solid !important;
-    border-color: #b3b3b3 #3e3e3e #3e3e3e #b3b3b3 !important;
-    outline: 2px solid #000000 !important;
-    color: #e0e0e0 !important;
-    font-family: 'Press Start 2P', monospace !important;
-    font-size: 11px !important;
-    text-shadow: 2px 2px 0 #282828 !important;
-    border-radius: 0 !important;
-    padding: 12px 24px !important;
-    text-transform: uppercase !important;
-    box-shadow: none !important;
-    transition: none !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: none !important;
+@keyframes shimmer-flow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
-.magnetic-button:hover, button.glass:hover, .projects-carousel-wrapper button:hover, button:not(.custom-cursor-ring button):hover {
-    background: #8c8c8c !important;
-    border-color: #d1d1d1 #4e4e4e #4e4e4e #d1d1d1 !important;
-    color: #ffff55 !important; /* Classic yellow hover text */
-    text-shadow: 2px 2px 0 #282828 !important;
-}
-
-.magnetic-button:active, button.glass:active, .projects-carousel-wrapper button:active, button:not(.custom-cursor-ring button):active {
-    background: #4a4a4a !important;
-    border-color: #2e2e2e #8a8a8a #8a8a8a #2e2e2e !important;
-    color: #ffff55 !important;
-    text-shadow: 2px 2px 0 #282828 !important;
-}
-
+/* ── Glow Orbs ── */
 .glow-mesh {
     position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(85, 255, 85, 0.08) 0%, rgba(255, 255, 85, 0.03) 50%, transparent 70%);
-    filter: blur(80px);
+    border-radius: 50%;
+    filter: blur(90px);
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
+    animation: float-orb 12s ease-in-out infinite;
 }
 
-/* Custom Cursor - Pixel Crosshair */
+@keyframes float-orb {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    33% { transform: translateY(-30px) translateX(20px); }
+    66% { transform: translateY(15px) translateX(-15px); }
+}
+
+/* ── Buttons ── */
+.magnetic-button {
+    background: transparent !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text) !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    padding: 16px 36px !important;
+    border-radius: 50px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    cursor: none !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.magnetic-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary-glow), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.magnetic-button:hover::before {
+    opacity: 1;
+}
+
+.magnetic-button:hover {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+    box-shadow: 0 0 30px var(--primary-glow), 0 8px 32px rgba(0,0,0,0.4) !important;
+}
+
+/* ── Scroll Progress ── */
+.scroll-progress-bar-container {
+    background: rgba(0,0,0,0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    height: 3px !important;
+    z-index: 100;
+}
+
+.scroll-progress-bar {
+    background: linear-gradient(90deg, var(--secondary), var(--primary), var(--shimmer)) !important;
+    box-shadow: 0 0 12px var(--primary-glow) !important;
+}
+
+/* ── Custom Cursor ── */
 .custom-cursor-dot {
-    width: 16px !important;
-    height: 16px !important;
-    background-color: transparent !important;
+    width: 8px !important;
+    height: 8px !important;
+    background: var(--primary) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 12px var(--primary-glow) !important;
     position: fixed;
     top: 0;
     left: 0;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    border-radius: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
+    transition: transform 0.1s ease;
 }
 
-.custom-cursor-dot::before, .custom-cursor-dot::after {
-    content: '';
-    position: absolute;
-    background: #ffffff;
-    mix-blend-mode: difference;
-}
-
-.custom-cursor-dot::before {
-    top: 7px;
-    left: 0;
-    width: 16px;
-    height: 2px;
-}
-
-.custom-cursor-dot::after {
-    top: 0;
-    left: 7px;
-    width: 2px;
-    height: 16px;
-}
-
-/* Hide ring completely */
 .custom-cursor-ring {
-    display: none !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: transparent !important;
+    border: 1px solid var(--primary) !important;
+    border-radius: 50% !important;
+    opacity: 0.5 !important;
+    box-shadow: 0 0 8px var(--primary-glow) !important;
 }
 
-/* Hide default cursor on desktop */
 @media (pointer: fine) {
     body, a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .project-card, .exp-row {
         cursor: none !important;
     }
 }
 
-/* Pixel matrix background overlay */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(to right, rgba(0,0,0,0.18) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,0,0,0.18) 1px, transparent 1px);
-    background-size: 8px 8px; /* Pixel grid overlay */
-    pointer-events: none;
-    z-index: -2;
-    background-color: #0f100f;
-}
-
-/* ── XP Progress Bar ── */
-.scroll-progress-bar-container {
-    background: #121212 !important;
-    border-bottom: 4px solid #000000 !important;
-    height: 12px !important;
-    z-index: 100;
-}
-
-.scroll-progress-bar {
-    background: #55ff55 !important; /* XP Green */
-    box-shadow: 0 0 6px #55ff55 !important;
-}
-
-/* Left-side section indicator tweaks */
+/* ── Section Indicators ── */
 .fixed.left-6 span {
-    font-family: 'Press Start 2P', monospace !important;
-    font-size: 8px !important;
-    letter-spacing: 0.1em !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 7px !important;
+    letter-spacing: 0.15em !important;
 }
 
 .fixed.left-6 .scroll-progress-section-fill {
-    background: #55ff55 !important; /* XP Green */
+    background: var(--primary) !important;
+    box-shadow: 0 0 6px var(--primary-glow) !important;
 }
 
-/* Square dots for scroll progress */
-.fixed.left-6 .flex.flex-col.gap-2 div {
-    border-radius: 0 !important;
-    width: 8px !important;
-    height: 8px !important;
-}
-
-.fixed.left-6 .flex.flex-col.gap-2 div.bg-\(--primary\) {
-    background-color: #55ff55 !important;
-    box-shadow: 0 0 6px #55ff55 !important;
-}
-
-/* Minecraft Slots for Tech Tags, Expertise Items, Experience Rows */
-.expertise-item, .exp-row, .project-card, input, textarea {
-    border-radius: 0 !important;
-}
-
-/* Inset Slot style for Inputs and Textareas */
+/* ── Form Inputs ── */
 input, textarea {
-    background: #141414 !important;
-    border: 4px solid !important;
-    border-color: #0b0b0b #2d2d2d #2d2d2d #0b0b0b !important; /* dark top/left, light bottom/right */
-    color: #ffffff !important;
-    font-family: 'VT323', monospace !important;
-    font-size: 22px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    border-radius: 12px !important;
     outline: none !important;
-    padding: 10px 14px !important;
+    backdrop-filter: blur(10px) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 input:focus, textarea:focus {
-    border-color: #55ff55 !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 20px var(--primary-glow) !important;
 }
 
-/* Navbar Links styled as small Press Start text */
+/* ── Nav Links ── */
 nav a {
-    font-family: 'Press Start 2P', monospace !important;
-    font-size: 8px !important;
-    letter-spacing: 0.05em !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 10px !important;
+    letter-spacing: 0.15em !important;
+    font-weight: 500 !important;
 }
 
-@media (max-width: 768px) {
-    .fixed.left-6 {
-        display: none;
-    }
+/* ── Divider ── */
+.ant-divider {
+    border-color: var(--primary) !important;
 }
+
+/* ── 3D Card Tilt ── */
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+    will-change: transform;
+}
+
+.tilt-card .tilt-inner {
+    transform: translateZ(30px);
+}
+
+/* ── Shimmer Text Animation ── */
+@keyframes text-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+    background: linear-gradient(
+        90deg,
+        var(--text-muted) 0%,
+        var(--text) 30%,
+        var(--shimmer) 50%,
+        var(--text) 70%,
+        var(--text-muted) 100%
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-shimmer 5s linear infinite;
+}
+
+/* ── Particle Canvas ── */
+.particle-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Section Divider Lines ── */
+.rune-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.3;
+    position: relative;
+}
+
+.rune-divider::before {
+    content: '⟡';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary);
+    font-size: 10px;
+    background: var(--background);
+    padding: 0 12px;
+    opacity: 0.6;
+}
+
+/* ── Expertise Items ── */
+.expertise-item {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+.expertise-item.active {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 20px var(--primary-glow) !important;
+}
+
+/* ── Experience Rows ── */
+.exp-row {
+    transition: all 0.4s ease !important;
+}
+
+.exp-row:hover {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 16px;
+}
+
+/* ── Scroll Animation ── */
+@keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(10px); opacity: 0.3; }
+}
+
+/* ── Ice Glow ── */
+@keyframes iceGlow {
+    0%, 100% { opacity: 0.6; filter: blur(20px); }
+    50% { opacity: 1; filter: blur(16px); }
+}
+
+/* ── Horizontal Rule ── */
+hr {
+    border-color: var(--glass-border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .fixed.left-6 { display: none; }
+}
+
+/* ── Print ── */
+@media print {
+    body::before, body::after { display: none; }
+}
+
+/* ── Utility Classes ── */
+.border-primary { border-color: var(--primary) !important; }
+.text-primary { color: var(--primary) !important; }
+.bg-primary { background-color: var(--primary) !important; }
+.shadow-primary { box-shadow: 0 0 20px var(--primary-glow) !important; }
+
+/* ── Z-index layers ── */
+.z-base { z-index: 0; }
+.z-content { z-index: 10; }
+.z-overlay { z-index: 100; }
+.z-modal { z-index: 1000; }
+.z-cursor { z-index: 9999; }

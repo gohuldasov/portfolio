@@ -1,250 +1,381 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import gsap from "gsap";
 
-const IntroOverlay = ({ onComplete }: { onComplete: () => void }) => {
+interface IntroOverlayProps {
+    onComplete: (theme: "ice" | "fire") => void;
+}
+
+const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
     const overlayRef = useRef<HTMLDivElement>(null);
-    const characterRef = useRef<HTMLImageElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
-    const glowRef = useRef<HTMLDivElement>(null);
-    const scrollHintRef = useRef<HTMLDivElement>(null);
-    const particlesRef = useRef<HTMLDivElement>(null);
-    const [scrolled, setScrolled] = useState(false);
+    const iceCanvasRef = useRef<HTMLCanvasElement>(null);
+    const fireCanvasRef = useRef<HTMLCanvasElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
+    const cardsRef = useRef<HTMLDivElement>(null);
+    const [hovered, setHovered] = useState<"ice" | "fire" | null>(null);
 
-    useEffect(() => {
-        const overlay = overlayRef.current;
-        const character = characterRef.current;
-        const text = textRef.current;
-        const glow = glowRef.current;
-        const scrollHint = scrollHintRef.current;
+    // ── Particle Engines ──
+    const runIceCanvas = useCallback((canvas: HTMLCanvasElement) => {
+        const ctx = canvas.getContext("2d")!;
+        const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+        resize();
+        window.addEventListener("resize", resize);
 
-        if (!overlay || !character || !text || !glow || !scrollHint) return;
+        const flakes: { x: number; y: number; r: number; speed: number; drift: number; opacity: number }[] = [];
+        for (let i = 0; i < 80; i++) {
+            flakes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 2.5 + 0.5,
+                speed: Math.random() * 0.8 + 0.3,
+                drift: (Math.random() - 0.5) * 0.4,
+                opacity: Math.random() * 0.7 + 0.2,
+            });
+        }
 
-        // Prevent body scroll during intro
-        document.body.style.overflow = "hidden";
+        let raf: number;
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            flakes.forEach(f => {
+                ctx.beginPath();
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(186, 230, 253, ${f.opacity})`;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = "#bae6fd";
+                ctx.fill();
+                f.y += f.speed;
+                f.x += f.drift;
+                if (f.y > canvas.height) { f.y = -5; f.x = Math.random() * canvas.width; }
+            });
+            raf = requestAnimationFrame(draw);
+        };
+        draw();
+        return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    }, []);
 
-        // ── Entrance timeline ──
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const runFireCanvas = useCallback((canvas: HTMLCanvasElement) => {
+        const ctx = canvas.getContext("2d")!;
+        const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+        resize();
+        window.addEventListener("resize", resize);
 
-        // Start everything invisible
-        gsap.set([character, text, scrollHint], { opacity: 0 });
-        gsap.set(character, { y: 80, scale: 0.9 });
-        gsap.set(text, { y: 30 });
-        gsap.set(scrollHint, { y: 20 });
+        const embers: { x: number; y: number; r: number; speed: number; drift: number; life: number; maxLife: number }[] = [];
+        for (let i = 0; i < 60; i++) {
+            const maxLife = 80 + Math.random() * 80;
+            embers.push({
+                x: Math.random() * canvas.width,
+                y: canvas.height + 10,
+                r: Math.random() * 2 + 0.5,
+                speed: Math.random() * 1.5 + 0.5,
+                drift: (Math.random() - 0.5) * 0.6,
+                life: Math.random() * maxLife,
+                maxLife,
+            });
+        }
 
-        tl
-            // Glow pulse in
-            .fromTo(glow,
-                { opacity: 0, scale: 0.5 },
-                { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }
-            )
-            // Character rises
-            .to(character,
-                { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power4.out" },
-                "-=0.8"
-            )
-            // Text fades in
-            .to(text,
-                { opacity: 1, y: 0, duration: 0.9 },
-                "-=0.5"
-            )
-            // Scroll hint appears
-            .to(scrollHint,
-                { opacity: 1, y: 0, duration: 0.7 },
-                "-=0.2"
-            );
-
-        // Floating animation on character (continuous)
-        gsap.to(character, {
-            y: "-=16",
-            duration: 2.8,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut",
-            delay: 1.5
-        });
-
-        // Glow pulse (continuous)
-        gsap.to(glow, {
-            scale: 1.08,
-            opacity: 0.7,
-            duration: 2.2,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut"
-        });
-
-        // ── Scroll-to-dismiss ──
-        let hasTriggered = false;
-
-        const dismiss = () => {
-            if (hasTriggered) return;
-            hasTriggered = true;
-            setScrolled(true);
-
-            const exitTl = gsap.timeline({
-                onComplete: () => {
-                    document.body.style.overflow = "";
-                    onComplete();
+        let raf: number;
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            embers.forEach(e => {
+                const alpha = (1 - e.life / e.maxLife) * 0.85;
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(251, 146, 60, ${alpha})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = "#f97316";
+                ctx.fill();
+                e.y -= e.speed;
+                e.x += e.drift;
+                e.life++;
+                if (e.life >= e.maxLife || e.y < -10) {
+                    e.y = canvas.height + 10;
+                    e.x = Math.random() * canvas.width;
+                    e.life = 0;
                 }
             });
-
-            exitTl
-                .to(scrollHint, { opacity: 0, y: -10, duration: 0.3 })
-                .to(text, { opacity: 0, y: -20, duration: 0.5 }, "-=0.2")
-                .to(character, {
-                    y: -60,
-                    opacity: 0,
-                    scale: 1.05,
-                    duration: 0.9,
-                    ease: "power3.in"
-                }, "-=0.3")
-                .to(glow, { opacity: 0, scale: 1.5, duration: 0.8 }, "-=0.6")
-                .to(overlay, {
-                    opacity: 0,
-                    duration: 0.6,
-                    ease: "power2.in"
-                }, "-=0.3");
+            raf = requestAnimationFrame(draw);
         };
+        draw();
+        return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    }, []);
 
-        // Trigger on scroll OR click anywhere
-        const handleScroll = () => dismiss();
-        const handleClick = () => dismiss();
-        const handleKey = (e: KeyboardEvent) => {
-            if (e.key === " " || e.key === "Enter" || e.key === "ArrowDown") dismiss();
-        };
+    useEffect(() => {
+        if (iceCanvasRef.current) runIceCanvas(iceCanvasRef.current);
+        if (fireCanvasRef.current) runFireCanvas(fireCanvasRef.current);
+    }, [runIceCanvas, runFireCanvas]);
 
-        window.addEventListener("wheel", handleScroll, { passive: true });
-        window.addEventListener("touchmove", handleScroll, { passive: true });
-        window.addEventListener("click", handleClick);
-        window.addEventListener("keydown", handleKey);
+    // Entrance animation
+    useEffect(() => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.fromTo(titleRef.current,
+            { opacity: 0, y: -40 },
+            { opacity: 1, y: 0, duration: 1.2 }
+        ).fromTo(cardsRef.current?.children!,
+            { opacity: 0, y: 60, scale: 0.9 },
+            { opacity: 1, y: 0, scale: 1, duration: 1.0, stagger: 0.2 },
+            "-=0.6"
+        );
+    }, []);
 
-        // Auto-dismiss after 6s if user hasn't interacted
-        const autoTimer = setTimeout(dismiss, 6000);
+    const handleChoose = (theme: "ice" | "fire") => {
+        const overlay = overlayRef.current;
+        if (!overlay) return;
+        document.documentElement.setAttribute("data-theme", theme);
+        gsap.to(overlay, {
+            opacity: 0,
+            scale: 1.05,
+            duration: 0.8,
+            ease: "power2.in",
+            onComplete: () => {
+                document.body.style.overflow = "";
+                onComplete(theme);
+            }
+        });
+    };
 
-        return () => {
-            window.removeEventListener("wheel", handleScroll);
-            window.removeEventListener("touchmove", handleScroll);
-            window.removeEventListener("click", handleClick);
-            window.removeEventListener("keydown", handleKey);
-            clearTimeout(autoTimer);
-            document.body.style.overflow = "";
-        };
-    }, [onComplete]);
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = ""; };
+    }, []);
 
     return (
         <div
             ref={overlayRef}
-            className="fixed inset-0 z-[9999] flex flex-col items-center justify-end overflow-hidden"
-            style={{
-                background: "radial-gradient(ellipse at 50% 100%, #1a0a2e 0%, #0a0a0f 60%, #000000 100%)"
-            }}
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
+            style={{ background: "radial-gradient(ellipse at 50% 0%, #050e1a 0%, #000000 70%)" }}
         >
-            {/* Particle dots */}
-            <div ref={particlesRef} className="absolute inset-0 pointer-events-none">
-                {Array.from({ length: 24 }).map((_, i) => (
+            {/* Stars */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {Array.from({ length: 120 }).map((_, i) => (
                     <div
                         key={i}
-                        className="absolute w-1 h-1 rounded-full bg-violet-400/30 animate-pulse"
+                        className="absolute rounded-full bg-white"
                         style={{
                             left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 3}s`,
-                            animationDuration: `${2 + Math.random() * 3}s`
+                            top: `${Math.random() * 70}%`,
+                            width: `${Math.random() * 2 + 0.5}px`,
+                            height: `${Math.random() * 2 + 0.5}px`,
+                            opacity: Math.random() * 0.6 + 0.1,
+                            animation: `pulse ${2 + Math.random() * 4}s ease-in-out infinite`,
+                            animationDelay: `${Math.random() * 4}s`,
                         }}
                     />
                 ))}
             </div>
 
-            {/* Grid overlay for depth */}
-            <div
-                className="absolute inset-0 pointer-events-none opacity-[0.04]"
-                style={{
-                    backgroundImage: `
-                        linear-gradient(rgba(139,92,246,0.8) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(139,92,246,0.8) 1px, transparent 1px)
-                    `,
-                    backgroundSize: "60px 60px"
-                }}
-            />
-
-            {/* Bottom ground glow */}
-            <div
-                ref={glowRef}
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none"
-                style={{
-                    width: "700px",
-                    height: "400px",
-                    background: "radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.45) 0%, rgba(109,40,217,0.2) 40%, transparent 70%)",
-                    filter: "blur(20px)"
-                }}
-            />
-
-            {/* Ground line */}
-            <div className="absolute bottom-[28%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
-
-            {/* Anime Character */}
-            <img
-                ref={characterRef}
-                src="/cartoon-character.png"
-                alt="Cartoon character"
-                className="relative z-10 select-none pointer-events-none"
-                style={{
-                    height: "clamp(320px, 58vh, 640px)",
-                    width: "auto",
-                    objectFit: "contain",
-                    objectPosition: "bottom",
-                    marginBottom: "0",
-                    filter: "drop-shadow(0 0 40px rgba(139,92,246,0.5)) drop-shadow(0 0 80px rgba(109,40,217,0.3))"
-                }}
-                draggable={false}
-            />
-
-            {/* Name & tagline — above character's feet */}
-            <div
-                ref={textRef}
-                className="absolute bottom-[30%] left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none w-full px-6"
-            >
-                <p className="text-violet-400/80 text-[10px] font-bold tracking-[0.5em] uppercase mb-2">
-                    Welcome to the portfolio of
+            {/* Title area */}
+            <div ref={titleRef} className="text-center mb-16 relative z-10 px-6">
+                <p
+                    className="text-xs font-semibold tracking-[0.5em] uppercase mb-6"
+                    style={{ color: "#7ba3c0", fontFamily: "Cinzel, serif" }}
+                >
+                    Choose Your House
                 </p>
-                <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white leading-none">
-                    Gohul<span className="text-transparent" style={{
-                        WebkitTextStroke: "1px rgba(139,92,246,0.6)"
-                    }}> Das</span>
+                <h1
+                    className="text-4xl md:text-6xl lg:text-7xl font-bold leading-none mb-4"
+                    style={{
+                        fontFamily: "Cinzel Decorative, serif",
+                        background: "linear-gradient(135deg, #bae6fd 0%, #ffffff 40%, #fde68a 60%, #fb923c 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        textShadow: "none",
+                    }}
+                >
+                    Fire & Blood
                 </h1>
-                <p className="text-white/30 text-xs font-light tracking-[0.3em] uppercase mt-3">
-                    Software Engineer · Designer · Creator
+                <p
+                    className="text-sm italic"
+                    style={{ color: "#7ba3c0", fontFamily: "Cormorant Garamond, serif", fontSize: "18px" }}
+                >
+                    Winter is Coming · or · Fire Cannot Kill a Dragon
                 </p>
             </div>
 
-            {/* Scroll hint */}
-            <div
-                ref={scrollHintRef}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 pointer-events-none"
-            >
-                <p className="text-white/30 text-[10px] font-bold tracking-[0.4em] uppercase">
-                    {scrolled ? "Loading..." : "Scroll or click to enter"}
-                </p>
-                <div className="w-5 h-9 rounded-full border border-white/20 flex items-start justify-center p-1">
+            {/* Faction Cards */}
+            <div ref={cardsRef} className="flex flex-col md:flex-row gap-6 md:gap-10 w-full max-w-4xl px-6 relative z-10">
+
+                {/* ICE Card */}
+                <button
+                    className="faction-card group relative flex-1 rounded-3xl overflow-hidden cursor-none"
+                    style={{ minHeight: "380px", border: "none", padding: 0, background: "transparent" }}
+                    onMouseEnter={() => setHovered("ice")}
+                    onMouseLeave={() => setHovered(null)}
+                    onClick={() => handleChoose("ice")}
+                >
+                    <canvas
+                        ref={iceCanvasRef}
+                        className="absolute inset-0 w-full h-full"
+                        style={{ zIndex: 1 }}
+                    />
                     <div
-                        className="w-1 h-2.5 rounded-full bg-violet-400/70"
+                        className="absolute inset-0 transition-all duration-700"
                         style={{
-                            animation: "scrollBounce 1.4s ease-in-out infinite"
+                            background: hovered === "ice"
+                                ? "radial-gradient(ellipse at 50% 100%, rgba(56,189,248,0.25) 0%, rgba(14,28,45,0.85) 70%)"
+                                : "radial-gradient(ellipse at 50% 100%, rgba(56,189,248,0.10) 0%, rgba(4,10,18,0.92) 70%)",
+                            border: `1px solid ${hovered === "ice" ? "rgba(125,211,252,0.5)" : "rgba(125,211,252,0.15)"}`,
+                            borderRadius: "24px",
+                            backdropFilter: "blur(20px) saturate(180%)",
+                            boxShadow: hovered === "ice"
+                                ? "0 0 60px rgba(56,189,248,0.3), 0 24px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(186,230,253,0.2)"
+                                : "0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)",
+                            zIndex: 2,
                         }}
                     />
+                    {/* Inner shimmer */}
+                    <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                            background: "linear-gradient(135deg, rgba(186,230,253,0.08) 0%, transparent 50%)",
+                            zIndex: 3,
+                            borderRadius: "24px",
+                        }}
+                    />
+                    <div className="relative flex flex-col items-center justify-end h-full p-10 text-center" style={{ zIndex: 4 }}>
+                        {/* House Sigil area */}
+                        <div
+                            className="absolute top-10 left-1/2 -translate-x-1/2 text-7xl transition-transform duration-700"
+                            style={{
+                                filter: "drop-shadow(0 0 20px rgba(125,211,252,0.6))",
+                                transform: hovered === "ice" ? "translateX(-50%) scale(1.1)" : "translateX(-50%) scale(1)",
+                            }}
+                        >
+                            ❄️
+                        </div>
+
+                        <div className="mt-auto">
+                            <p className="text-xs font-bold tracking-[0.4em] uppercase mb-3" style={{ color: "#38bdf8", fontFamily: "Cinzel, serif" }}>
+                                House Stark
+                            </p>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "Cinzel, serif", color: "#e0f2fe" }}>
+                                The North
+                            </h2>
+                            <p className="text-sm font-light" style={{ color: "rgba(186,230,253,0.6)", fontFamily: "Cormorant Garamond, serif", fontSize: "16px" }}>
+                                "Winter is Coming"
+                            </p>
+                            <div
+                                className="mt-6 inline-block px-6 py-3 rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-500"
+                                style={{
+                                    fontFamily: "Cinzel, serif",
+                                    background: hovered === "ice" ? "rgba(56,189,248,0.2)" : "transparent",
+                                    border: "1px solid rgba(125,211,252,0.35)",
+                                    color: "#7dd3fc",
+                                    boxShadow: hovered === "ice" ? "0 0 20px rgba(125,211,252,0.3)" : "none",
+                                }}
+                            >
+                                Choose Ice
+                            </div>
+                        </div>
+                    </div>
+                </button>
+
+                {/* Separator */}
+                <div className="flex md:flex-col items-center justify-center gap-3 relative z-10">
+                    <div className="flex-1 h-px md:h-auto md:w-px bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+                    <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                        style={{
+                            background: "rgba(255,255,255,0.05)",
+                            border: "1px solid rgba(255,255,255,0.15)",
+                            backdropFilter: "blur(10px)",
+                            fontFamily: "Cinzel, serif",
+                            color: "rgba(255,255,255,0.5)",
+                        }}
+                    >
+                        or
+                    </div>
+                    <div className="flex-1 h-px md:h-auto md:w-px bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/20 to-transparent" />
                 </div>
+
+                {/* FIRE Card */}
+                <button
+                    className="faction-card group relative flex-1 rounded-3xl overflow-hidden cursor-none"
+                    style={{ minHeight: "380px", border: "none", padding: 0, background: "transparent" }}
+                    onMouseEnter={() => setHovered("fire")}
+                    onMouseLeave={() => setHovered(null)}
+                    onClick={() => handleChoose("fire")}
+                >
+                    <canvas
+                        ref={fireCanvasRef}
+                        className="absolute inset-0 w-full h-full"
+                        style={{ zIndex: 1 }}
+                    />
+                    <div
+                        className="absolute inset-0 transition-all duration-700"
+                        style={{
+                            background: hovered === "fire"
+                                ? "radial-gradient(ellipse at 50% 100%, rgba(251,146,60,0.25) 0%, rgba(30,10,5,0.85) 70%)"
+                                : "radial-gradient(ellipse at 50% 100%, rgba(251,146,60,0.10) 0%, rgba(13,5,2,0.92) 70%)",
+                            border: `1px solid ${hovered === "fire" ? "rgba(251,146,60,0.5)" : "rgba(251,146,60,0.15)"}`,
+                            borderRadius: "24px",
+                            backdropFilter: "blur(20px) saturate(180%)",
+                            boxShadow: hovered === "fire"
+                                ? "0 0 60px rgba(251,146,60,0.3), 0 24px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(253,186,116,0.2)"
+                                : "0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)",
+                            zIndex: 2,
+                        }}
+                    />
+                    <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                            background: "linear-gradient(135deg, rgba(253,186,116,0.08) 0%, transparent 50%)",
+                            zIndex: 3,
+                            borderRadius: "24px",
+                        }}
+                    />
+                    <div className="relative flex flex-col items-center justify-end h-full p-10 text-center" style={{ zIndex: 4 }}>
+                        <div
+                            className="absolute top-10 left-1/2 -translate-x-1/2 text-7xl transition-transform duration-700"
+                            style={{
+                                filter: "drop-shadow(0 0 20px rgba(251,146,60,0.6))",
+                                transform: hovered === "fire" ? "translateX(-50%) scale(1.1)" : "translateX(-50%) scale(1)",
+                                animation: "fireFlicker 3s ease-in-out infinite",
+                            }}
+                        >
+                            🔥
+                        </div>
+
+                        <div className="mt-auto">
+                            <p className="text-xs font-bold tracking-[0.4em] uppercase mb-3" style={{ color: "#f97316", fontFamily: "Cinzel, serif" }}>
+                                House Targaryen
+                            </p>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "Cinzel, serif", color: "#fef9f0" }}>
+                                Dragonstone
+                            </h2>
+                            <p className="text-sm font-light" style={{ color: "rgba(253,186,116,0.6)", fontFamily: "Cormorant Garamond, serif", fontSize: "16px" }}>
+                                "Fire & Blood"
+            </p>
+                            <div
+                                className="mt-6 inline-block px-6 py-3 rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-500"
+                                style={{
+                                    fontFamily: "Cinzel, serif",
+                                    background: hovered === "fire" ? "rgba(251,146,60,0.2)" : "transparent",
+                                    border: "1px solid rgba(251,146,60,0.35)",
+                                    color: "#fb923c",
+                                    boxShadow: hovered === "fire" ? "0 0 20px rgba(251,146,60,0.3)" : "none",
+                                }}
+                            >
+                                Choose Fire
+                            </div>
+                        </div>
+                    </div>
+                </button>
             </div>
 
-            {/* Top vignette */}
-            <div
-                className="absolute top-0 left-0 right-0 h-40 pointer-events-none"
-                style={{ background: "linear-gradient(to bottom, #000000 0%, transparent 100%)" }}
-            />
+            <p className="mt-10 text-xs relative z-10" style={{ color: "rgba(255,255,255,0.2)", fontFamily: "Cinzel, serif", letterSpacing: "0.2em" }}>
+                CLICK TO CHOOSE YOUR ALLEGIANCE
+            </p>
 
             <style>{`
-                @keyframes scrollBounce {
-                    0%, 100% { transform: translateY(0); opacity: 1; }
-                    50% { transform: translateY(10px); opacity: 0.4; }
+                @keyframes fireFlicker {
+                    0%, 100% { filter: drop-shadow(0 0 20px rgba(251,146,60,0.6)); }
+                    25% { filter: drop-shadow(0 0 28px rgba(239,68,68,0.7)); }
+                    50% { filter: drop-shadow(0 0 16px rgba(251,146,60,0.5)); }
+                    75% { filter: drop-shadow(0 0 30px rgba(253,186,116,0.8)); }
+                }
+                @keyframes pulse {
+                    0%, 100% { opacity: var(--pulse-opacity, 0.3); }
+                    50% { opacity: calc(var(--pulse-opacity, 0.3) * 2); }
                 }
             `}</style>
         </div>
