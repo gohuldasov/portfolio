@@ -61,10 +61,10 @@ const Hero = ({ theme }: HeroProps) => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                 ctx.fillStyle = t === "ice"
-                    ? `rgba(186,230,253,${p.opacity})`
-                    : `rgba(251,146,60,${p.opacity * fade})`;
+                    ? `rgba(2, 132, 199, ${p.opacity * 0.6})`
+                    : `rgba(251, 146, 60, ${p.opacity * fade})`;
                 ctx.shadowBlur = 8;
-                ctx.shadowColor = t === "ice" ? "#bae6fd" : "#f97316";
+                ctx.shadowColor = t === "ice" ? "#0ea5e9" : "#f97316";
                 ctx.fill();
 
                 p.x += p.speedX;
@@ -183,7 +183,7 @@ const Hero = ({ theme }: HeroProps) => {
                     <div className="w-16 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
                     <span className="text-xs font-semibold tracking-[0.4em] uppercase" style={{
                         color: "var(--primary)",
-                        fontFamily: "Cinzel, serif",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
                     }}>
                         {isIce ? "The North Remembers" : "Fire & Blood"}
                     </span>
@@ -193,14 +193,14 @@ const Hero = ({ theme }: HeroProps) => {
                 <div ref={titleRef} className="overflow-hidden mb-10">
                     <div
                         className="hero-title-line text-[clamp(3.5rem,9vw,9rem)] font-black uppercase leading-[0.85] tracking-tight"
-                        style={{ fontFamily: "Cinzel, serif" }}
+                        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                         Design
                     </div>
                     <div
                         className="hero-title-line text-[clamp(3.5rem,9vw,9rem)] font-black uppercase leading-[0.85] tracking-tight italic"
                         style={{
-                            fontFamily: "Cinzel, serif",
+                            fontFamily: "'Plus Jakarta Sans', sans-serif",
                             background: `linear-gradient(135deg, var(--primary) 0%, var(--shimmer) 50%, var(--secondary) 100%)`,
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor: "transparent",
@@ -225,7 +225,7 @@ const Hero = ({ theme }: HeroProps) => {
                     <p
                         ref={subtitleRef}
                         className="text-lg md:text-xl font-light leading-relaxed max-w-xl"
-                        style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(16px, 2vw, 22px)" }}
+                        style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "clamp(16px, 2vw, 22px)" }}
                     >
                         I craft pixel-perfect, engaging, and accessible digital experiences — forged in code, tempered in design.
                     </p>
@@ -236,7 +236,7 @@ const Hero = ({ theme }: HeroProps) => {
                     <div
                         ref={socialsRef}
                         className="flex items-center gap-8 text-[10px] font-bold tracking-[0.2em] uppercase"
-                        style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                        style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                         {['LinkedIn', 'Github', 'Instagram', 'Gmail'].map((social) => (
                             <a

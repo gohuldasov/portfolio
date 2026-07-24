@@ -55,25 +55,25 @@ const Experience = () => {
                 <div className="exp-header mb-20">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
-                        <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "Cinzel, serif" }}>
+                        <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                             Career Path
                         </span>
                     </div>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                         <h2 className="text-[clamp(2.5rem,6vw,7rem)] font-bold uppercase leading-[0.88] tracking-tight"
-                            style={{ fontFamily: "Cinzel, serif" }}
+                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                         >
                             Experience<br />
                             <span style={{
                                 fontStyle: "italic",
-                                background: "linear-gradient(135deg, var(--text-muted) 0%, rgba(255,255,255,0.1) 100%)",
+                                background: "linear-gradient(135deg, var(--text-muted) 0%, rgba(2, 132, 199, 0.3) 100%)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 backgroundClip: "text",
                             }}>History</span>
                         </h2>
                         <p className="text-lg font-light leading-relaxed max-w-sm lg:text-right"
-                            style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", fontSize: "18px" }}
+                            style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "18px" }}
                         >
                             Partnering with industry leaders to build products that define the digital landscape.
                         </p>
@@ -95,7 +95,7 @@ const Experience = () => {
                                 el.style.borderRadius = "20px";
                                 el.style.marginLeft = "-24px";
                                 el.style.marginRight = "-24px";
-                                el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)";
+                                el.style.boxShadow = "0 8px 32px rgba(15, 23, 42, 0.08)";
                             }}
                             onMouseLeave={e => {
                                 const el = e.currentTarget;
@@ -111,12 +111,12 @@ const Experience = () => {
                             {/* Left */}
                             <div className="flex flex-col gap-2">
                                 <span className="text-[9px] font-bold uppercase tracking-widest"
-                                    style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                                    style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                                 >
                                     {exp.period}
                                 </span>
                                 <h3 className="text-3xl md:text-4xl font-bold tracking-tight transition-colors duration-300"
-                                    style={{ fontFamily: "Cinzel, serif", color: "var(--text)" }}
+                                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "var(--text)" }}
                                     onMouseEnter={e => (e.currentTarget.style.color = "var(--primary)")}
                                     onMouseLeave={e => (e.currentTarget.style.color = "var(--text)")}
                                 >

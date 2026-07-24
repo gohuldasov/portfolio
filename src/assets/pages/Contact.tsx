@@ -32,25 +32,25 @@ const Contact = () => {
     return (
         <ConfigProvider
             theme={{
-                algorithm: theme.darkAlgorithm,
+                algorithm: theme.defaultAlgorithm,
                 token: {
-                    colorPrimary: '#8b5cf6',
-                    colorBgContainer: 'transparent',
-                    colorBorder: 'rgba(255, 255, 255, 0.08)',
-                    colorText: '#f8fafc',
-                    colorTextPlaceholder: 'rgba(248, 250, 252, 0.2)',
+                    colorPrimary: '#0284c7',
+                    colorBgContainer: 'rgba(255, 255, 255, 0.7)',
+                    colorBorder: 'rgba(186, 230, 253, 0.8)',
+                    colorText: '#1e242b',
+                    colorTextPlaceholder: '#64748b',
                     controlHeight: 60,
                     borderRadius: 24,
                 },
                 components: {
                     Input: {
-                        activeBorderColor: '#8b5cf6',
-                        hoverBorderColor: '#8b5cf6',
+                        activeBorderColor: '#0284c7',
+                        hoverBorderColor: '#0284c7',
                     }
                 }
             }}
         >
-            <section id="contact" ref={sectionRef} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 bg-(--background) text-white overflow-hidden">
+            <section id="contact" ref={sectionRef} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 bg-[var(--background)] text-[var(--text)] overflow-hidden">
                 <div ref={containerRef} className="max-w-6xl mx-auto">
                     <div className="contact-element mb-24">
                         <div className="flex items-center gap-4 mb-8 text-center justify-center">

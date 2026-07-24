@@ -1,31 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════
-   ICE — DESIGN SYSTEM  (House Stark)
+   ORIGIN ICE — DESIGN SYSTEM
 ═══════════════════════════════════════════════ */
 
 :root {
-    --primary: #7dd3fc;
-    --primary-glow: rgba(125, 211, 252, 0.35);
-    --secondary: #38bdf8;
-    --accent: #e0f2fe;
-    --background: #040a12;
-    --surface: rgba(14, 28, 45, 0.6);
-    --text: #e8f4fd;
-    --text-muted: #7ba3c0;
-    --border: rgba(125, 211, 252, 0.12);
-    --glass-bg: rgba(10, 25, 47, 0.45);
-    --glass-border: rgba(125, 211, 252, 0.18);
-    --orb1: rgba(56, 189, 248, 0.12);
-    --orb2: rgba(14, 165, 233, 0.08);
-    --orb3: rgba(186, 230, 253, 0.05);
-    --shimmer: #bae6fd;
+    --primary: #0284c7;
+    --primary-glow: rgba(2, 132, 199, 0.22);
+    --secondary: #0ea5e9;
+    --accent: #38bdf8;
+    --background: #edf4fd; /* Soft ice-blue background matching user image */
+    --surface: rgba(255, 255, 255, 0.75);
+    --text: #1e242b; /* Deep slate charcoal text matching user image */
+    --text-muted: #526071; /* Medium slate gray subtext matching user image */
+    --border: rgba(186, 230, 253, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(186, 230, 253, 0.75);
+    --orb1: rgba(186, 230, 253, 0.55);
+    --orb2: rgba(224, 242, 254, 0.65);
+    --orb3: rgba(240, 249, 255, 0.75);
+    --shimmer: #0284c7;
+    --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* ── Base ── */
 *, *::before, *::after {
     box-sizing: border-box;
+    font-family: var(--font-main);
 }
 
 html {
@@ -35,7 +37,7 @@ html {
 body {
     background-color: var(--background);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-main) !important;
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
@@ -47,18 +49,10 @@ body {
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6,
 .section-title, .project-title,
-.cinzel {
-    font-family: 'Cinzel', serif !important;
-    letter-spacing: 0.04em;
+.cinzel, .cinzel-decorative, .cormorant {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: -0.01em;
     color: var(--text);
-}
-
-.cinzel-decorative {
-    font-family: 'Cinzel Decorative', serif !important;
-}
-
-.cormorant {
-    font-family: 'Cormorant Garamond', serif !important;
 }
 
 /* ── Animated Background ── */
@@ -99,9 +93,9 @@ body::after {
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     border: 1px solid var(--glass-border) !important;
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+        0 10px 30px rgba(15, 23, 42, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(186, 230, 253, 0.3) !important;
     border-radius: 16px;
     position: relative;
     overflow: hidden;
@@ -115,9 +109,9 @@ body::after {
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.4) 0%,
         transparent 50%,
-        rgba(255, 255, 255, 0.02) 100%
+        rgba(255, 255, 255, 0.1) 100%
     );
     pointer-events: none;
     border-radius: inherit;
@@ -130,13 +124,12 @@ body::after {
 }
 
 .glass:hover {
-    background: rgba(255, 255, 255, 0.06) !important;
-    border-color: var(--primary-glow) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: var(--primary) !important;
     box-shadow:
-        0 16px 48px rgba(0, 0, 0, 0.5),
-        0 0 30px var(--primary-glow),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+        0 16px 48px rgba(15, 23, 42, 0.08),
+        0 0 25px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 
 /* ── Glass Panel Variants ── */
@@ -147,19 +140,19 @@ body::after {
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        0 20px 50px rgba(15, 23, 42, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     transform-style: preserve-3d;
 }
 
 .glass-card:hover {
     transform: translateY(-6px) rotateX(2deg);
-    border-color: var(--glass-border);
+    border-color: var(--primary);
     box-shadow:
-        0 32px 80px rgba(0, 0, 0, 0.6),
-        0 0 40px var(--primary-glow),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 28px 60px rgba(15, 23, 42, 0.1),
+        0 0 30px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 /* ── Text Effects ── */
@@ -205,7 +198,7 @@ body::after {
     background: transparent !important;
     border: 1px solid var(--glass-border) !important;
     color: var(--text) !important;
-    font-family: 'Cinzel', serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-size: 11px !important;
     font-weight: 600 !important;
     letter-spacing: 0.2em !important;
@@ -216,7 +209,7 @@ body::after {
     -webkit-backdrop-filter: blur(10px) !important;
     cursor: none !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
     position: relative;
     overflow: hidden;
 }
@@ -238,7 +231,7 @@ body::after {
 .magnetic-button:hover {
     border-color: var(--primary) !important;
     color: var(--primary) !important;
-    box-shadow: 0 0 30px var(--primary-glow), 0 8px 32px rgba(0,0,0,0.4) !important;
+    box-shadow: 0 0 30px var(--primary-glow), 0 8px 32px rgba(15, 23, 42, 0.1) !important;
 }
 
 /* ── Scroll Progress ── */
@@ -289,7 +282,7 @@ body::after {
 
 /* ── Section Indicators ── */
 .fixed.left-6 span {
-    font-family: 'Cinzel', serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-size: 7px !important;
     letter-spacing: 0.15em !important;
 }
@@ -301,10 +294,10 @@ body::after {
 
 /* ── Form Inputs ── */
 input, textarea {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
     border: 1px solid var(--glass-border) !important;
     color: var(--text) !important;
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-size: 15px !important;
     border-radius: 12px !important;
     outline: none !important;
@@ -319,7 +312,7 @@ input:focus, textarea:focus {
 
 /* ── Nav Links ── */
 nav a {
-    font-family: 'Cinzel', serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
     font-size: 10px !important;
     letter-spacing: 0.15em !important;
     font-weight: 500 !important;

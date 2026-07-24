@@ -166,7 +166,7 @@ const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
             <div ref={titleRef} className="text-center mb-16 relative z-10 px-6">
                 <p
                     className="text-xs font-semibold tracking-[0.5em] uppercase mb-6"
-                    style={{ color: "#7ba3c0", fontFamily: "Cinzel, serif" }}
+                    style={{ color: "#7ba3c0", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                     Choose Your House
                 </p>
@@ -244,10 +244,10 @@ const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
                         </div>
 
                         <div className="mt-auto">
-                            <p className="text-xs font-bold tracking-[0.4em] uppercase mb-3" style={{ color: "#38bdf8", fontFamily: "Cinzel, serif" }}>
+                            <p className="text-xs font-bold tracking-[0.4em] uppercase mb-3" style={{ color: "#38bdf8", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                                 House Stark
                             </p>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "Cinzel, serif", color: "#e0f2fe" }}>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#e0f2fe" }}>
                                 The North
                             </h2>
                             <p className="text-sm font-light" style={{ color: "rgba(186,230,253,0.6)", fontFamily: "Cormorant Garamond, serif", fontSize: "16px" }}>
@@ -256,7 +256,7 @@ const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
                             <div
                                 className="mt-6 inline-block px-6 py-3 rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-500"
                                 style={{
-                                    fontFamily: "Cinzel, serif",
+                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                                     background: hovered === "ice" ? "rgba(56,189,248,0.2)" : "transparent",
                                     border: "1px solid rgba(125,211,252,0.35)",
                                     color: "#7dd3fc",
@@ -278,7 +278,7 @@ const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
                             background: "rgba(255,255,255,0.05)",
                             border: "1px solid rgba(255,255,255,0.15)",
                             backdropFilter: "blur(10px)",
-                            fontFamily: "Cinzel, serif",
+                            fontFamily: "'Plus Jakarta Sans', sans-serif",
                             color: "rgba(255,255,255,0.5)",
                         }}
                     >
@@ -336,10 +336,10 @@ const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
                         </div>
 
                         <div className="mt-auto">
-                            <p className="text-xs font-bold tracking-[0.4em] uppercase mb-3" style={{ color: "#f97316", fontFamily: "Cinzel, serif" }}>
+                            <p className="text-xs font-bold tracking-[0.4em] uppercase mb-3" style={{ color: "#f97316", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                                 House Targaryen
                             </p>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "Cinzel, serif", color: "#fef9f0" }}>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#fef9f0" }}>
                                 Dragonstone
                             </h2>
                             <p className="text-sm font-light" style={{ color: "rgba(253,186,116,0.6)", fontFamily: "Cormorant Garamond, serif", fontSize: "16px" }}>
@@ -348,7 +348,7 @@ const IntroOverlay = ({ onComplete }: IntroOverlayProps) => {
                             <div
                                 className="mt-6 inline-block px-6 py-3 rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-500"
                                 style={{
-                                    fontFamily: "Cinzel, serif",
+                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                                     background: hovered === "fire" ? "rgba(251,146,60,0.2)" : "transparent",
                                     border: "1px solid rgba(251,146,60,0.35)",
                                     color: "#fb923c",

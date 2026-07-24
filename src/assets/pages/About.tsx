@@ -69,7 +69,7 @@ const About = () => {
                 {/* Label */}
                 <div className="about-label flex items-center gap-4 mb-16">
                     <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
-                    <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "Cinzel, serif" }}>
+                    <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         Who I Am
                     </span>
                 </div>
@@ -80,7 +80,7 @@ const About = () => {
                     {/* Left */}
                     <div>
                         <h2 className="text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.88] tracking-tight mb-10"
-                            style={{ fontFamily: "Cinzel, serif" }}
+                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                         >
                             Crafting<br />
                             Digital<br />
@@ -128,7 +128,7 @@ const About = () => {
                         <p
                             ref={textRef}
                             className="text-3xl md:text-4xl font-medium leading-[1.2] tracking-tight flex flex-wrap gap-x-3 gap-y-2"
-                            style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--text)" }}
+                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "var(--text)" }}
                         >
                             {words.map((word, index) => (
                                 <span key={index} className="word inline-block" style={{ transition: "color 0.2s" }}>
@@ -138,7 +138,7 @@ const About = () => {
                         </p>
 
                         <div className="mt-16 pt-10 border-t" style={{ borderColor: "var(--glass-border)" }}>
-                            <p className="text-base font-light leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", fontSize: "18px" }}>
+                            <p className="text-base font-light leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "18px" }}>
                                 Based in India, partnering with clients worldwide to craft bespoke digital solutions that blend artistry and engineering in seamless harmony.
                             </p>
                         </div>

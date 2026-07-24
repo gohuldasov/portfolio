@@ -53,7 +53,7 @@ const Navbar = () => {
         >
             {/* Logo */}
             <div className={`text-2xl font-bold tracking-tighter ${isScrolled ? 'hidden md:block mr-12' : ''}`}
-                style={{ fontFamily: "Cinzel Decorative, serif" }}
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
                 <span style={{ color: "var(--primary)" }}>G</span>
                 <span style={{ color: "var(--text)" }}>D</span>
@@ -68,7 +68,7 @@ const Navbar = () => {
                         onClick={() => setActiveLink(link.href)}
                         className="relative group transition-all duration-300"
                         style={{
-                            fontFamily: "Cinzel, serif",
+                            fontFamily: "'Plus Jakarta Sans', sans-serif",
                             fontSize: "10px",
                             fontWeight: 600,
                             letterSpacing: "0.18em",

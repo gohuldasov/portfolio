@@ -14,7 +14,7 @@ import ScrollProgress from "./components/ScrollProgress";
 const App = () => {
   return (
     <div
-      className="min-h-screen text-white selection:bg-[var(--primary)] selection:text-black"
+      className="min-h-screen text-[var(--text)] selection:bg-[var(--primary)] selection:text-white"
       style={{ backgroundColor: "var(--background)" }}
     >
       <CustomCursor />

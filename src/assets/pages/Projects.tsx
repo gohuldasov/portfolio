@@ -123,7 +123,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                                 background: `${project.color}18`,
                                 border: `1px solid ${project.color}35`,
                                 color: project.color,
-                                fontFamily: "Cinzel, serif",
+                                fontFamily: "'Plus Jakarta Sans', sans-serif",
                             }}
                         >
                             {project.id}
@@ -131,10 +131,10 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                         <span
                             className="px-4 py-1.5 rounded-full text-[9px] font-bold tracking-widest uppercase"
                             style={{
-                                background: "rgba(255,255,255,0.05)",
-                                border: "1px solid rgba(255,255,255,0.1)",
+                                background: "rgba(2, 132, 199, 0.06)",
+                                border: "1px solid rgba(2, 132, 199, 0.15)",
                                 color: "var(--text-muted)",
-                                fontFamily: "Cinzel, serif",
+                                fontFamily: "'Plus Jakarta Sans', sans-serif",
                             }}
                         >
                             {project.category}
@@ -190,13 +190,13 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                 <h3
                     className="project-title text-5xl md:text-7xl font-bold uppercase leading-none tracking-tight transition-colors duration-300"
                     style={{
-                        fontFamily: "Cinzel, serif",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
                         color: "var(--text)",
                     }}
                 >
                     {project.title}
                 </h3>
-                <p className="text-sm font-light max-w-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", fontSize: "16px" }}>
+                <p className="text-sm font-light max-w-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "16px" }}>
                     {project.description}
                 </p>
             </div>
@@ -229,7 +229,8 @@ const Projects = () => {
 
         tl.to(".projects-header", { y: "-120%", opacity: 0, duration: 1, ease: "power3.inOut" })
           .to(".projects-carousel-wrapper", { y: "-15vh", duration: 1, ease: "power2.inOut" }, "-=0.8")
-          .to(scrollContainer.current, { x: xTranslate, ease: "none", duration: 4 }, "-=0.2");
+          .to(scrollContainer.current, { x: xTranslate, ease: "none", duration: 4 }, "-=0.2")
+          .to(".projects-progress-fill", { scaleX: 1, ease: "none", duration: 4 }, "-=4");
 
         gsap.utils.toArray<HTMLElement>(".project-card").forEach((card) => {
             gsap.fromTo(card,
@@ -249,31 +250,31 @@ const Projects = () => {
     }, { scope: container });
 
     return (
-        <section id="projects" ref={container} className="relative text-white overflow-hidden min-h-screen"
+        <section id="projects" ref={container} className="relative text-[var(--text)] overflow-hidden min-h-screen"
             style={{ background: "transparent" }}
         >
-            <div className="h-screen flex flex-col justify-start pt-16 pb-32">
+            <div className="h-screen flex flex-col justify-start pt-16 pb-32 relative">
                 {/* Header */}
                 <div className="projects-header mb-14 px-8 md:px-24 shrink-0">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
                         <span
                             className="text-xs font-bold tracking-[0.4em] uppercase"
-                            style={{ color: "var(--primary)", fontFamily: "Cinzel, serif" }}
+                            style={{ color: "var(--primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                         >
                             Selected Works
                         </span>
                     </div>
                     <h2
                         className="text-[clamp(3rem,8vw,8rem)] font-bold uppercase leading-[0.82] tracking-tight"
-                        style={{ fontFamily: "Cinzel, serif" }}
+                        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                         Featured <br />
                         <span
                             style={{
-                                fontFamily: "Cinzel, serif",
+                                fontFamily: "'Plus Jakarta Sans', sans-serif",
                                 fontStyle: "italic",
-                                background: "linear-gradient(135deg, var(--text-muted) 0%, rgba(255,255,255,0.15) 100%)",
+                                background: "linear-gradient(135deg, var(--text-muted) 0%, rgba(2, 132, 199, 0.4) 100%)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 backgroundClip: "text",
@@ -300,7 +301,7 @@ const Projects = () => {
                                     background: "var(--glass-bg)",
                                     backdropFilter: "blur(16px)",
                                     color: "var(--text-muted)",
-                                    fontFamily: "Cinzel, serif",
+                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                                 }}
                                 onMouseEnter={e => {
                                     const el = e.currentTarget;
@@ -317,7 +318,7 @@ const Projects = () => {
                             >
                                 <span className="text-xs font-bold uppercase tracking-widest">View All Projects</span>
                                 <div className="w-10 h-10 rounded-full flex items-center justify-center"
-                                    style={{ border: "1px solid var(--glass-border)", background: "rgba(255,255,255,0.03)" }}
+                                    style={{ border: "1px solid var(--glass-border)", background: "rgba(2, 132, 199, 0.05)" }}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -326,6 +327,25 @@ const Projects = () => {
                             </button>
                         </div>
                     </div>
+                </div>
+
+                {/* Bottom Scroll Progress Bar Indicator */}
+                <div className="projects-progress-bar-container absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-30 pointer-events-none">
+                    <div className="w-48 sm:w-64 md:w-80 h-[3px] rounded-full overflow-hidden relative" style={{ background: "rgba(30, 36, 43, 0.12)", backdropFilter: "blur(4px)" }}>
+                        <div
+                            className="projects-progress-fill h-full rounded-full"
+                            style={{
+                                width: "100%",
+                                transformOrigin: "left center",
+                                transform: "scaleX(0)",
+                                background: "linear-gradient(90deg, var(--primary), var(--secondary))",
+                                boxShadow: "0 0 10px var(--primary-glow)",
+                            }}
+                        />
+                    </div>
+                    <span className="text-[9px] font-bold tracking-[0.25em] uppercase" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                        Scroll to Explore
+                    </span>
                 </div>
             </div>
         </section>

@@ -70,12 +70,12 @@ const Expertise = () => {
                     <div>
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
-                            <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "Cinzel, serif" }}>
+                            <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ color: "var(--primary)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                                 My Mastery
                             </span>
                         </div>
                         <h2 className="text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.88] tracking-tight mb-14"
-                            style={{ fontFamily: "Cinzel, serif" }}
+                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                         >
                             Technical<br />
                             <span style={{
@@ -106,12 +106,12 @@ const Expertise = () => {
                                             <span className="text-2xl">{item.icon}</span>
                                             <div>
                                                 <span className="text-[9px] font-bold uppercase tracking-[0.25em] block"
-                                                    style={{ color: activeTab === index ? "var(--primary)" : "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                                                    style={{ color: activeTab === index ? "var(--primary)" : "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                                                 >
                                                     {item.tag}
                                                 </span>
                                                 <h3 className="text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300"
-                                                    style={{ fontFamily: "Cinzel, serif", color: activeTab === index ? "var(--text)" : "var(--text-muted)" }}
+                                                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: activeTab === index ? "var(--text)" : "var(--text-muted)" }}
                                                 >
                                                     {item.title}
                                                 </h3>
@@ -182,7 +182,7 @@ const Expertise = () => {
                                             backdropFilter: "blur(16px)",
                                             border: "1px solid var(--glass-border)",
                                             color: "var(--text-muted)",
-                                            fontFamily: "Cinzel, serif",
+                                            fontFamily: "'Plus Jakarta Sans', sans-serif",
                                         }}
                                         onMouseEnter={e => {
                                             const el = e.currentTarget;
