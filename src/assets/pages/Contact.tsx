@@ -65,22 +65,22 @@ const Contact = () => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
                         <div className="contact-element space-y-12">
-                            <p className="text-2xl md:text-3xl font-light text-gray-400 lowercase leading-tight">
-                                my inbox is <span className="text-white italic">always open</span>. whether you have a project idea or just want to say hi, I am here to listen.
+                            <p className="text-2xl md:text-3xl font-light text-[var(--text-muted)] lowercase leading-tight">
+                                my inbox is <span className="text-[var(--primary)] italic font-semibold">always open</span>. whether you have a project idea or just want to say hi, I am here to listen.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12">
                                 <div>
-                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--primary) mb-4">Email Me</h4>
-                                    <a href="mailto:gohuldasov@gmail.com" className="text-2xl font-bold hover:text-(--primary) transition-colors inline-block pb-1 border-b border-gray-900 group">
+                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--primary)] mb-4">Email Me</h4>
+                                    <a href="mailto:gohuldasov@gmail.com" className="text-2xl font-bold hover:text-[var(--primary)] transition-colors inline-block pb-1 border-b border-[var(--glass-border)] group text-[var(--text)]">
                                         gohuldasov@gmail.com
                                     </a>
                                 </div>
                                 <div>
-                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--primary) mb-4">Availability</h4>
+                                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--primary)] mb-4">Availability</h4>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-(--primary) animate-pulse shadow-[0_0_15px_#8b5cf6]"></div>
-                                        <span className="text-2xl font-bold">Open for Work</span>
+                                        <div className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse shadow-[0_0_15px_var(--primary-glow)]"></div>
+                                        <span className="text-2xl font-bold text-[var(--text)]">Open for Work</span>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                                     <a 
                                         key={social} 
                                         href="#" 
-                                        className="text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-white transition-all transform hover:-translate-y-1"
+                                        className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--primary)] transition-all transform hover:-translate-y-1"
                                     >
                                         {social}
                                     </a>
@@ -99,7 +99,7 @@ const Contact = () => {
                         </div>
 
                         <div className="contact-element">
-                            <div className="glass p-12 rounded-[4rem] border border-zinc-900 border-white/5 relative">
+                            <div className="glass p-12 rounded-[4rem] border border-[var(--glass-border)] relative">
                                 <Form
                                     form={form}
                                     layout="vertical"

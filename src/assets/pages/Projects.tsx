@@ -186,9 +186,9 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             </div>
 
             {/* Title below */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 px-2 mt-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 px-2 mt-4">
                 <h3
-                    className="project-title text-5xl md:text-7xl font-bold uppercase leading-none tracking-tight transition-colors duration-300"
+                    className="project-title text-3xl md:text-5xl font-bold uppercase leading-none tracking-tight transition-colors duration-300"
                     style={{
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         color: "var(--text)",
@@ -196,7 +196,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                 >
                     {project.title}
                 </h3>
-                <p className="text-sm font-light max-w-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "16px" }}>
+                <p className="text-xs md:text-sm font-light max-w-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     {project.description}
                 </p>
             </div>
@@ -228,7 +228,8 @@ const Projects = () => {
         });
 
         tl.to(".projects-header", { y: "-120%", opacity: 0, duration: 1, ease: "power3.inOut" })
-          .to(".projects-carousel-wrapper", { y: "-15vh", duration: 1, ease: "power2.inOut" }, "-=0.8")
+          .to(".projects-carousel-wrapper", { y: "-8vh", duration: 1, ease: "power2.inOut" }, "-=0.8")
+          .to(".projects-progress-bar-container", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.8")
           .to(scrollContainer.current, { x: xTranslate, ease: "none", duration: 4 }, "-=0.2")
           .to(".projects-progress-fill", { scaleX: 1, ease: "none", duration: 4 }, "-=4");
 
@@ -253,10 +254,10 @@ const Projects = () => {
         <section id="projects" ref={container} className="relative text-[var(--text)] overflow-hidden min-h-screen"
             style={{ background: "transparent" }}
         >
-            <div className="h-screen flex flex-col justify-start pt-16 pb-32 relative">
+            <div className="h-screen flex flex-col justify-start pt-6 pb-20 md:pt-8 md:pb-24 relative">
                 {/* Header */}
-                <div className="projects-header mb-14 px-8 md:px-24 shrink-0">
-                    <div className="flex items-center gap-4 mb-6">
+                <div className="projects-header mb-6 px-8 md:px-24 shrink-0">
+                    <div className="flex items-center gap-4 mb-4">
                         <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
                         <span
                             className="text-xs font-bold tracking-[0.4em] uppercase"
@@ -266,7 +267,7 @@ const Projects = () => {
                         </span>
                     </div>
                     <h2
-                        className="text-[clamp(3rem,8vw,8rem)] font-bold uppercase leading-[0.82] tracking-tight"
+                        className="text-[clamp(2.5rem,6vw,6rem)] font-bold uppercase leading-[0.85] tracking-tight"
                         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                         Featured <br />
@@ -330,8 +331,11 @@ const Projects = () => {
                 </div>
 
                 {/* Bottom Scroll Progress Bar Indicator */}
-                <div className="projects-progress-bar-container absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-30 pointer-events-none">
-                    <div className="w-48 sm:w-64 md:w-80 h-[3px] rounded-full overflow-hidden relative" style={{ background: "rgba(30, 36, 43, 0.12)", backdropFilter: "blur(4px)" }}>
+                <div
+                    className="projects-progress-bar-container absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 pointer-events-none"
+                    style={{ opacity: 0, transform: "translate(-50%, 15px)" }}
+                >
+                    <div className="w-48 sm:w-64 md:w-80 h-[4px] rounded-full overflow-hidden relative" style={{ background: "rgba(30, 36, 43, 0.12)", backdropFilter: "blur(4px)" }}>
                         <div
                             className="projects-progress-fill h-full rounded-full"
                             style={{

@@ -1,5 +1,4 @@
 import Hero from "./assets/pages/Hero";
-import Navbar from "./assets/pages/Navbar";
 import About from "./assets/pages/About";
 import Projects from "./assets/pages/Projects";
 import Expertise from "./assets/pages/Expertise";
@@ -18,7 +17,6 @@ const App = () => {
       style={{ backgroundColor: "var(--background)" }}
     >
       <CustomCursor />
-      <Navbar />
       <ScrollProgress />
       <Hero />
       <About />

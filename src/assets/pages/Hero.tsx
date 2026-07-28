@@ -1,101 +1,13 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-interface HeroProps {
-    theme: "ice" | "fire";
-}
-
-const Hero = ({ theme }: HeroProps) => {
+const Hero = () => {
     const container = useRef<HTMLDivElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
     const subtitleRef = useRef<HTMLParagraphElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const socialsRef = useRef<HTMLDivElement>(null);
-
-    // ── Particle engine ──
-    const runParticles = useCallback((canvas: HTMLCanvasElement, t: "ice" | "fire") => {
-        const ctx = canvas.getContext("2d")!;
-        let w = canvas.offsetWidth;
-        let h = canvas.offsetHeight;
-        canvas.width = w;
-        canvas.height = h;
-
-        const onResize = () => {
-            w = canvas.offsetWidth;
-            h = canvas.offsetHeight;
-            canvas.width = w;
-            canvas.height = h;
-        };
-        window.addEventListener("resize", onResize);
-
-        type Particle = {
-            x: number; y: number; r: number;
-            speedX: number; speedY: number;
-            opacity: number; life: number; maxLife: number;
-        };
-
-        const particles: Particle[] = [];
-        const count = t === "ice" ? 80 : 60;
-
-        for (let i = 0; i < count; i++) {
-            const maxLife = 120 + Math.random() * 80;
-            particles.push({
-                x: Math.random() * w,
-                y: t === "ice" ? Math.random() * h : h + Math.random() * 20,
-                r: Math.random() * (t === "ice" ? 2 : 1.5) + 0.5,
-                speedX: (Math.random() - 0.5) * (t === "ice" ? 0.4 : 0.5),
-                speedY: t === "ice" ? Math.random() * 0.7 + 0.2 : -(Math.random() * 1.2 + 0.5),
-                opacity: Math.random() * 0.6 + 0.2,
-                life: Math.random() * maxLife,
-                maxLife,
-            });
-        }
-
-        let raf: number;
-        const draw = () => {
-            ctx.clearRect(0, 0, w, h);
-            for (const p of particles) {
-                const fade = t === "fire" ? (1 - p.life / p.maxLife) : 1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = t === "ice"
-                    ? `rgba(2, 132, 199, ${p.opacity * 0.6})`
-                    : `rgba(251, 146, 60, ${p.opacity * fade})`;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = t === "ice" ? "#0ea5e9" : "#f97316";
-                ctx.fill();
-
-                p.x += p.speedX;
-                p.y += p.speedY;
-                p.life++;
-
-                // Reset
-                if (t === "ice" && p.y > h + 5) {
-                    p.y = -5;
-                    p.x = Math.random() * w;
-                } else if (t === "fire" && (p.y < -10 || p.life >= p.maxLife)) {
-                    p.y = h + 10;
-                    p.x = Math.random() * w;
-                    p.life = 0;
-                }
-            }
-            raf = requestAnimationFrame(draw);
-        };
-        draw();
-
-        return () => {
-            cancelAnimationFrame(raf);
-            window.removeEventListener("resize", onResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (!canvasRef.current) return;
-        const cleanup = runParticles(canvasRef.current, theme);
-        return cleanup;
-    }, [theme, runParticles]);
 
     // Entrance animations
     useGSAP(() => {
@@ -142,8 +54,6 @@ const Hero = ({ theme }: HeroProps) => {
         }
     }, { scope: container });
 
-    const isIce = theme === "ice";
-
     return (
         <section
             id="home"
@@ -151,27 +61,16 @@ const Hero = ({ theme }: HeroProps) => {
             className="relative min-h-screen flex flex-col justify-center overflow-hidden"
             style={{ padding: "120px 48px 80px" }}
         >
-            {/* Canvas particles */}
-            <canvas
-                ref={canvasRef}
-                className="particle-canvas"
-                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0 }}
-            />
-
             {/* Glow orbs */}
             <div className="glow-mesh" style={{
                 width: 700, height: 700,
                 top: "-20%", left: "-15%",
-                background: isIce
-                    ? "radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%)"
-                    : "radial-gradient(circle, rgba(251,146,60,0.12) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(56,189,248,0.14) 0%, transparent 70%)",
             }} />
             <div className="glow-mesh" style={{
                 width: 500, height: 500,
                 bottom: "-10%", right: "-10%",
-                background: isIce
-                    ? "radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%)"
-                    : "radial-gradient(circle, rgba(239,68,68,0.08) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(14,165,233,0.1) 0%, transparent 70%)",
                 animationDelay: "4s",
             }} />
 
@@ -179,15 +78,7 @@ const Hero = ({ theme }: HeroProps) => {
             <div className="relative z-10 max-w-7xl mx-auto w-full">
 
                 {/* Eyebrow */}
-                <div className="hero-eyebrow flex items-center gap-4 mb-8">
-                    <div className="w-16 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
-                    <span className="text-xs font-semibold tracking-[0.4em] uppercase" style={{
-                        color: "var(--primary)",
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    }}>
-                        {isIce ? "The North Remembers" : "Fire & Blood"}
-                    </span>
-                </div>
+                
 
                 {/* Title */}
                 <div ref={titleRef} className="overflow-hidden mb-10">

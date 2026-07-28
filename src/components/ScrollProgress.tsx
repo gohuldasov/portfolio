@@ -211,13 +211,13 @@ const ScrollProgress = () => {
                     className="flex flex-col items-center gap-5"
                 >
                     {/* Section counter */}
-                    <span className="text-[10px] font-bold tracking-[0.3em] text-(--primary) tabular-nums">
+                    <span className="text-[10px] font-bold tracking-[0.3em] text-[var(--primary)] tabular-nums">
                         {activeIndex >= 0 ? String(activeIndex + 1).padStart(2, '0') : ''}
-                        <span className="text-white/20"> / {String(sections.length).padStart(2, '0')}</span>
+                        <span className="text-[var(--text-muted)] opacity-40"> / {String(sections.length).padStart(2, '0')}</span>
                     </span>
 
                     {/* Vertical progress track */}
-                    <div className="relative w-[2px] h-16 bg-white/8 rounded-full overflow-hidden">
+                    <div className="relative w-[2px] h-16 bg-[var(--text-muted)]/15 rounded-full overflow-hidden">
                         <div
                             className="scroll-progress-section-fill absolute top-0 left-0 w-full h-full origin-top rounded-full"
                             style={{
@@ -230,7 +230,7 @@ const ScrollProgress = () => {
 
                     {/* Section name */}
                     <span
-                        className="text-[9px] font-bold uppercase tracking-[0.35em] text-white/50"
+                        className="text-[9px] font-bold uppercase tracking-[0.35em] text-[var(--text-muted)]"
                         style={{
                             writingMode: 'vertical-rl',
                             textOrientation: 'mixed',
@@ -247,8 +247,8 @@ const ScrollProgress = () => {
                             key={section.id}
                             className={`rounded-full transition-all duration-500 ${
                                 i === activeIndex
-                                    ? 'w-[6px] h-[6px] bg-(--primary) shadow-[0_0_10px_rgba(139,92,246,0.5)]'
-                                    : 'w-[4px] h-[4px] bg-white/15'
+                                    ? 'w-[6px] h-[6px] bg-[var(--primary)] shadow-[0_0_10px_var(--primary-glow)]'
+                                    : 'w-[4px] h-[4px] bg-[var(--text-muted)]/30'
                             }`}
                         />
                     ))}

@@ -94,19 +94,19 @@ const Awards = () => {
     }, { scope: container });
 
     return (
-        <section id="awards" ref={container} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 text-white bg-(--background)">
+        <section id="awards" ref={container} className="py-32 px-6 md:px-16 lg:px-24 xl:px-40 text-[var(--text)] bg-[var(--background)]">
             {/* Header */}
             <div className="awards-header-content mb-20">
                 <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-px bg-(--primary)" />
-                    <span className="text-(--primary) text-xs font-bold tracking-[0.4em] uppercase">Recognition</span>
+                    <div className="w-12 h-px bg-[var(--primary)]" />
+                    <span className="text-[var(--primary)] text-xs font-bold tracking-[0.4em] uppercase">Recognition</span>
                 </div>
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter uppercase leading-[0.85]">
+                    <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter uppercase leading-[0.85] text-[var(--text)]">
                         Awards &<br />
-                        <span className="text-gray-800 italic">Honors</span>
+                        <span className="text-[var(--text-muted)] italic">Honors</span>
                     </h2>
-                    <p className="text-gray-500 text-base md:text-lg font-light leading-relaxed max-w-md lowercase lg:text-right">
+                    <p className="text-[var(--text-muted)] text-base md:text-lg font-light leading-relaxed max-w-md lowercase lg:text-right">
                         Recognition from industry leaders, design communities, and global competitions for excellence in engineering and creativity.
                     </p>
                 </div>
@@ -117,32 +117,33 @@ const Awards = () => {
                 {awards.map((award, index) => (
                     <div
                         key={index}
-                        className="award-item group relative p-8 rounded-3xl border border-white/8 bg-white/3 hover:bg-white/6 hover:border-(--primary)/40 transition-all duration-500 cursor-default flex flex-col justify-between min-h-60 overflow-hidden"
+                        className="award-item group relative p-8 rounded-3xl border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:border-[var(--primary)] transition-all duration-500 cursor-default flex flex-col justify-between min-h-60 overflow-hidden"
+                        style={{ backdropFilter: "blur(16px)" }}
                     >
                         {/* Background glow on hover */}
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                            style={{ background: 'radial-gradient(ellipse at 0% 0%, rgba(var(--primary-rgb, 255,255,255),0.05), transparent 70%)' }}
+                            style={{ background: 'radial-gradient(ellipse at 0% 0%, var(--primary-glow), transparent 70%)' }}
                         />
 
                         {/* Top row */}
                         <div className="flex items-start justify-between gap-2">
                             <span className="text-2xl">{award.icon}</span>
-                            <span className="text-white/30 font-bold text-xs uppercase tracking-widest">{award.date}</span>
+                            <span className="text-[var(--text-muted)] font-bold text-xs uppercase tracking-widest opacity-70">{award.date}</span>
                         </div>
 
                         {/* Award title */}
                         <div className="flex flex-col gap-3 mt-4">
-                            <h3 className="text-xl font-bold tracking-tight leading-snug group-hover:text-(--primary) transition-colors duration-300">
+                            <h3 className="text-xl font-bold tracking-tight leading-snug text-[var(--text)] group-hover:text-[var(--primary)] transition-colors duration-300">
                                 {award.title}
                             </h3>
-                            <div className="w-8 h-px bg-white/15 group-hover:w-16 group-hover:bg-(--primary) transition-all duration-500" />
+                            <div className="w-8 h-px bg-[var(--glass-border)] group-hover:w-16 group-hover:bg-[var(--primary)] transition-all duration-500" />
                         </div>
 
                         {/* Bottom issuer */}
                         <div className="pt-6 mt-auto">
-                            <p className="text-white/40 font-medium text-[10px] uppercase tracking-[0.25em]">
+                            <p className="text-[var(--text-muted)] font-medium text-[10px] uppercase tracking-[0.25em]">
                                 Issued by{" "}
-                                <span className="text-white/70 not-italic font-bold">{award.issuer}</span>
+                                <span className="text-[var(--text)] not-italic font-bold">{award.issuer}</span>
                             </p>
                         </div>
                     </div>
