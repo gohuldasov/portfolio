@@ -11,97 +11,83 @@ const CustomCursor = () => {
         const ring = ringRef.current;
         if (!dot || !ring) return;
 
-        // Position tracking
-        const mouse = { x: 0, y: 0 };
-        
-        // GSAP QuickTo setters for smooth performance
-        const ringX = gsap.quickTo(ring, "x", { duration: 0.4, ease: "power3.out" });
-        const ringY = gsap.quickTo(ring, "y", { duration: 0.4, ease: "power3.out" });
+        // Position tracking & quickTo setters for instant snappy response
+        const dotX = gsap.quickTo(dot, "x", { duration: 0.05, ease: "power2.out" });
+        const dotY = gsap.quickTo(dot, "y", { duration: 0.05, ease: "power2.out" });
+        const ringX = gsap.quickTo(ring, "x", { duration: 0.16, ease: "power3.out" });
+        const ringY = gsap.quickTo(ring, "y", { duration: 0.16, ease: "power3.out" });
 
         const moveCursor = (e: MouseEvent) => {
             const { clientX, clientY } = e;
-            mouse.x = clientX;
-            mouse.y = clientY;
-
-            // Dot follows instantly
-            gsap.set(dot, { x: clientX, y: clientY });
-
-            // Ring lags behind
+            dotX(clientX);
+            dotY(clientY);
             ringX(clientX);
             ringY(clientY);
         };
 
         const handleMouseLeave = () => {
-            gsap.to([dot, ring], { opacity: 0, duration: 0.3 });
+            gsap.to([dot, ring], { opacity: 0, duration: 0.2 });
         };
 
         const handleMouseEnter = () => {
-            gsap.to([dot, ring], { opacity: 1, duration: 0.3 });
+            gsap.to([dot, ring], { opacity: 1, duration: 0.2 });
         };
 
         window.addEventListener("mousemove", moveCursor);
         document.addEventListener("mouseleave", handleMouseLeave);
         document.addEventListener("mouseenter", handleMouseEnter);
 
-        // Hover handlers helper
-        const addHoverListeners = () => {
-            const clickables = document.querySelectorAll(
-                'a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .exp-row'
-            );
-            
-            clickables.forEach((el) => {
-                // Remove existing to avoid duplicates
-                el.removeEventListener("mouseenter", handleOverClickable);
-                el.removeEventListener("mouseleave", handleOutClickable);
-                
-                el.addEventListener("mouseenter", handleOverClickable);
-                el.addEventListener("mouseleave", handleOutClickable);
-            });
-
-            // Project cards specific hover
-            const projectCards = document.querySelectorAll(".project-card");
-            projectCards.forEach((el) => {
-                el.removeEventListener("mouseenter", handleOverProject);
-                el.removeEventListener("mouseleave", handleOutProject);
-                
-                el.addEventListener("mouseenter", handleOverProject);
-                el.addEventListener("mouseleave", handleOutProject);
-            });
-        };
-
         const handleOverClickable = () => {
             ring.classList.add("hovered");
-            gsap.to(dot, { scale: 0, duration: 0.2 });
+            gsap.to(dot, { scale: 0.4, opacity: 0.6, duration: 0.2 });
         };
 
         const handleOutClickable = () => {
             ring.classList.remove("hovered");
-            gsap.to(dot, { scale: 1, duration: 0.2 });
+            gsap.to(dot, { scale: 1, opacity: 1, duration: 0.2 });
         };
 
         const handleOverProject = () => {
             setCursorText("view");
             ring.classList.add("hovered-project");
-            gsap.to(dot, { scale: 0, duration: 0.2 });
+            gsap.to(dot, { scale: 0, opacity: 0, duration: 0.2 });
         };
 
         const handleOutProject = () => {
             ring.classList.remove("hovered-project");
             setCursorText("");
-            gsap.to(dot, { scale: 1, duration: 0.2 });
+            gsap.to(dot, { scale: 1, opacity: 1, duration: 0.2 });
         };
 
-        // Initialize hover listeners
+        const addHoverListeners = () => {
+            const clickables = document.querySelectorAll(
+                'a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .exp-row, .domain-row, .orbit-item'
+            );
+            
+            clickables.forEach((el) => {
+                el.removeEventListener("mouseenter", handleOverClickable);
+                el.removeEventListener("mouseleave", handleOutClickable);
+                el.addEventListener("mouseenter", handleOverClickable);
+                el.addEventListener("mouseleave", handleOutClickable);
+            });
+
+            const projectCards = document.querySelectorAll(".project-card");
+            projectCards.forEach((el) => {
+                el.removeEventListener("mouseenter", handleOverProject);
+                el.removeEventListener("mouseleave", handleOutProject);
+                el.addEventListener("mouseenter", handleOverProject);
+                el.addEventListener("mouseleave", handleOutProject);
+            });
+        };
+
         addHoverListeners();
 
-        // Create an observer to attach listeners to dynamically loaded or changed content
         const observer = new MutationObserver(() => {
             addHoverListeners();
         });
         
         observer.observe(document.body, { childList: true, subtree: true });
 
-        // Set initial visibility
         gsap.set([dot, ring], { opacity: 1 });
 
         return () => {
@@ -110,9 +96,8 @@ const CustomCursor = () => {
             document.removeEventListener("mouseenter", handleMouseEnter);
             observer.disconnect();
 
-            // Cleanup listeners
             const clickables = document.querySelectorAll(
-                'a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .exp-row'
+                'a, button, select, input, textarea, [role="button"], .cursor-pointer, .expertise-item, .exp-row, .domain-row, .orbit-item'
             );
             clickables.forEach((el) => {
                 el.removeEventListener("mouseenter", handleOverClickable);

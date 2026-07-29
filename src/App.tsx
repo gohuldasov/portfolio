@@ -3,6 +3,7 @@ import About from "./assets/pages/About";
 import Projects from "./assets/pages/Projects";
 import Expertise from "./assets/pages/Expertise";
 import Experience from "./assets/pages/Experience";
+import Education from "./assets/pages/Education";
 import Awards from "./assets/pages/Awards";
 import Testimonials from "./assets/pages/Testimonials";
 import Contact from "./assets/pages/Contact";
@@ -23,6 +24,7 @@ const App = () => {
       <Projects />
       <Expertise />
       <Experience />
+      <Education />
       <Awards />
       <Testimonials />
       <Contact />

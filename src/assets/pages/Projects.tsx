@@ -75,28 +75,28 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
     return (
         <div
             ref={cardRef}
-            className="project-card relative shrink-0 w-[82vw] md:w-[55vw]"
+            className="project-card relative shrink-0 w-[78vw] sm:w-[60vw] md:w-[42vw] lg:w-[38vw] max-w-[560px]"
             style={{ transformStyle: "preserve-3d", cursor: "none" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
             {/* Card face */}
             <div
-                className="relative rounded-[32px] overflow-hidden"
+                className="relative rounded-[28px] overflow-hidden"
                 style={{
-                    aspectRatio: "16/10",
+                    aspectRatio: "16/9.5",
                     background: "var(--glass-bg)",
                     backdropFilter: "blur(24px) saturate(180%)",
                     WebkitBackdropFilter: "blur(24px) saturate(180%)",
                     border: "1px solid var(--glass-border)",
-                    boxShadow: `0 24px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07)`,
+                    boxShadow: `0 20px 60px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.7)`,
                 }}
             >
                 {/* Shimmer overlay */}
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 40%, rgba(255,255,255,0.02) 100%)",
+                        background: "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(255,255,255,0.1) 100%)",
                         zIndex: 1,
                     }}
                 />
@@ -107,18 +107,18 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                     style={{
                         width: "80%",
                         height: "60%",
-                        background: `radial-gradient(ellipse at 50% 100%, ${project.color}18, transparent 70%)`,
+                        background: `radial-gradient(ellipse at 50% 100%, ${project.color}25, transparent 70%)`,
                         filter: "blur(30px)",
                         zIndex: 0,
                     }}
                 />
 
                 {/* Content */}
-                <div className="card-inner relative z-10 w-full h-full flex flex-col justify-between p-10">
+                <div className="card-inner relative z-10 w-full h-full flex flex-col justify-between p-6 md:p-8">
                     {/* Top badges */}
-                    <div className="flex gap-3 flex-wrap">
+                    <div className="flex gap-2.5 flex-wrap">
                         <span
-                            className="px-4 py-1.5 rounded-full text-[9px] font-bold tracking-widest uppercase"
+                            className="px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase"
                             style={{
                                 background: `${project.color}18`,
                                 border: `1px solid ${project.color}35`,
@@ -129,7 +129,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                             {project.id}
                         </span>
                         <span
-                            className="px-4 py-1.5 rounded-full text-[9px] font-bold tracking-widest uppercase"
+                            className="px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase"
                             style={{
                                 background: "rgba(2, 132, 199, 0.06)",
                                 border: "1px solid rgba(2, 132, 199, 0.15)",
@@ -140,12 +140,12 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                             {project.category}
                         </span>
                         <span
-                            className="px-4 py-1.5 rounded-full text-[9px] font-bold tracking-widest uppercase"
+                            className="px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase"
                             style={{
-                                background: "rgba(255,255,255,0.03)",
-                                border: "1px solid rgba(255,255,255,0.06)",
-                                color: "rgba(255,255,255,0.25)",
-                                fontFamily: "Cinzel, serif",
+                                background: "rgba(255,255,255,0.5)",
+                                border: "1px solid var(--glass-border)",
+                                color: "var(--text-muted)",
+                                fontFamily: "'Plus Jakarta Sans', sans-serif",
                             }}
                         >
                             {project.tag}
@@ -153,13 +153,13 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                     </div>
 
                     {/* Center icon */}
-                    <div className="flex-1 flex items-center justify-center">
+                    <div className="flex-1 flex items-center justify-center my-2">
                         <div
-                            className="text-8xl opacity-5 font-black uppercase tracking-tighter select-none"
+                            className="text-6xl md:text-7xl opacity-10 font-black uppercase tracking-tighter select-none"
                             style={{
-                                fontFamily: "Cinzel, serif",
+                                fontFamily: "'Plus Jakarta Sans', sans-serif",
                                 color: project.color,
-                                transform: "translateZ(40px)",
+                                transform: "translateZ(30px)",
                             }}
                         >
                             {project.title}
@@ -168,14 +168,14 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 
                     {/* Bottom CTA */}
                     <div
-                        className="flex items-center gap-3 px-5 py-3 rounded-full w-fit opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="flex items-center gap-2.5 px-4 py-2 rounded-full w-fit opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
                             background: `${project.color}18`,
                             border: `1px solid ${project.color}30`,
                             backdropFilter: "blur(10px)",
                         }}
                     >
-                        <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: project.color, fontFamily: "Cinzel, serif" }}>
+                        <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: project.color, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                             View Case Study
                         </span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke={project.color} className="w-3 h-3">
@@ -186,9 +186,9 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             </div>
 
             {/* Title below */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 px-2 mt-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 px-2 mt-3">
                 <h3
-                    className="project-title text-3xl md:text-5xl font-bold uppercase leading-none tracking-tight transition-colors duration-300"
+                    className="project-title text-2xl md:text-4xl font-bold uppercase leading-none tracking-tight transition-colors duration-300"
                     style={{
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         color: "var(--text)",
@@ -196,7 +196,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                 >
                     {project.title}
                 </h3>
-                <p className="text-xs md:text-sm font-light max-w-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <p className="text-xs font-light max-w-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     {project.description}
                 </p>
             </div>
@@ -228,16 +228,16 @@ const Projects = () => {
         });
 
         tl.to(".projects-header", { y: "-120%", opacity: 0, duration: 1, ease: "power3.inOut" })
-          .to(".projects-carousel-wrapper", { y: "-8vh", duration: 1, ease: "power2.inOut" }, "-=0.8")
+          .to(".projects-carousel-wrapper", { y: "-12vh", duration: 1, ease: "power2.inOut" }, "-=0.8")
           .to(".projects-progress-bar-container", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.8")
           .to(scrollContainer.current, { x: xTranslate, ease: "none", duration: 4 }, "-=0.2")
           .to(".projects-progress-fill", { scaleX: 1, ease: "none", duration: 4 }, "-=4");
 
         gsap.utils.toArray<HTMLElement>(".project-card").forEach((card) => {
             gsap.fromTo(card,
-                { scale: 0.85, opacity: 0, y: 80, rotate: 3 },
+                { scale: 0.88, opacity: 0.3, y: 40 },
                 {
-                    scale: 1, opacity: 1, y: 0, rotate: 0, ease: "power2.out",
+                    scale: 1, opacity: 1, y: 0, ease: "power2.out",
                     scrollTrigger: {
                         trigger: card,
                         containerAnimation: tl,
@@ -254,10 +254,10 @@ const Projects = () => {
         <section id="projects" ref={container} className="relative text-[var(--text)] overflow-hidden min-h-screen"
             style={{ background: "transparent" }}
         >
-            <div className="h-screen flex flex-col justify-start pt-6 pb-20 md:pt-8 md:pb-24 relative">
+            <div className="h-screen flex flex-col justify-between pt-8 pb-20 md:pt-10 md:pb-24 relative">
                 {/* Header */}
-                <div className="projects-header mb-6 px-8 md:px-24 shrink-0">
-                    <div className="flex items-center gap-4 mb-4">
+                <div className="projects-header mb-2 px-8 md:px-24 shrink-0">
+                    <div className="flex items-center gap-4 mb-2">
                         <div className="w-14 h-px" style={{ background: "var(--primary)", boxShadow: "0 0 8px var(--primary-glow)" }} />
                         <span
                             className="text-xs font-bold tracking-[0.4em] uppercase"
@@ -267,7 +267,7 @@ const Projects = () => {
                         </span>
                     </div>
                     <h2
-                        className="text-[clamp(2.5rem,6vw,6rem)] font-bold uppercase leading-[0.85] tracking-tight"
+                        className="text-[clamp(2.2rem,5vw,5rem)] font-bold uppercase leading-[0.88] tracking-tight"
                         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                         Featured <br />
@@ -286,54 +286,19 @@ const Projects = () => {
                     </h2>
                 </div>
 
-                {/* Carousel */}
-                <div className="projects-carousel-wrapper flex-1 flex items-center overflow-visible">
-                    <div ref={scrollContainer} className="flex gap-16 px-8 md:px-24 items-center">
+                {/* Carousel wrapper - fits gracefully in upper section */}
+                <div className="projects-carousel-wrapper flex-1 flex items-start pt-2 overflow-visible">
+                    <div ref={scrollContainer} className="flex gap-10 md:gap-14 px-8 md:px-24 items-start">
                         {projects.map((project, index) => (
                             <ProjectCard key={index} project={project} />
                         ))}
-
-                        {/* End CTA */}
-                        <div className="shrink-0 pl-16 pr-32">
-                            <button
-                                className="group px-12 py-6 rounded-full transition-all duration-500 flex items-center gap-5 cursor-none"
-                                style={{
-                                    border: "1px solid var(--glass-border)",
-                                    background: "var(--glass-bg)",
-                                    backdropFilter: "blur(16px)",
-                                    color: "var(--text-muted)",
-                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                }}
-                                onMouseEnter={e => {
-                                    const el = e.currentTarget;
-                                    el.style.borderColor = "var(--primary)";
-                                    el.style.color = "var(--primary)";
-                                    el.style.boxShadow = "0 0 30px var(--primary-glow)";
-                                }}
-                                onMouseLeave={e => {
-                                    const el = e.currentTarget;
-                                    el.style.borderColor = "var(--glass-border)";
-                                    el.style.color = "var(--text-muted)";
-                                    el.style.boxShadow = "none";
-                                }}
-                            >
-                                <span className="text-xs font-bold uppercase tracking-widest">View All Projects</span>
-                                <div className="w-10 h-10 rounded-full flex items-center justify-center"
-                                    style={{ border: "1px solid var(--glass-border)", background: "rgba(2, 132, 199, 0.05)" }}
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </div>
                     </div>
                 </div>
 
-                {/* Bottom Scroll Progress Bar Indicator */}
+                {/* Scrollbar indicator - moved upwards */}
                 <div
-                    className="projects-progress-bar-container absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 pointer-events-none"
-                    style={{ opacity: 0, transform: "translate(-50%, 15px)" }}
+                    className="projects-progress-bar-container absolute bottom-20 md:bottom-28 left-0 w-full flex flex-col items-center gap-2 z-30 pointer-events-none"
+                    style={{ opacity: 0, y: 15 } as React.CSSProperties}
                 >
                     <div className="w-48 sm:w-64 md:w-80 h-[4px] rounded-full overflow-hidden relative" style={{ background: "rgba(30, 36, 43, 0.12)", backdropFilter: "blur(4px)" }}>
                         <div
