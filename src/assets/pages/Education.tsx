@@ -34,7 +34,7 @@ const educationList = [
 
 const Education = () => {
     const container = useRef<HTMLElement>(null);
-    const [showAll, setShowAll] = useState(false);
+    const [showAll] = useState(false);
 
     const displayedEducation = showAll ? educationList : educationList.slice(0, 4);
 
