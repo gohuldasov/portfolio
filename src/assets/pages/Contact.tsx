@@ -39,8 +39,8 @@ const Contact = () => {
                     colorBorder: 'rgba(186, 230, 253, 0.8)',
                     colorText: '#1e242b',
                     colorTextPlaceholder: '#64748b',
-                    controlHeight: 60,
-                    borderRadius: 24,
+                    controlHeight: 48,
+                    borderRadius: 16,
                 },
                 components: {
                     Input: {
@@ -87,9 +87,9 @@ const Contact = () => {
 
                             <div className="flex items-center gap-8 pt-12">
                                 {['LinkedIn', 'Github', 'Instagram'].map((social) => (
-                                    <a 
-                                        key={social} 
-                                        href="#" 
+                                    <a
+                                        key={social}
+                                        href="#"
                                         className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--primary)] transition-all transform hover:-translate-y-1"
                                     >
                                         {social}
@@ -99,30 +99,30 @@ const Contact = () => {
                         </div>
 
                         <div className="contact-element">
-                            <div className="glass p-12 rounded-[4rem] border border-[var(--glass-border)] relative">
+                            <div className="glass p-8 md:p-10 rounded-3xl border border-[var(--glass-border)] relative">
                                 <Form
                                     form={form}
                                     layout="vertical"
                                     onFinish={onFinish}
-                                    className="space-y-6"
-                                    size="large"
+                                    className="space-y-4"
+                                    size="middle"
                                 >
                                     <Form.Item name="name" className="m-0">
-                                        <Input placeholder="Full Name" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-8 bg-transparent" />
+                                        <Input placeholder="Full Name" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-5 bg-transparent" />
                                     </Form.Item>
 
                                     <Form.Item name="email" className="m-0">
-                                        <Input placeholder="Email Address" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-8 bg-transparent" />
+                                        <Input placeholder="Email Address" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-5 bg-transparent" />
                                     </Form.Item>
 
                                     <Form.Item name="message" className="m-0">
-                                        <Input.TextArea rows={5} placeholder="Your Message" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-8 py-6 bg-transparent" />
+                                        <Input.TextArea rows={4} placeholder="Your Message" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-5 py-3 bg-transparent" />
                                     </Form.Item>
 
-                                    <Form.Item className="mt-8">
+                                    <Form.Item className="mt-6">
                                         <button
                                             type="submit"
-                                            className="w-full h-20 rounded-4xl bg-(--primary) text-white font-bold text-sm uppercase tracking-[0.3em] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-300"
+                                            className="w-full h-14 rounded-2xl bg-(--primary) text-white font-bold text-xs uppercase tracking-[0.3em] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-300 cursor-pointer"
                                         >
                                             Send Message
                                         </button>
