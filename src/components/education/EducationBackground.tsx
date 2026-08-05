@@ -3,7 +3,7 @@ import React from "react";
 export const EducationBackground: React.FC = () => {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-transparent">
-            {/* Ambient Gradient Orbs Matching Portfolio Theme */}
+            {/* Ambient Soft Orbs Matching White and Black Theme */}
             <div
                 className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full blur-[120px] opacity-40 animate-pulse pointer-events-none"
                 style={{
