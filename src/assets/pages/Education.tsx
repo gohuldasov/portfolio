@@ -12,7 +12,6 @@ const Education = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const triggerRef = useRef<HTMLDivElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-    const progressBarRef = useRef<HTMLDivElement>(null);
 
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -66,14 +65,6 @@ const Education = () => {
                                 totalCards - 1
                             );
                             setActiveIndex(currentIndex);
-
-                            if (progressBarRef.current) {
-                                gsap.to(progressBarRef.current, {
-                                    scaleX: progress,
-                                    duration: 0.1,
-                                    ease: "none",
-                                });
-                            }
                         },
                     },
                 });
@@ -163,7 +154,7 @@ const Education = () => {
                 <div ref={triggerRef} className="relative">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-                        {/* LEFT SIDEBAR (Cols 1-4): Pinned Header & Timeline Progress Line */}
+                        {/* LEFT SIDEBAR (Cols 1-4): Pinned Header */}
                         <div className="lg:col-span-4 lg:sticky lg:top-28 flex flex-col justify-between space-y-6 z-20">
                             <div>
                                 {/* Category Badge Header */}
@@ -199,7 +190,7 @@ const Education = () => {
                                         style={{
                                             fontStyle: "italic",
                                             background:
-                                                "linear-gradient(135deg, var(--text-muted) 0%, rgba(2, 132, 199, 0.5) 100%)",
+                                                "linear-gradient(135deg, var(--text-muted) 0%, rgba(0, 0, 0, 0.45) 100%)",
                                             WebkitBackgroundClip: "text",
                                             WebkitTextFillColor: "transparent",
                                             backgroundClip: "text",
@@ -220,69 +211,6 @@ const Education = () => {
                                     Foundational computer science principles paired with modern fullstack cloud engineering practices.
                                 </p>
                             </div>
-
-                            {/* Vertical Timeline Progress Line (Desktop) */}
-                            <div
-                                className="hidden lg:block pt-6"
-                                style={{ borderTop: "1px solid var(--glass-border)" }}
-                            >
-                                <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider mb-3">
-                                    <span style={{ color: "var(--primary)" }}>
-                                        STACK PROGRESS
-                                    </span>
-                                    <span style={{ color: "var(--text-muted)" }}>
-                                        0{activeIndex + 1} / 0{educationData.length}
-                                    </span>
-                                </div>
-
-                                {/* Progress Track Line */}
-                                <div
-                                    className="relative w-full h-1.5 rounded-full overflow-hidden mb-6"
-                                    style={{ background: "rgba(255, 255, 255, 0.4)", border: "1px solid var(--glass-border)" }}
-                                >
-                                    <div
-                                        ref={progressBarRef}
-                                        className="absolute inset-0 origin-left rounded-full"
-                                        style={{
-                                            background: "var(--primary)",
-                                            boxShadow: "0 0 10px var(--primary-glow)",
-                                            transform: "scaleX(0)",
-                                        }}
-                                    />
-                                </div>
-
-                                {/* Step Nav Dots */}
-                                <div className="space-y-3">
-                                    {educationData.map((item, idx) => (
-                                        <div
-                                            key={item.id}
-                                            className={`flex items-center gap-3 text-xs font-bold transition-all duration-300 ${
-                                                idx === activeIndex
-                                                    ? "translate-x-2"
-                                                    : "opacity-60 hover:opacity-100"
-                                            }`}
-                                            style={{
-                                                color: idx === activeIndex ? "var(--primary)" : "var(--text-muted)",
-                                            }}
-                                        >
-                                            <span
-                                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                                                    idx === activeIndex
-                                                        ? "scale-125"
-                                                        : ""
-                                                }`}
-                                                style={{
-                                                    background: idx === activeIndex ? "var(--primary)" : "var(--text-muted)",
-                                                    boxShadow: idx === activeIndex ? "0 0 8px var(--primary-glow)" : "none",
-                                                }}
-                                            />
-                                            <span className="font-mono">{item.number}</span>
-                                            <span className="truncate max-w-[220px]">{item.degree}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
                         </div>
 
                         {/* RIGHT STAGE (Cols 5-12): Shifted Further Right */}

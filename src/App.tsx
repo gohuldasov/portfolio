@@ -10,13 +10,15 @@ import Contact from "./assets/pages/Contact";
 import Footer from "./assets/pages/Footer";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
+import MathBackgroundOverlay from "./components/MathBackgroundOverlay";
 
 const App = () => {
   return (
     <div
-      className="min-h-screen text-[var(--text)] selection:bg-[var(--primary)] selection:text-white"
+      className="relative min-h-screen text-[var(--text)] selection:bg-[var(--primary)] selection:text-white"
       style={{ backgroundColor: "var(--background)" }}
     >
+      <MathBackgroundOverlay />
       <CustomCursor />
       <ScrollProgress />
       <Hero />

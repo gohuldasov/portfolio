@@ -275,7 +275,7 @@ const Projects = () => {
                             style={{
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                                 fontStyle: "italic",
-                                background: "linear-gradient(135deg, var(--text-muted) 0%, rgba(2, 132, 199, 0.4) 100%)",
+                                background: "linear-gradient(135deg, var(--text-muted) 0%, rgba(0, 0, 0, 0.45) 100%)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 backgroundClip: "text",

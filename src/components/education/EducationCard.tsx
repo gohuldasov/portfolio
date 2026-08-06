@@ -100,34 +100,26 @@ export const EducationCard: React.FC<EducationCardProps> = ({
             onMouseLeave={handleMouseLeave}
             style={{
                 transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`,
-                transition: isHovered ? "transform 0.15s ease-out" : "transform 0.5s ease-out, border-color 0.5s ease",
-                background: "var(--background)",
-                borderColor: isHovered || isActive ? "var(--primary)" : "var(--border)",
+                transition: isHovered ? "transform 0.15s ease-out" : "transform 0.5s ease-out",
+                background: "var(--surface)",
+                border: "none",
                 boxShadow: "none",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}
-            className="group relative w-full max-w-[700px] rounded-[24px] p-5 sm:p-6 lg:p-7 overflow-hidden cursor-default transition-all duration-500 border ml-auto mr-0 lg:translate-x-4 shadow-none"
+            className="group relative w-full max-w-[700px] rounded-[24px] p-5 sm:p-6 lg:p-7 overflow-hidden cursor-default transition-all duration-500 border-0 ml-auto mr-0 lg:translate-x-4 shadow-none text-[var(--text)]"
         >
             {/* Mouse Spot Glow Effect */}
             <div
                 className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                 style={{
-                    background: `radial-gradient(500px circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, var(--primary-glow), transparent 50%)`,
+                    background: `radial-gradient(500px circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(0, 0, 0, 0.04), transparent 50%)`,
                 }}
             />
 
             {/* Light Sweep Anim Effect Across Card */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[24px]">
-                <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-sky-400/10 to-transparent -skew-x-12 -translate-x-[150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out" />
+                <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -skew-x-12 -translate-x-[150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out" />
             </div>
-
-            {/* Glowing Top Line */}
-            <div
-                className="absolute top-0 left-6 right-6 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"
-                style={{
-                    background: "linear-gradient(90deg, transparent, var(--primary), transparent)",
-                }}
-            />
 
             {/* Main Content Layout (Desktop: 2 columns, Mobile: 1 column) */}
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
@@ -135,7 +127,7 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                 {/* LEFT SIDE (Cols 1-5): Degree Meta, Institution, CGPA Counter */}
                 <div
                     className="lg:col-span-5 flex flex-col justify-between border-b lg:border-b-0 lg:border-r pb-4 lg:pb-0 lg:pr-6"
-                    style={{ borderColor: "var(--glass-border)" }}
+                    style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
                 >
                     <div>
                         {/* Top Meta Badges: Index, Type & Period */}
@@ -143,11 +135,11 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                             <div className="flex items-center gap-2">
                                 {/* Number Badge */}
                                 <span
-                                    className="font-bold text-[11px] px-2.5 py-0.5 rounded-md tracking-wider flex items-center justify-center select-none"
+                                    className="font-mono text-[11px] font-bold px-2.5 py-0.5 rounded-md tracking-wider flex items-center justify-center select-none"
                                     style={{
-                                        background: "rgba(2, 132, 199, 0.12)",
-                                        border: "1px solid rgba(2, 132, 199, 0.3)",
-                                        color: "var(--primary)",
+                                        background: "rgba(0, 0, 0, 0.06)",
+                                        border: "none",
+                                        color: "var(--text)",
                                     }}
                                 >
                                     {data.number} / 0{totalCards}
@@ -156,8 +148,8 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                                 <span
                                     className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full flex items-center gap-1"
                                     style={{
-                                        background: "rgba(2, 132, 199, 0.06)",
-                                        border: "1px solid var(--glass-border)",
+                                        background: "rgba(0, 0, 0, 0.04)",
+                                        border: "none",
                                         color: "var(--text-muted)",
                                     }}
                                 >
@@ -168,11 +160,11 @@ export const EducationCard: React.FC<EducationCardProps> = ({
 
                             {/* Period Badge */}
                             <span
-                                className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full"
+                                className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full"
                                 style={{
-                                    background: "rgba(2, 132, 199, 0.1)",
-                                    border: "1px solid rgba(2, 132, 199, 0.25)",
-                                    color: "var(--primary)",
+                                    background: "rgba(0, 0, 0, 0.05)",
+                                    border: "none",
+                                    color: "var(--text)",
                                 }}
                             >
                                 {data.period}
@@ -200,7 +192,7 @@ export const EducationCard: React.FC<EducationCardProps> = ({
 
                         {/* Degree Title */}
                         <h3
-                            className="text-xl sm:text-2xl font-bold leading-snug tracking-tight mb-4 transition-colors duration-300 group-hover:text-[var(--primary)]"
+                            className="text-xl sm:text-2xl font-bold leading-snug tracking-tight mb-4 transition-colors duration-300"
                             style={{ color: "var(--text)" }}
                         >
                             {data.degree}
@@ -211,20 +203,20 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                     <div
                         className="p-3 rounded-xl flex items-center justify-between gap-3 transition-colors duration-300"
                         style={{
-                            background: "rgba(2, 132, 199, 0.06)",
-                            border: "1px solid rgba(2, 132, 199, 0.2)",
+                            background: "rgba(0, 0, 0, 0.04)",
+                            border: "none",
                         }}
                     >
                         <div>
                             <span
-                                className="block text-[9px] font-bold uppercase tracking-widest mb-0.5"
+                                className="block text-[9px] font-mono uppercase tracking-widest mb-0.5"
                                 style={{ color: "var(--text-muted)" }}
                             >
                                 Performance Index
                             </span>
                             <div
                                 className="text-xl sm:text-2xl font-extrabold tracking-tight flex items-baseline gap-1"
-                                style={{ color: "var(--primary)" }}
+                                style={{ color: "var(--text)" }}
                             >
                                 <EducationCounter
                                     target={data.gradeVal}
@@ -236,11 +228,11 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                             </div>
                         </div>
                         <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[11px]"
+                            className="w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[11px]"
                             style={{
-                                background: "rgba(2, 132, 199, 0.12)",
-                                border: "1px solid rgba(2, 132, 199, 0.3)",
-                                color: "var(--primary)",
+                                background: "rgba(0, 0, 0, 0.06)",
+                                border: "none",
+                                color: "var(--text)",
                             }}
                         >
                             {data.gradeVal >= 90 || data.gradeVal <= 10 ? "A+" : "DIST"}
@@ -271,11 +263,11 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                                 {data.coursework.map((course) => (
                                     <span
                                         key={course}
-                                        className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300"
+                                        className="px-2.5 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider transition-all duration-300"
                                         style={{
-                                            background: "rgba(2, 132, 199, 0.06)",
-                                            border: "1px solid var(--glass-border)",
-                                            color: "var(--text-muted)",
+                                            background: "rgba(0, 0, 0, 0.04)",
+                                            border: "none",
+                                            color: "var(--text)",
                                         }}
                                     >
                                         {course}
@@ -296,17 +288,16 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                                 {data.technologies.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300"
+                                        className="px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5"
                                         style={{
-                                            background: "rgba(2, 132, 199, 0.08)",
-                                            border: "1px solid rgba(2, 132, 199, 0.2)",
-                                            color: "var(--primary)",
+                                            background: "rgba(0, 0, 0, 0.06)",
+                                            border: "none",
+                                            color: "var(--text)",
                                         }}
                                     >
                                         <span
                                             className="w-1.5 h-1.5 rounded-full"
                                             style={{ background: "var(--primary)" }}
-                                            aria-hidden="true"
                                         />
                                         {tech}
                                     </span>
@@ -329,13 +320,13 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                                             key={i}
                                             className="group/achieve p-2 rounded-lg flex items-center gap-2 transition-all duration-300"
                                             style={{
-                                                background: "rgba(2, 132, 199, 0.06)",
-                                                border: "1px solid rgba(2, 132, 199, 0.15)",
+                                                background: "rgba(0, 0, 0, 0.03)",
+                                                border: "none",
                                             }}
                                         >
                                             <TrophyIcon />
                                             <span
-                                                className="text-[11px] font-semibold truncate"
+                                                className="text-[11px] font-medium truncate"
                                                 style={{ color: "var(--text)" }}
                                             >
                                                 {item}
@@ -350,26 +341,26 @@ export const EducationCard: React.FC<EducationCardProps> = ({
                     {/* Stats Metric Chips Footer */}
                     <div
                         className="pt-3 grid grid-cols-3 gap-2 text-center"
-                        style={{ borderTop: "1px solid var(--glass-border)" }}
+                        style={{ borderTop: "1px solid rgba(0, 0, 0, 0.08)" }}
                     >
                         {data.stats.map((stat, sIdx) => (
                             <div
                                 key={sIdx}
                                 className="p-1.5 rounded-lg"
                                 style={{
-                                    background: "rgba(2, 132, 199, 0.04)",
-                                    border: "1px solid var(--glass-border)",
+                                    background: "rgba(0, 0, 0, 0.03)",
+                                    border: "none",
                                 }}
                             >
                                 <span
-                                    className="block text-[9px] font-bold uppercase tracking-widest"
+                                    className="block text-[9px] font-mono uppercase"
                                     style={{ color: "var(--text-muted)" }}
                                 >
                                     {stat.label}
                                 </span>
                                 <span
-                                    className="text-xs font-bold"
-                                    style={{ color: "var(--primary)" }}
+                                    className="text-xs font-bold font-mono"
+                                    style={{ color: "var(--text)" }}
                                 >
                                     {stat.value}
                                 </span>

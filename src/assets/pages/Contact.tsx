@@ -34,18 +34,18 @@ const Contact = () => {
             theme={{
                 algorithm: theme.defaultAlgorithm,
                 token: {
-                    colorPrimary: '#0284c7',
-                    colorBgContainer: 'rgba(255, 255, 255, 0.7)',
-                    colorBorder: 'rgba(186, 230, 253, 0.8)',
-                    colorText: '#1e242b',
-                    colorTextPlaceholder: '#64748b',
+                    colorPrimary: '#000000',
+                    colorBgContainer: 'rgba(255, 255, 255, 0.85)',
+                    colorBorder: 'rgba(212, 212, 216, 0.85)',
+                    colorText: '#09090b',
+                    colorTextPlaceholder: '#71717a',
                     controlHeight: 48,
                     borderRadius: 16,
                 },
                 components: {
                     Input: {
-                        activeBorderColor: '#0284c7',
-                        hoverBorderColor: '#0284c7',
+                        activeBorderColor: '#000000',
+                        hoverBorderColor: '#000000',
                     }
                 }
             }}
