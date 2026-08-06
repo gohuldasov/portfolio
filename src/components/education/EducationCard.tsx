@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import type { EducationItemData } from "./educationData";
 import { EducationCounter } from "./EducationCounter";
 
@@ -12,7 +12,7 @@ interface EducationCardProps {
 const DegreeTypeIcon: React.FC<{ type: string }> = ({ type }) => {
     if (type === "Degree") {
         return (
-            <svg className="w-4 h-4 text-[var(--primary)] group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-4 h-4 text-[var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                 <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
             </svg>
@@ -20,7 +20,7 @@ const DegreeTypeIcon: React.FC<{ type: string }> = ({ type }) => {
     }
     if (type === "Specialization") {
         return (
-            <svg className="w-4 h-4 text-[var(--primary)] group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-4 h-4 text-[var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
                 <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
                 <path d="M7 21h10" />
@@ -31,14 +31,14 @@ const DegreeTypeIcon: React.FC<{ type: string }> = ({ type }) => {
     }
     if (type === "Certification") {
         return (
-            <svg className="w-4 h-4 text-[var(--primary)] group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-4 h-4 text-[var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="8" r="6" />
                 <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
             </svg>
         );
     }
     return (
-        <svg className="w-4 h-4 text-[var(--primary)] group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-4 h-4 text-[var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
             <path d="M12 6v6" />
             <path d="M9 9h6" />
@@ -54,7 +54,7 @@ const MapPinIcon: React.FC = () => (
 );
 
 const TrophyIcon: React.FC = () => (
-    <svg className="w-3.5 h-3.5 text-[var(--primary)] shrink-0 group-hover/achieve:scale-110 group-hover/achieve:rotate-6 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="w-3.5 h-3.5 text-[var(--primary)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
         <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
         <path d="M4 22h16" />
@@ -70,57 +70,16 @@ export const EducationCard: React.FC<EducationCardProps> = ({
     totalCards,
     isActive,
 }) => {
-    const cardRef = useRef<HTMLDivElement>(null);
-    const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
-    const [isHovered, setIsHovered] = useState(false);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        setMousePos({ x, y });
-    };
-
-    const handleMouseEnter = () => setIsHovered(true);
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-        setMousePos({ x: 0.5, y: 0.5 });
-    };
-
-    // Calculate subtle 3D Tilt
-    const tiltX = isHovered ? (mousePos.y - 0.5) * -5 : 0;
-    const tiltY = isHovered ? (mousePos.x - 0.5) * 5 : 0;
-
     return (
         <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             style={{
-                transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`,
-                transition: isHovered ? "transform 0.15s ease-out" : "transform 0.5s ease-out",
                 background: "var(--surface)",
                 border: "none",
                 boxShadow: "none",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}
-            className="group relative w-full max-w-[700px] rounded-[24px] p-5 sm:p-6 lg:p-7 overflow-hidden cursor-default transition-all duration-500 border-0 ml-auto mr-0 lg:translate-x-4 shadow-none text-[var(--text)]"
+            className="relative w-full max-w-[700px] rounded-[24px] p-5 sm:p-6 lg:p-7 overflow-hidden cursor-default border-0 ml-auto mr-0 lg:translate-x-4 shadow-none text-[var(--text)]"
         >
-            {/* Mouse Spot Glow Effect */}
-            <div
-                className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                style={{
-                    background: `radial-gradient(500px circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(0, 0, 0, 0.04), transparent 50%)`,
-                }}
-            />
-
-            {/* Light Sweep Anim Effect Across Card */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[24px]">
-                <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -skew-x-12 -translate-x-[150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out" />
-            </div>
-
             {/* Main Content Layout (Desktop: 2 columns, Mobile: 1 column) */}
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
 

@@ -237,7 +237,7 @@ body::after {
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 100000 !important;
     transform: translate(-50%, -50%);
     transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
 }
@@ -249,7 +249,7 @@ body::after {
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 9998;
+    z-index: 99999 !important;
     transform: translate(-50%, -50%);
     border: 1.5px solid rgba(0, 0, 0, 0.45);
     border-radius: 50%;
@@ -473,3 +473,41 @@ hr {
 .z-overlay { z-index: 100; }
 .z-modal { z-index: 1000; }
 .z-cursor { z-index: 9999; }
+
+/* ── Modal Animations ── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modalScale {
+    animation: modalScaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Custom Modal Scrollbar ── */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}

@@ -100,8 +100,8 @@ const About = () => {
                         {/* Stats */}
                         <div className="grid grid-cols-3 gap-6 mt-10">
                             {[
-                                { value: 15, label: "Projects" },
-                                { value: 2, label: "Years Exp." },
+                                { value: 5, label: "Projects" },
+                                { value: 1, label: "Years Exp." },
                                 { value: 8, label: "Clients" },
                             ].map(({ value, label }) => (
                                 <div key={label} className="relative p-5 rounded-2xl text-center"

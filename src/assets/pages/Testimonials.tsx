@@ -12,7 +12,7 @@ const Testimonials = () => {
             name: "Samiksha Pawar",
             role: "Software Engineer @Conexao",
             image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
-            text: "Devraj is a very artistic person. His ability to blend aesthetics with engineering is truly rare. An amazing collaborator for any digital product."
+            text: "Gohul is a very artistic person. His ability to blend aesthetics with engineering is truly rare. An amazing collaborator for any digital product."
         },
         {
             name: "John Doe",

@@ -74,13 +74,11 @@ const Education = () => {
                     const currentCard = cards[i];
                     const nextCard = cards[i + 1];
 
-                    // 1. Fade out previous card so it does not show under next card
+                    // 1. Fade out previous card cleanly
                     tl.to(
                         currentCard,
                         {
-                            scale: 0.95,
                             opacity: 0,
-                            filter: "blur(6px)",
                             ease: "power1.inOut",
                             duration: 1,
                         },

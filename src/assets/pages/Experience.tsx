@@ -10,11 +10,11 @@ const allExperiences = [
         number: "01",
         role: "Fullstack Developer",
         company: "Cloudhouse Technology",
-        location: "Kochi, Kerala",
+        location: "Thrissur, Kerala",
         period: "2025 — 2026",
         type: "Full-Time",
-        description: "Leading frontend initiatives and building enterprise-grade insurance software solutions with React and TypeScript.",
-        tech: ["React", "TypeScript", "Node.js", "Tailwind", "REST APIs"],
+        description: "Worked as a Full Stack Developer with a primary focus on frontend development, building responsive enterprise SaaS applications using React, TypeScript, Tailwind CSS, Redux Toolkit, and REST APIs while collaborating with cross-functional teams.",
+        tech: ["React", "TypeScript", "Redux Toolkit", "Tailwind CSS", "REST APIs","GO Lang","Echo","Hero UI", "Agile Methodologies"],
         achievements: ["Lead Frontend Developer", "Enterprise Scale Architecture"]
     },
     {
@@ -24,8 +24,8 @@ const allExperiences = [
         location: "Kochi, Kerala",
         period: "2024 — 2025",
         type: "Internship",
-        description: "Empowering developers through high-quality educational content, design systems, and open-source contributions.",
-        tech: ["Next.js", "MongoDB", "Tailwind", "Node.js", "Express"],
+        description: " Worked as a Full Stack Developer Intern, building and maintaining dynamic web applications using Python, Django, MySQL, JavaScript, HTML, and CSS while collaborating in an Agile software development environment.",
+        tech: ["Python", "Django", "HTML", "CSS", "Bootstrap","JAVASCRIPT","React","DRF","MYSQL","SQLITE","REST API","GIT","GITHUB"],
         achievements: ["Best Intern Award", "Design System Lead"]
     },
 ];
@@ -140,15 +140,18 @@ const Experience = () => {
                     </div>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                         <h2
-                            className="text-[clamp(2.5rem,6vw,7rem)] font-bold uppercase leading-[0.88] tracking-tight"
-                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                            className="text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.88] tracking-tight"
+                            style={{
+                                color: "var(--text)",
+                                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                            }}
                         >
-                            Experience<br />
+                            Experience &<br />
                             <span
                                 style={{
                                     fontStyle: "italic",
                                     background:
-                                        "linear-gradient(135deg, var(--text-muted) 0%, rgba(2, 132, 199, 0.4) 100%)",
+                                        "linear-gradient(135deg, var(--text-muted) 0%, rgba(0, 0, 0, 0.45) 100%)",
                                     WebkitBackgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
                                     backgroundClip: "text",
