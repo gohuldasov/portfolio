@@ -7,53 +7,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 const awardsList = [
     {
-        title: "Star Performer of the Year",
+        title: "Python Web Development Certification",
+        period: "2025",
+        issuer: "National Council for Technology and Training (NCTT)",
+        category: "Professional Certification",
+        description:
+            "Successfully completed a Python Web Development certification program covering backend development with Django, database management, and REST API development.",
+        tags: ["Python", "Django", "MySQL", "REST APIs"],
+    },
+    {
+        title: "1st Prize – Computer Designing Competition",
         period: "2024",
-        issuer: "Cloudhouse Technology",
-        category: "Engineering Excellence",
-        description: "Awarded for leadership in architecting enterprise applications, optimizing performance, and driving team innovation.",
-        tags: ["Performance", "Architecture", "Leadership"],
+        issuer: "Kannur University",
+        category: "Academic Achievement",
+        description:
+            "Secured 1st Prize in the Computer Designing Competition conducted by Kannur University for creativity, design quality, and technical execution.",
+        tags: ["Graphic Design", "Creativity", "Digital Design"],
     },
     {
-        title: "Best Beginner Hack Winner",
-        period: "2024",
-        issuer: "MLH Global Hackathon",
-        category: "Hackathon",
-        description: "Built an AI-powered accessibility solution for visually impaired users in under 36 hours.",
-        tags: ["AI", "React", "Accessibility"],
+        title: "B Grade – Multimedia Presentation",
+        period: "2017",
+        issuer: "Department of General Education, Government of Kerala",
+        category: "Competition",
+        description:
+            "Awarded B Grade in the State Level IT Fair for creating and presenting an effective multimedia presentation showcasing communication and presentation skills.",
+        tags: ["PowerPoint", "Presentation", "Communication"],
     },
-    {
-        title: "NASA Space Apps Finalist",
-        period: "2023",
-        issuer: "NASA Space Apps Challenge",
-        category: "Global Competition",
-        description: "Developed interactive satellite data visualizers for tracking real-time atmospheric changes.",
-        tags: ["Data Viz", "TypeScript", "Space Apps"],
-    },
-    {
-        title: "Open Source Contributor Award",
-        period: "2023",
-        issuer: "GitHub Stars Program",
-        category: "Open Source",
-        description: "Recognized for high-impact contributions to developer tooling and community UI libraries.",
-        tags: ["Open Source", "Tooling", "Community"],
-    },
-    {
-        title: "Innovative UI Design Winner",
-        period: "2023",
-        issuer: "Dribbble Design Collective",
-        category: "UI/UX Design",
-        description: "Honored for creating state-of-the-art glassmorphism design systems and fluid micro-animations.",
-        tags: ["Design System", "Motion", "Figma"],
-    },
-    {
-        title: "Excellence in Web Engineering",
-        period: "2022",
-        issuer: "Dev.to Technical Writing",
-        category: "Technical Writing",
-        description: "Top author award for published articles on React performance optimization and modern state management.",
-        tags: ["Technical Writing", "React", "Web Perf"],
-    }
 ];
 
 const Awards = () => {

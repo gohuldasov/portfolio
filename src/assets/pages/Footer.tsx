@@ -25,10 +25,7 @@ const Footer = () => {
                         ))}
                     </div>
                     
-                    <div className="flex items-center gap-4 text-[var(--text-muted)] opacity-70 text-[8px] uppercase tracking-[0.3em] font-bold">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse shadow-[0_0_8px_var(--primary-glow)]"></div>
-                        <span>Status: Online</span>
-                    </div>
+                    
                 </div>
             </div>
         </footer>
