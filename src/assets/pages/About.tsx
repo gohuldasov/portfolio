@@ -102,7 +102,7 @@ const About = () => {
                             {[
                                 { value: 5, label: "Projects" },
                                 { value: 1, label: "Years Exp." },
-                                { value: 8, label: "Clients" },
+                                { value: 10, label: "Technologies" },
                             ].map(({ value, label }) => (
                                 <div key={label} className="relative p-5 rounded-2xl text-center"
                                     style={{
