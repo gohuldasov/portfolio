@@ -7,6 +7,21 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
+
+    const socialLinks = [
+        {
+            name: "LinkedIn",
+            url: "https://www.linkedin.com/in/gohuldasov/",
+        },
+        {
+            name: "Github",
+            url: "https://github.com/gohuldasov",
+        },
+        {
+            name: "Instagram",
+            url: "https://www.instagram.com/go__hu_l__/",
+        },
+    ];
     const [form] = Form.useForm();
     const sectionRef = useRef<HTMLElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -26,7 +41,20 @@ const Contact = () => {
     }, { scope: sectionRef });
 
     const onFinish = (values: any) => {
-        console.log('Success:', values);
+        const { name, email, message } = values;
+
+        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+
+        const body = encodeURIComponent(
+            `Name: ${name}
+
+            Email: ${email}
+
+            Message:
+            ${message}`
+        );
+
+        window.location.href = `mailto:[EMAIL_ADDRESS]?subject=${subject}&body=${body}`;
     };
 
     return (
@@ -86,15 +114,19 @@ const Contact = () => {
                             </div>
 
                             <div className="flex items-center gap-8 pt-12">
-                                {['LinkedIn', 'Github', 'Instagram'].map((social) => (
-                                    <a
-                                        key={social}
-                                        href="#"
-                                        className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--primary)] transition-all transform hover:-translate-y-1"
-                                    >
-                                        {social}
-                                    </a>
-                                ))}
+                                <div className="flex items-center gap-8 pt-12">
+                                    {socialLinks.map((social) => (
+                                        <a
+                                            key={social.name}
+                                            href={social.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--primary)] transition-all transform hover:-translate-y-1"
+                                        >
+                                            {social.name}
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
@@ -107,16 +139,44 @@ const Contact = () => {
                                     className="space-y-4"
                                     size="middle"
                                 >
-                                    <Form.Item name="name" className="m-0">
-                                        <Input placeholder="Full Name" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-5 bg-transparent" />
+                                    <Form.Item
+                                        name="name"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please enter your name",
+                                            },
+                                        ]}
+                                    >
+                                        <Input placeholder="Full Name" />
                                     </Form.Item>
 
-                                    <Form.Item name="email" className="m-0">
-                                        <Input placeholder="Email Address" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-5 bg-transparent" />
+                                    <Form.Item
+                                        name="email"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please enter your email",
+                                            },
+                                            {
+                                                type: "email",
+                                                message: "Please enter a valid email",
+                                            },
+                                        ]}
+                                    >
+                                        <Input placeholder="Email Address" />
                                     </Form.Item>
 
-                                    <Form.Item name="message" className="m-0">
-                                        <Input.TextArea rows={4} placeholder="Your Message" className="glass border-white/5! hover:border-(--primary)/50! focus:border-(--primary)! transition-all px-5 py-3 bg-transparent" />
+                                    <Form.Item
+                                        name="message"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: "Please enter your message",
+                                            },
+                                        ]}
+                                    >
+                                        <Input.TextArea rows={4} placeholder="Your Message" />
                                     </Form.Item>
 
                                     <Form.Item className="mt-6">

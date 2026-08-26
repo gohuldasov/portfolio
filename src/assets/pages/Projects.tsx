@@ -112,115 +112,153 @@ export interface ProjectItem {
 const projects: ProjectItem[] = [
     {
         id: "01",
-        title: "Pitute",
-        category: "Mobile Design",
-        tag: "iOS · Android",
+        title: "K-SMART",
+        category: "E-Governance App",
+        tag: "Python · Django · React",
         color: "#38bdf8",
-        description: "A premium video sharing platform for creatives — built with React Native and Appwrite.",
-        longDescription: "Aora is a next-generation mobile application built for video content creators and enthusiasts. It incorporates smooth 60fps video feeds, creator monetization analytics, instant search indexing powered by Appwrite, and custom gesture animations built with React Native Reanimated.",
+        description: "Government service management platform streamlining citizen requests and service workflows.",
+        longDescription: "K-SMART is a comprehensive e-governance service management system designed to streamline municipal service deliveries, certificate issuance, and citizen applications. Built with Python (Django) on the backend and React with Tailwind CSS on the frontend, utilizing MySQL and AWS S3 for secure file storage.",
         features: [
-            "Smooth 60fps Video Carousel Feed",
-            "Appwrite Backend Auth & Database Integration",
-            "Creator Analytics & Earnings Dashboard",
-            "Biometric Authentication & Dark Mode UI"
+            "Modular Citizen Application Processing Pipeline",
+            "Secure RESTful APIs with Django REST Framework",
+            "AWS S3 Document Vault & Cloud Storage Integration",
+            "Responsive React & Tailwind CSS Dashboard Interface"
         ],
-        technologies: ["React Native", "Expo", "Appwrite", "Tailwind CSS", "Zustand"],
+        technologies: ["Python", "Django", "React", "Tailwind CSS", "MySQL", "AWS S3", "REST APIs"],
         images: [
             {
-                title: "Creator Home Feed",
-                subtitle: "Curated high-bitrate video discovery feed with seamless scrolling.",
-                url: createProjectMockupSvg("Aora", "#38bdf8", 1, "Creator Home Feed", "Curated high-bitrate video discovery feed with seamless scrolling.")
+                title: "Service Portal Overview",
+                subtitle: "Centralized citizen service catalog and application tracking portal.",
+                url: createProjectMockupSvg("K-SMART", "#38bdf8", 1, "Service Portal Overview", "Centralized citizen service catalog and application tracking portal.")
             },
             {
-                title: "Analytics Dashboard",
-                subtitle: "Real-time viewer engagement, metrics, and subscriber growth graphs.",
-                url: createProjectMockupSvg("Aora", "#38bdf8", 2, "Analytics Dashboard", "Real-time viewer engagement, metrics, and subscriber growth graphs.")
+                title: "Application Workflow Engine",
+                subtitle: "Real-time verification stages and automated approval routing.",
+                url: createProjectMockupSvg("K-SMART", "#38bdf8", 2, "Application Workflow Engine", "Real-time verification stages and automated approval routing.")
             },
             {
-                title: "Video Studio & Upload",
-                subtitle: "Instant video processing pipeline with automated thumbnail generation.",
-                url: createProjectMockupSvg("Aora", "#38bdf8", 3, "Video Studio & Upload", "Instant video processing pipeline with automated thumbnail generation.")
+                title: "Document Vault & AWS Storage",
+                subtitle: "Encrypted citizen document uploads and secure AWS S3 bucket storage.",
+                url: createProjectMockupSvg("K-SMART", "#38bdf8", 3, "Document Vault & AWS Storage", "Encrypted citizen document uploads and secure AWS S3 bucket storage.")
             },
             {
-                title: "User Profile & Library",
-                subtitle: "Personalized creator profile with saved collections and playlists.",
-                url: createProjectMockupSvg("Aora", "#38bdf8", 4, "User Profile & Library", "Personalized creator profile with saved collections and playlists.")
+                title: "Administrative Analytics",
+                subtitle: "Municipal department performance metrics and response telemetry.",
+                url: createProjectMockupSvg("K-SMART", "#38bdf8", 4, "Administrative Analytics", "Municipal department performance metrics and response telemetry.")
             }
         ]
     },
     {
         id: "02",
-        title: "FeedForge",
-        category: "System Design",
-        tag: "TypeScript · Node.js",
+        title: "PEOPLE'S VOICE",
+        category: "Public Safety",
+        tag: "Django · REST API · MySQL",
         color: "#fb923c",
-        description: "Optimized algorithm visualization and distributed systems testing framework.",
-        longDescription: "FeedForge is a high-throughput distributed systems framework designed for microservice benchmarking and algorithm execution profiling. It provides real-time flamegraph visualizations, automated fault injection testing, and sub-millisecond execution logs.",
+        description: "Crime reporting and public safety monitoring platform with real-time issue tracking.",
+        longDescription: "People's Voice is a public safety platform enabling citizens to report local incidents, file formal grievances, and track resolution status transparently. Features robust Django authentication, MySQL relational data structuring, and instant notification alerts.",
         features: [
-            "Interactive Flamegraph Code Profiler",
-            "Distributed Node Fault Injection Engine",
-            "Sub-Millisecond Event Latency Analyzer",
-            "Automated Microservice Load Generator"
+            "Anonymous Incident Reporting & Evidence Uploads",
+            "Authority Resolution Workflow & Status Tracking",
+            "Optimized MySQL Relational Database Schema",
+            "Role-Based Access Control for Officers & Public"
         ],
-        technologies: ["TypeScript", "Node.js", "WebSockets", "Docker", "D3.js", "Redis"],
+        technologies: ["Python", "Django", "JavaScript", "HTML5", "CSS3", "MySQL", "REST APIs"],
         images: [
             {
-                title: "Cluster Topology Map",
-                subtitle: "Visual node health and distributed workload status map.",
-                url: createProjectMockupSvg("FizzBuzz", "#fb923c", 1, "Cluster Topology Map", "Visual node health and distributed workload status map.")
+                title: "Public Incident Map",
+                subtitle: "Interactive spatial map of reported community safety alerts.",
+                url: createProjectMockupSvg("PeoplesVoice", "#fb923c", 1, "Public Incident Map", "Interactive spatial map of reported community safety alerts.")
             },
             {
-                title: "System Flamegraph",
-                subtitle: "Sub-millisecond CPU call stack and memory allocation profiler.",
-                url: createProjectMockupSvg("FizzBuzz", "#fb923c", 2, "System Flamegraph", "Sub-millisecond CPU call stack and memory allocation profiler.")
+                title: "Grievance Dispatch System",
+                subtitle: "Automated routing of public reports to assigned municipal departments.",
+                url: createProjectMockupSvg("PeoplesVoice", "#fb923c", 2, "Grievance Dispatch System", "Automated routing of public reports to assigned municipal departments.")
             },
             {
-                title: "Load Test Matrix",
-                subtitle: "Real-time fault injection simulation and latency telemetry.",
-                url: createProjectMockupSvg("FizzBuzz", "#fb923c", 3, "Load Test Matrix", "Real-time fault injection simulation and latency telemetry.")
+                title: "Evidence & Media Vault",
+                subtitle: "Secure file validation and verification system for submitted media.",
+                url: createProjectMockupSvg("PeoplesVoice", "#fb923c", 3, "Evidence & Media Vault", "Secure file validation and verification system for submitted media.")
             },
             {
-                title: "API Inspector Log",
-                subtitle: "Granular packet trace viewer with instant search filters.",
-                url: createProjectMockupSvg("FizzBuzz", "#fb923c", 4, "API Inspector Log", "Granular packet trace viewer with instant search filters.")
+                title: "Resolution Metrics",
+                subtitle: "Real-time officer response metrics and department SLA dashboards.",
+                url: createProjectMockupSvg("PeoplesVoice", "#fb923c", 4, "Resolution Metrics", "Real-time officer response metrics and department SLA dashboards.")
             }
         ]
     },
     {
         id: "03",
-        title: "K-SMART",
-        category: "E-commerce",
-        tag: "Next.js · Postgres",
-        color: "#a78bfa",
-        description: "Next-gen shopping experience with AI personalization and real-time analytics.",
-        longDescription: "Luma is a futuristic e-commerce platform engineered for extreme performance and ultra-smooth user experience. Built with Next.js App Router and PostgreSQL, it features AI-powered product recommendations, interactive 3D product previews, and instant checkout flows.",
+        title: "RED DROP",
+        category: "Healthcare",
+        tag: "Python · SQLite · Web UI",
+        color: "#f43f5e",
+        description: "Real-time blood bank management system matching urgent donor requests with active supplies.",
+        longDescription: "Red Drop is a real-time blood bank management web application engineered to solve critical supply shortages during emergencies. It matches blood requests with nearby registered donors, manages inventory batches, and optimizes donor dispatch workflows.",
         features: [
-            "Sub-100ms Page Transitions with Next.js",
-            "Interactive 3D Product Inspector (Three.js)",
-            "AI-Driven Dynamic Personalization Engine",
-            "Merchant Real-Time Revenue Heatmap"
+            "Instant Donor-Patient Blood Type Match Engine",
+            "Real-Time Blood Inventory & Expiration Tracking",
+            "Emergency Broadcast Notification Dispatch",
+            "Lightweight SQLite Relational Datastore"
         ],
-        technologies: ["Next.js", "PostgreSQL", "Prisma", "Three.js", "Stripe", "Tailwind CSS"],
+        technologies: ["Python", "Django", "JavaScript", "HTML5", "CSS3", "SQLite"],
         images: [
             {
-                title: "Storefront Spotlight",
-                subtitle: "AI-curated product storefront with instantaneous filter transitions.",
-                url: createProjectMockupSvg("Luma", "#a78bfa", 1, "Storefront Spotlight", "AI-curated product storefront with instantaneous filter transitions.")
+                title: "Donor Match Engine",
+                subtitle: "Immediate matching based on location and rare blood group availability.",
+                url: createProjectMockupSvg("RedDrop", "#f43f5e", 1, "Donor Match Engine", "Immediate matching based on location and rare blood group availability.")
             },
             {
-                title: "3D Product Viewer",
-                subtitle: "Interactive 360-degree model viewing with dynamic material shaders.",
-                url: createProjectMockupSvg("Luma", "#a78bfa", 2, "3D Product Viewer", "Interactive 360-degree model viewing with dynamic material shaders.")
+                title: "Inventory Command Dashboard",
+                subtitle: "Live batch monitoring, unit counts, and shelf life telemetry.",
+                url: createProjectMockupSvg("RedDrop", "#f43f5e", 2, "Inventory Command Dashboard", "Live batch monitoring, unit counts, and shelf life telemetry.")
             },
             {
-                title: "One-Click Checkout",
-                subtitle: "Frictionless checkout experience supporting global local currencies.",
-                url: createProjectMockupSvg("Luma", "#a78bfa", 3, "One-Click Checkout", "Frictionless checkout experience supporting global local currencies.")
+                title: "Emergency Alert Hub",
+                subtitle: "Automated notification dispatches to available registered donors.",
+                url: createProjectMockupSvg("RedDrop", "#f43f5e", 3, "Emergency Alert Hub", "Automated notification dispatches to available registered donors.")
             },
             {
-                title: "Merchant Analytics",
-                subtitle: "Live sales metrics, visitor heatmaps, and conversion funnels.",
-                url: createProjectMockupSvg("Luma", "#a78bfa", 4, "Merchant Analytics", "Live sales metrics, visitor heatmaps, and conversion funnels.")
+                title: "Hospital Request Logs",
+                subtitle: "Verified hospital requisition pipeline and dispatch records.",
+                url: createProjectMockupSvg("RedDrop", "#f43f5e", 4, "Hospital Request Logs", "Verified hospital requisition pipeline and dispatch records.")
+            }
+        ]
+    },
+    {
+        id: "04",
+        title: "CLOUDSTICK V2",
+        category: "Cloud Infrastructure",
+        tag: "React · TypeScript · Redux",
+        color: "#a78bfa",
+        description: "Real-time server provisioning and cloud administration dashboard engineered for Cloudhouse.",
+        longDescription: "Cloudstick (V2) is an enterprise cloud management platform. Gohul engineered real-time server provisioning dashboards, DNS automation, and production-grade UI modules for server administration, database configuration, and network security using React, TypeScript, and Redux Toolkit.",
+        features: [
+            "Real-Time Server Provisioning Dashboards",
+            "Redux Toolkit Global State & Telemetry Management",
+            "Automated DNS, Firewall & Database Configuration UI",
+            "Agile Collaborated Production Deployment Modules"
+        ],
+        technologies: ["React", "TypeScript", "Redux Toolkit", "REST APIs", "Tailwind CSS", "Git"],
+        images: [
+            {
+                title: "Server Fleet Overview",
+                subtitle: "Real-time cloud instance CPU, RAM, and disk utilization metrics.",
+                url: createProjectMockupSvg("Cloudstick", "#a78bfa", 1, "Server Fleet Overview", "Real-time cloud instance CPU, RAM, and disk utilization metrics.")
+            },
+            {
+                title: "DNS & Domain Configurator",
+                subtitle: "Automated record propagation and custom zone management UI.",
+                url: createProjectMockupSvg("Cloudstick", "#a78bfa", 2, "DNS & Domain Configurator", "Automated record propagation and custom zone management UI.")
+            },
+            {
+                title: "Database Cluster Provisioning",
+                subtitle: "One-click MySQL and PostgreSQL database cluster deployment wizard.",
+                url: createProjectMockupSvg("Cloudstick", "#a78bfa", 3, "Database Cluster Provisioning", "One-click MySQL and PostgreSQL database cluster deployment wizard.")
+            },
+            {
+                title: "Real-Time Telemetry & Logs",
+                subtitle: "Sub-second server event logging and activity audit streams.",
+                url: createProjectMockupSvg("Cloudstick", "#a78bfa", 4, "Real-Time Telemetry & Logs", "Sub-second server event logging and activity audit streams.")
             }
         ]
     }
@@ -268,7 +306,7 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
     return (
         <div
             ref={cardRef}
-            className="project-card relative shrink-0 w-[78vw] sm:w-[60vw] md:w-[42vw] lg:w-[38vw] max-w-[560px]"
+            className="project-card relative shrink-0 w-[88vw] sm:w-[72vw] md:w-[56vw] lg:w-[48vw] xl:w-[44vw] max-w-[720px]"
             style={{ transformStyle: "preserve-3d", cursor: "pointer" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -276,14 +314,14 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
         >
             {/* Card face */}
             <div
-                className="relative rounded-[28px] overflow-hidden group"
+                className="relative rounded-[32px] overflow-hidden group"
                 style={{
-                    aspectRatio: "16/9.5",
+                    aspectRatio: "16/9.8",
                     background: "var(--glass-bg)",
                     backdropFilter: "blur(24px) saturate(180%)",
                     WebkitBackdropFilter: "blur(24px) saturate(180%)",
                     border: "1px solid var(--glass-border)",
-                    boxShadow: `0 20px 60px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.7)`,
+                    boxShadow: `0 24px 70px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.7)`,
                 }}
             >
                 {/* Shimmer overlay */}
@@ -299,23 +337,23 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
                 <div
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none transition-opacity duration-300 opacity-60 group-hover:opacity-100"
                     style={{
-                        width: "80%",
-                        height: "60%",
-                        background: `radial-gradient(ellipse at 50% 100%, ${project.color}35, transparent 70%)`,
-                        filter: "blur(30px)",
+                        width: "85%",
+                        height: "65%",
+                        background: `radial-gradient(ellipse at 50% 100%, ${project.color}40, transparent 70%)`,
+                        filter: "blur(35px)",
                         zIndex: 0,
                     }}
                 />
 
                 {/* Content */}
-                <div className="card-inner relative z-10 w-full h-full flex flex-col justify-between p-6 md:p-8">
+                <div className="card-inner relative z-10 w-full h-full flex flex-col justify-between p-7 sm:p-8 md:p-10">
                     {/* Top badges */}
                     <div className="flex gap-2.5 flex-wrap">
                         <span
-                            className="px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase"
+                            className="px-3.5 py-1.5 rounded-full text-[10px] font-extrabold tracking-widest uppercase"
                             style={{
-                                background: `${project.color}18`,
-                                border: `1px solid ${project.color}35`,
+                                background: `${project.color}22`,
+                                border: `1px solid ${project.color}45`,
                                 color: project.color,
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                             }}
@@ -323,10 +361,10 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
                             {project.id}
                         </span>
                         <span
-                            className="px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase"
+                            className="px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase"
                             style={{
-                                background: "rgba(2, 132, 199, 0.06)",
-                                border: "1px solid rgba(2, 132, 199, 0.15)",
+                                background: "rgba(2, 132, 199, 0.08)",
+                                border: "1px solid rgba(2, 132, 199, 0.18)",
                                 color: "var(--text-muted)",
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                             }}
@@ -334,9 +372,9 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
                             {project.category}
                         </span>
                         <span
-                            className="px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase"
+                            className="px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase"
                             style={{
-                                background: "rgba(255,255,255,0.5)",
+                                background: "rgba(255,255,255,0.6)",
                                 border: "1px solid var(--glass-border)",
                                 color: "var(--text-muted)",
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -347,13 +385,13 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
                     </div>
 
                     {/* Center icon / title */}
-                    <div className="flex-1 flex items-center justify-center my-2">
+                    <div className="flex-1 flex items-center justify-center my-3">
                         <div
-                            className="text-6xl md:text-7xl opacity-15 group-hover:opacity-25 transition-opacity duration-300 font-black uppercase tracking-tighter select-none"
+                            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl opacity-15 group-hover:opacity-30 transition-all duration-500 font-black uppercase tracking-tighter select-none text-center"
                             style={{
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                                 color: project.color,
-                                transform: "translateZ(30px)",
+                                transform: "translateZ(40px)",
                             }}
                         >
                             {project.title}
@@ -362,17 +400,17 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
 
                     {/* Bottom CTA button */}
                     <div
-                        className="flex items-center gap-2.5 px-4 py-2 rounded-full w-fit transition-all duration-300 group-hover:scale-105"
+                        className="flex items-center gap-2.5 px-4.5 py-2.5 rounded-full w-fit transition-all duration-300 group-hover:scale-105 shadow-sm"
                         style={{
-                            background: `${project.color}22`,
-                            border: `1px solid ${project.color}45`,
-                            backdropFilter: "blur(10px)",
+                            background: `${project.color}25`,
+                            border: `1px solid ${project.color}50`,
+                            backdropFilter: "blur(12px)",
                         }}
                     >
-                        <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: project.color, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                        <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: project.color, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                             Click to View Details
                         </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke={project.color} className="w-3.5 h-3.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke={project.color} className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                         </svg>
                     </div>
@@ -380,9 +418,9 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
             </div>
 
             {/* Title below */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 px-2 mt-3">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 px-3 mt-4">
                 <h3
-                    className="project-title text-2xl md:text-4xl font-bold uppercase leading-none tracking-tight transition-colors duration-300"
+                    className="project-title text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase leading-none tracking-tight transition-colors duration-300"
                     style={{
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         color: "var(--text)",
@@ -390,7 +428,7 @@ const ProjectCard = ({ project, onClick }: { project: ProjectItem; onClick: () =
                 >
                     {project.title}
                 </h3>
-                <p className="text-xs font-light max-w-xs leading-relaxed line-clamp-2" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <p className="text-xs sm:text-sm font-light max-w-sm leading-relaxed line-clamp-2" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     {project.description}
                 </p>
             </div>
@@ -538,7 +576,7 @@ const Projects = () => {
 
                 {/* Scrollbar indicator */}
                 <div
-                    className="projects-progress-bar-container absolute bottom-20 md:bottom-28 left-0 w-full flex flex-col items-center gap-2 z-30 pointer-events-none"
+                    className="projects-progress-bar-container absolute bottom-6 md:bottom-8 left-0 w-full flex flex-col items-center gap-2 z-30 pointer-events-none"
                     style={{ opacity: 0, y: 15 } as React.CSSProperties}
                 >
                     <div className="w-48 sm:w-64 md:w-80 h-[4px] rounded-full overflow-hidden relative" style={{ background: "rgba(30, 36, 43, 0.12)", backdropFilter: "blur(4px)" }}>
@@ -560,174 +598,64 @@ const Projects = () => {
             </div>
 
             {/* ══════════════════════════════════════════════════════════════
-               PROJECT DETAIL MODAL (Heading -> Description -> Single Image Carousel)
+               PROJECT DETAIL MODAL (Human Editorial Portfolio Layout)
                ══════════════════════════════════════════════════════════════ */}
             {activeProject && (
                 <div
-                    className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-slate-950/50 backdrop-blur-xl animate-fadeIn"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/50 backdrop-blur-md animate-fadeIn"
                     onClick={closeModal}
                     onWheel={(e) => e.stopPropagation()}
                     onTouchMove={(e) => e.stopPropagation()}
                 >
-                    {/* Modal container */}
+                    {/* Modal Card Container */}
                     <div
-                        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] p-6 sm:p-8 md:p-10 flex flex-col gap-6 animate-modalScale custom-scrollbar"
-                        style={{
-                            background: "rgba(255, 255, 255, 0.94)",
-                            backdropFilter: "blur(32px) saturate(180%)",
-                            WebkitBackdropFilter: "blur(32px) saturate(180%)",
-                            border: "1px solid var(--glass-border)",
-                            boxShadow: `0 30px 90px rgba(15, 23, 42, 0.2), 0 0 50px ${activeProject.color}30, inset 0 1px 0 rgba(255,255,255,0.9)`,
-                        }}
+                        className="relative w-full max-w-4xl max-h-[88vh] overflow-y-auto rounded-[28px] bg-white p-6 sm:p-8 md:p-10 flex flex-col gap-6 animate-modalScale custom-scrollbar shadow-2xl border border-stone-200/80"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Close Button */}
+                        {/* Minimalist Close Button */}
                         <button
                             onClick={closeModal}
-                            className="absolute top-5 right-5 sm:top-6 sm:right-6 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:rotate-90 z-20 group"
-                            style={{
-                                background: "rgba(255, 255, 255, 0.9)",
-                                border: "1px solid var(--glass-border)",
-                                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-                                color: "var(--text)",
-                            }}
+                            className="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-900 z-20"
                             aria-label="Close modal"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 transition-transform group-hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
 
-                        {/* 1. TOP OF THE MODAL: PROJECT HEADING */}
-                        <div className="flex flex-col gap-3 pr-10 border-b border-slate-200/80 pb-6">
-                            <div className="flex items-center gap-3 flex-wrap">
-                                <span
-                                    className="px-3.5 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase"
-                                    style={{
-                                        background: `${activeProject.color}18`,
-                                        border: `1px solid ${activeProject.color}40`,
-                                        color: activeProject.color,
-                                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                    }}
-                                >
-                                    PROJECT {activeProject.id}
-                                </span>
-                                <span
-                                    className="px-3.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase"
-                                    style={{
-                                        background: "rgba(2, 132, 199, 0.06)",
-                                        border: "1px solid rgba(2, 132, 199, 0.15)",
-                                        color: "var(--text-muted)",
-                                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                    }}
-                                >
+                        {/* 1. EDITORIAL HEADER */}
+                        <div className="flex flex-col gap-2 pr-10 border-b border-stone-100 pb-5">
+                            <div className="flex items-center gap-2">
+                                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-sky-600" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                                     {activeProject.category}
                                 </span>
-                                <span
-                                    className="px-3.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase"
-                                    style={{
-                                        background: "rgba(0, 0, 0, 0.03)",
-                                        border: "1px solid var(--glass-border)",
-                                        color: "var(--text-muted)",
-                                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                    }}
-                                >
+                                <span className="text-stone-300">•</span>
+                                <span className="text-[11px] font-medium tracking-wider text-stone-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                                     {activeProject.tag}
                                 </span>
                             </div>
 
                             <h2
-                                className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight"
-                                style={{
-                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                    color: "var(--text)",
-                                }}
+                                className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-stone-900"
+                                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                             >
                                 {activeProject.title}
                             </h2>
                         </div>
 
-                        {/* 2. BELOW HEADING: DESCRIPTION & FEATURES */}
-                        <div className="flex flex-col gap-5">
-                            <p className="text-base sm:text-lg font-normal leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                                {activeProject.longDescription}
-                            </p>
-
-                            {/* Features Grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-1">
-                                {activeProject.features.map((feat, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="flex items-center gap-3 p-3.5 rounded-2xl"
-                                        style={{
-                                            background: "rgba(255, 255, 255, 0.75)",
-                                            border: "1px solid var(--glass-border)",
-                                            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.02)",
-                                        }}
-                                    >
-                                        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: activeProject.color }} />
-                                        <span className="text-xs sm:text-sm font-semibold" style={{ color: "var(--text)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                                            {feat}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Tech Stack Chips */}
-                            <div className="flex items-center gap-2 flex-wrap">
-                                <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mr-1">Stack:</span>
-                                {activeProject.technologies.map((tech, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="text-xs font-semibold px-3.5 py-1.5 rounded-xl transition-all"
-                                        style={{
-                                            background: "rgba(0, 0, 0, 0.04)",
-                                            border: "1px solid var(--glass-border)",
-                                            color: "var(--text)",
-                                            fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                        }}
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* 3. BELOW DESCRIPTION: SINGLE IMAGE CAROUSEL WITH LEFT/RIGHT BUTTONS */}
-                        <div className="flex flex-col gap-3 pt-2">
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                                    Visual Gallery ({currentImgIndex + 1} / {activeProject.images.length})
-                                </span>
-                                <span className="text-xs font-semibold" style={{ color: "var(--text)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                                    {activeProject.images[currentImgIndex].title}
-                                </span>
-                            </div>
-
-                            {/* Image Container with Arrow Buttons */}
-                            <div
-                                className="relative w-full aspect-[16/9.5] sm:aspect-[16/9] rounded-2xl overflow-hidden group shadow-inner"
-                                style={{
-                                    border: "1px solid var(--glass-border)",
-                                    background: "#0f172a",
-                                }}
-                            >
-                                {/* Image display */}
+                        {/* 2. IMAGE PREVIEW GALLERY */}
+                        <div className="flex flex-col gap-3">
+                            <div className="relative w-full aspect-[16/9.5] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-slate-900 border border-stone-200 group">
                                 <img
                                     src={activeProject.images[currentImgIndex].url}
-                                    alt={`${activeProject.title} screenshot ${currentImgIndex + 1}`}
+                                    alt={`${activeProject.title} slide ${currentImgIndex + 1}`}
                                     className="w-full h-full object-cover transition-opacity duration-300"
                                 />
 
-                                {/* Left Arrow Button */}
+                                {/* Left Nav Arrow */}
                                 <button
                                     onClick={prevImage}
-                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 z-10"
-                                    style={{
-                                        background: "rgba(255, 255, 255, 0.9)",
-                                        border: "1px solid rgba(255, 255, 255, 0.9)",
-                                        color: "#0f172a",
-                                    }}
+                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all bg-white/90 hover:bg-white text-stone-900 shadow-md z-10 hover:scale-105"
                                     aria-label="Previous image"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
@@ -735,15 +663,10 @@ const Projects = () => {
                                     </svg>
                                 </button>
 
-                                {/* Right Arrow Button */}
+                                {/* Right Nav Arrow */}
                                 <button
                                     onClick={nextImage}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 z-10"
-                                    style={{
-                                        background: "rgba(255, 255, 255, 0.9)",
-                                        border: "1px solid rgba(255, 255, 255, 0.9)",
-                                        color: "#0f172a",
-                                    }}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all bg-white/90 hover:bg-white text-stone-900 shadow-md z-10 hover:scale-105"
                                     aria-label="Next image"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
@@ -751,29 +674,83 @@ const Projects = () => {
                                     </svg>
                                 </button>
 
-                                {/* Subtitle overlay banner */}
-                                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent flex items-center justify-between text-white backdrop-blur-xs">
-                                    <p className="text-xs sm:text-sm font-medium" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                                        {activeProject.images[currentImgIndex].subtitle}
-                                    </p>
+                                {/* Image Subtitle Overlay */}
+                                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white flex justify-between items-end">
+                                    <div>
+                                        <p className="text-xs font-bold uppercase tracking-wider text-stone-300">
+                                            {activeProject.images[currentImgIndex].title}
+                                        </p>
+                                        <p className="text-xs font-medium text-stone-200 mt-0.5">
+                                            {activeProject.images[currentImgIndex].subtitle}
+                                        </p>
+                                    </div>
+                                    <span className="text-[10px] font-mono tracking-widest text-stone-300 bg-black/40 px-2 py-0.5 rounded">
+                                        {currentImgIndex + 1} / {activeProject.images.length}
+                                    </span>
                                 </div>
                             </div>
 
-                            {/* Image Dot Indicators */}
-                            <div className="flex items-center justify-center gap-2 mt-2">
+                            {/* Thumbnail Indicator Dots */}
+                            <div className="flex items-center justify-center gap-2 mt-1">
                                 {activeProject.images.map((_, idx) => (
                                     <button
                                         key={idx}
                                         onClick={() => setCurrentImgIndex(idx)}
-                                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                                            currentImgIndex === idx ? "w-8" : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                                        className={`h-2 rounded-full transition-all duration-300 ${
+                                            currentImgIndex === idx ? "w-6 bg-stone-900" : "w-2 bg-stone-300 hover:bg-stone-400"
                                         }`}
-                                        style={{
-                                            backgroundColor: currentImgIndex === idx ? activeProject.color : undefined,
-                                        }}
                                         aria-label={`Go to slide ${idx + 1}`}
                                     />
                                 ))}
+                            </div>
+                        </div>
+
+                        {/* 3. DETAILS & TECH STACK (2 COLUMNS) */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4 border-t border-stone-100">
+                            {/* Main Story & Features (2 Cols) */}
+                            <div className="md:col-span-2 flex flex-col gap-6">
+                                <div>
+                                    <h4 className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                                        About the Project
+                                    </h4>
+                                    <p className="text-sm md:text-base text-stone-600 font-normal leading-relaxed" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                                        {activeProject.longDescription}
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                                        Key Highlights
+                                    </h4>
+                                    <ul className="space-y-2.5">
+                                        {activeProject.features.map((feat, idx) => (
+                                            <li key={idx} className="flex items-center gap-3 text-xs md:text-sm text-stone-800 font-medium">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
+                                                <span>{feat}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* Tech Stack & Action (1 Col) */}
+                            <div className="flex flex-col gap-6">
+                                <div>
+                                    <h4 className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                                        Technologies Used
+                                    </h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {activeProject.technologies.map((tech, idx) => (
+                                            <span
+                                                key={idx}
+                                                className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-stone-100 text-stone-700 border border-stone-200/60"
+                                                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
